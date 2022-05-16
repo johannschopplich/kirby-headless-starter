@@ -30,7 +30,7 @@ composer install
 
 ### Environment Variables
 
-Duplicate the [`.env.example`](.env.example) as `.env`::
+Duplicate the [`.env.development.example`](.env.development.example) as `.env`:
 
 ```bash
 cp .env.example .env
