@@ -1,0 +1,20 @@
+.DS_Store
+.env
+node_modules
+vendor
+
+# Kirby
+.lock
+/public/media/*
+!/public/media/index.html
+/storage/accounts/*
+!/storage/accounts/.gitkeep
+/storage/cache/*
+!/storage/cache/.gitkeep
+# /storage/content/*
+# !/storage/content/.gitkeep
+/storage/logs/*
+!/storage/logs/.gitkeep
+/storage/sessions/*
+!/storage/sessions/.gitkeep
+/site/config/.license

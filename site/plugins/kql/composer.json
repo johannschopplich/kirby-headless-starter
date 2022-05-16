@@ -1,0 +1,28 @@
+{
+    "name": "getkirby/kql",
+    "description": "Kirby Query Language",
+    "license": "MIT",
+    "keywords": ["kirby", "cms", "api", "json", "query"],
+    "homepage": "https://getkirby.com",
+    "type": "kirby-plugin",
+    "authors": [
+        {
+            "name": "Bastian Allgeier",
+            "email": "bastian@getkirby.com"
+        }
+    ],
+    "require": {
+        "getkirby/composer-installer": "^1.2.0"
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Kirby\\": "src/"
+        }
+    },
+    "scripts": {
+        "fix": "php-cs-fixer fix --config .php_cs"
+    }
+}

@@ -1,0 +1,23 @@
+Title: Plants
+
+----
+
+Cover:
+
+- nice-colors-ugly-plant.jpg
+
+----
+
+Headline: 
+
+----
+
+Subheadline: Mostly green
+
+----
+
+Text: <p>This was a very special project. Plants are nice and quite beautiful Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla.</p><p>Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue.</p>
+
+----
+
+Tags: plants

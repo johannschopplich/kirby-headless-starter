@@ -1,0 +1,79 @@
+# Each page blueprint must have a title, the title may be different from the file name
+title: About us
+
+# Each page can have an icon that is shown in page listings when no preview image is available.
+icon: ☎️
+
+# Limit the possible page statuses to `draft` and `listed`.
+# More about page statuses: https://getkirby.com/docs/reference/panel/blueprints/page#statuses
+status:
+  draft: true
+  listed: true
+
+# Page options allow you to control how users can interact with the page.
+# Here we prevent changing the page slug and page deletion
+# More about page options: https://getkirby.com/docs/reference/panel/blueprints/page#options
+options:
+  changeSlug: false
+  delete: false
+
+# We use tabs here to focus on the layout in one tab
+# and have the additional contact fields in a secondary
+# tab. Tabs can really help to clean up the interface
+# when it otherwise gets too complicated
+tabs:
+  content:
+    icon: text
+    label: content
+    fields:
+      layout:
+        label: Layout
+        type: layout
+        layouts:
+          - "1/1"
+          - "1/2, 1/2"
+          - "1/3, 1/3, 1/3"
+  # The contact tab pre-defines a set of address
+  # fields for the contact box at the bottom of the about
+  # page. Combining modular content from layouts with
+  # pre-defined content from such fields is a great way to
+  # offer flexibility and yet keep certain constraints.
+  #
+  # The form layout is created with two columns,
+  # each column has a set of fields
+  # More about columns:
+  # https://getkirby.com/docs/guide/blueprints/layout#defining-columns
+  contact:
+    icon: map
+    label: Contact
+    columns:
+      - width: 1/2
+        # Kirby has many different field types, from simple text fields to the more complex structure field that contains subfields
+        # All available field types: https://getkirby.com/docs/reference/panel/fields
+        fields:
+          address:
+            label: Address
+            type: writer
+            inline: true
+          email:
+            label: Email
+            type: email
+          phone:
+            label: Phone
+            type: tel
+      - width: 1/2
+        fields:
+          social:
+            label: On the web
+            type: structure
+            columns:
+              platform: true
+            fields:
+              platform:
+                label: Platform
+                type: text
+                width: 1/2
+              url:
+                label: URL
+                type: url
+                width: 1/2
