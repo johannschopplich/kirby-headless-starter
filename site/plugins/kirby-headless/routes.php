@@ -64,6 +64,11 @@ return [
                 ], 401);
             }
 
+            // Fall back to homepage id
+            if (empty($pageId)) {
+                $pageId = site()->homePageId();
+            }
+
             $page = $kirby->page($pageId);
 
             if (!$page || !$page->isVerified(get('token'))) {
