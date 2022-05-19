@@ -49,7 +49,8 @@ return [
     [
         'pattern' => ['(:all)', '(:all).json'],
         'action' => function ($pageId) {
-            $headers = kirby()->request()->headers();
+            $kirby = kirby();
+            $headers = $kirby->request()->headers();
 
             // Validate API bearer token
             if (
@@ -63,17 +64,17 @@ return [
                 ], 401);
             }
 
-            $page = kirby()->page($pageId);
+            $page = $kirby->page($pageId);
 
             if (!$page || !$page->isVerified(get('token'))) {
-                $page = kirby()->site()->errorPage();
+                $page = $kirby->site()->errorPage();
             };
 
             $cache = $cacheId = $data = null;
 
             // Try to get the page from cache
             if ($page->isCacheable()) {
-                $cache    = kirby()->cache('pages');
+                $cache    = $kirby->cache('pages');
                 $cacheId  = $page->id() . '.headless';
                 $result   = $cache->get($cacheId);
                 $data     = $result['data'] ?? null;
@@ -81,7 +82,7 @@ return [
 
                 // Reconstruct the response configuration
                 if (!empty($data) && !empty($response)) {
-                    kirby()->response()->fromArray($response);
+                    $kirby->response()->fromArray($response);
                 }
             }
 
@@ -95,11 +96,11 @@ return [
                     ]);
                 }
 
-                kirby()->data = $page->controller();
-                $data = $template->render(kirby()->data);
+                $kirby->data = $page->controller();
+                $data = $template->render($kirby->data);
 
                 // Convert the response configuration to an array
-                $response = kirby()->response()->toArray();
+                $response = $kirby->response()->toArray();
 
                 // Cache the result
                 if ($cache !== null) {
