@@ -3,12 +3,13 @@
 /** @var \Kirby\Cms\Page $page */
 
 $data = [
-  '_meta' => [
+  '__meta' => [
     'template' => $page->intendedTemplate()->name(),
     'isHomePage' => $page->isHomePage(),
     'isErrorPage' => $page->isErrorPage()
   ],
-  'title' => $page->title()->value()
+  'title' => $page->title()->value(),
+  'text' => $page->text()->value(),
 ];
 
 echo toJson($data);

@@ -3,7 +3,7 @@
 /** @var \Kirby\Cms\Page $page */
 
 $data = [
-  '_meta' => [
+  '__meta' => [
     'template' => $page->intendedTemplate()->name(),
     'isHomePage' => $page->isHomePage(),
     'isErrorPage' => $page->isErrorPage()
