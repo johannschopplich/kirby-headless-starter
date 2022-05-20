@@ -20,29 +20,16 @@ class ApiResponse
      */
     public static function create(int $code, ?array $data = null): Response
     {
-        $body = static::createBody($code, $data);
-        return Response::json($body, $code);
-    }
-
-    /**
-     * Create the body for an api response
-     *
-     * @param int $code
-     * @param null|array $data
-     * @return array
-     */
-    private static function createBody(int $code, ?array $data = null): array
-    {
-        $base = [
+        $body = [
             'code' => $code,
             'status' => static::getStatusMessage($code),
         ];
 
         if ($data !== null) {
-            $base['data'] = $data;
+            $body['data'] = $data;
         }
 
-        return $base;
+        return Response::json($body, $code);
     }
 
     /**
