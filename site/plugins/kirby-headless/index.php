@@ -2,7 +2,6 @@
 
 load([
     'KirbyHeadless\\Api\\Api' => 'models/Api.php',
-    'KirbyHeadless\\Api\\ApiResponse' => 'models/ApiResponse.php',
     'KirbyHeadless\\Api\\Middlewares' => 'models/Middlewares.php'
 ], __DIR__);
 

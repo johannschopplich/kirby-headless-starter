@@ -4,7 +4,6 @@ use Kirby\Exception\NotFoundException;
 use Kirby\Http\Response;
 use Kirby\Kql\Kql;
 use KirbyHeadless\Api\Api;
-use KirbyHeadless\Api\ApiResponse;
 use KirbyHeadless\Api\Middlewares;
 
 return [
@@ -17,7 +16,7 @@ return [
         'method' => 'GET|POST',
         'action' => Api::createHandler(
             [Middlewares::class, 'hasBearerToken'],
-            function ($context) {
+            function ($context, $args) {
                 $result = Kql::run([
                     'query' => get('query'),
                     'select' => get('select'),
@@ -27,7 +26,7 @@ return [
                     ]
                 ]);
 
-                return ApiResponse::create(200, $result);
+                return Api::createResponse(200, $result);
             }
         )
     ],

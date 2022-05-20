@@ -127,13 +127,12 @@ It is also useful to consume POST requests including JSON data:
         [Middlewares::class, 'hasBearerToken'],
         [Middlewares::class, 'parseJson'],
         [Middlewares::class, 'jsonBodyHasDataKey'],
-        [Middlewares::class, 'dataIsAssociativeArray'],
         function ($context) {
             $data = $context['json']['data'];
 
             // Do something with `$data` here
 
-            return ApiResponse::create(201);
+            return Api::createResponse(201);
         }
     )
 ],

@@ -3,9 +3,8 @@
 namespace KirbyHeadless\Api;
 
 use Exception;
-use KirbyHeadless\Api\ApiResponse;
+use KirbyHeadless\Api\Api;
 use Kirby\Data\Json;
-use Kirby\Toolkit\A;
 
 class Middlewares
 {
@@ -13,7 +12,7 @@ class Middlewares
      * Checks if a bearer token was sent with the request and
      * if it matches the one configured in `.env`
      *
-     * @return \KirbyHeadless\Api\ApiResponse|void
+     * @return \Kirby\Http\Response|void
      */
     public static function hasBearerToken()
     {
@@ -24,7 +23,7 @@ class Middlewares
             !empty($token) &&
             (empty($authorization) || $authorization !== 'Bearer ' . $token)
         ) {
-            return ApiResponse::create(401);
+            return Api::createResponse(401);
         }
     }
 
@@ -44,7 +43,7 @@ class Middlewares
             $context['json'] = $json;
             return $context;
         } catch (Exception $e) {
-            return ApiResponse::create(400, [
+            return Api::createResponse(400, [
                 'error' => $e->getMessage(),
             ]);
         }
@@ -55,30 +54,13 @@ class Middlewares
      * ends the request with 400 if that fails
      *
      * @param array $context
-     * @return \KirbyHeadless\Api\ApiResponse|void
+     * @return \Kirby\Http\Response|void
      */
     public static function jsonBodyHasDataKey($context)
     {
         if (!isset($context['json']['data'])) {
-            return ApiResponse::create(400, [
+            return Api::createResponse(400, [
                 'error' => '"data" key is missing',
-            ]);
-        }
-    }
-
-    /**
-     * Checks if the parsed JSON contains a data key that is an
-     * associative array and ends the request with 400 if that fails
-     *
-     * @param array $context
-     * @return \KirbyHeadless\Api\ApiResponse|void
-     */
-    public static function dataIsAssociativeArray($context)
-    {
-        $data = $context['json']['data'];
-        if (A::isAssociative($data)) {
-            return ApiResponse::create(400, [
-                'error' => '"data" key is not an array',
             ]);
         }
     }
