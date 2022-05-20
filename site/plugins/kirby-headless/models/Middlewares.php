@@ -18,10 +18,11 @@ class Middlewares
     public static function hasBearerToken()
     {
         $authorization = kirby()->request()->header('Authorization');
+        $token = env('KIRBY_HEADLESS_API_TOKEN');
 
         if (
-            env('KIRBY_HEADLESS_API_TOKEN') &&
-            (!$authorization || $authorization !== 'Bearer ' . env('KIRBY_HEADLESS_API_TOKEN'))
+            !empty($token) &&
+            (empty($authorization) || $authorization !== 'Bearer ' . $token)
         ) {
             return ApiResponse::create(401);
         }

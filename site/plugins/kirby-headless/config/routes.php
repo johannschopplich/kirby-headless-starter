@@ -39,12 +39,13 @@ return [
         'pattern' => ['(:all)', '(:all).json'],
         'action' => Api::createHandler(
             [Middlewares::class, 'hasBearerToken'],
-            function ($context) {
+            function ($context, $args) {
+                [$pageId] = $args;
                 $kirby = kirby();
 
                 // Fall back to homepage id
                 if (empty($pageId)) {
-                    $pageId = site()->homePageId();
+                    $pageId = $kirby->site()->homePageId();
                 }
 
                 $page = $kirby->page($pageId);
