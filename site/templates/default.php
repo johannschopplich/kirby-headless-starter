@@ -8,8 +8,7 @@ $data = [
     'isHomePage' => $page->isHomePage(),
     'isErrorPage' => $page->isErrorPage()
   ],
-  'title' => $page->title()->value(),
-  'text' => $page->text()->value(),
+  'title' => $page->title()->value()
 ];
 
 echo toJson($data);
