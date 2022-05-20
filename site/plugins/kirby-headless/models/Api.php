@@ -7,19 +7,6 @@ use Kirby\Http\Response;
 
 class Api
 {
-    protected static string $slug;
-
-    /**
-     * Get the API slug for use in a routing pattern
-     * Note: unused for now
-     *
-     * @return string
-     */
-    public static function useSlug(): string
-    {
-        return static::$slug ??= Url::path(env('KIRBY_HEADLESS_API_SLUG', ''));
-    }
-
     /**
      * Create an API handler
      *
