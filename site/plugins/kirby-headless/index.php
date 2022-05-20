@@ -21,7 +21,7 @@ load([
  * Encode an array of data into a JSON string
  *
  * @param array $data
- * @return \string
+ * @return string|false
  */
 function toJson(array $data)
 {
