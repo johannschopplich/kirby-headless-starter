@@ -11,6 +11,7 @@ Routing and JSON-encoded responses are handled by the internal [kirby-headless](
   - Post requests to `/query`
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
+- 🦾 Express-esque and flexible [API builder](#api-builder)
 
 ## Prerequisites
 
@@ -109,6 +110,33 @@ const response = await $fetch(
 );
 
 console.log(response);
+```
+
+### API Builder
+
+The internal `kirby-headless` plugin includes an Express-esque API builder. You can use it to re-use logic like handling a token or verifying some other incoming data.
+
+It is also useful to consume POST requests including JSON data:
+
+```php
+# /site/config/routes.php
+[
+    'pattern' => 'post-example',
+    'method' => 'POST',
+    'action' => Api::createHandler(
+        [Middlewares::class, 'hasBearerToken'],
+        [Middlewares::class, 'parseJson'],
+        [Middlewares::class, 'jsonBodyHasDataKey'],
+        [Middlewares::class, 'dataIsAssociativeArray'],
+        function ($context) {
+            $data = $context['json']['data'];
+
+            // Do something with `$data` here
+
+            return ApiResponse::create(201);
+        }
+    )
+],
 ```
 
 ### Deployment
