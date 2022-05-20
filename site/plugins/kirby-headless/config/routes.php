@@ -40,6 +40,7 @@ return [
         'action' => Api::createHandler(
             [Middlewares::class, 'hasBearerToken'],
             function ($context, $args) {
+                // The `$args` array contains the route parameters
                 [$pageId] = $args;
                 $kirby = kirby();
 
