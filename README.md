@@ -127,9 +127,10 @@ It is also useful to consume POST requests including JSON data:
     'method' => 'POST',
     'action' => Api::createHandler(
         [Middlewares::class, 'hasBearerToken'],
-        [Middlewares::class, 'parseJson'],
+        [Middlewares::class, 'hasData'],
         function ($context) {
-            $data = $context['json'];
+            // Get the data of the POST request
+            $data = $context['body'];
 
             // Do something with `$data` here
 
@@ -143,15 +144,15 @@ You you use one of the [built-in middlewares](/site/plugins/kirby-headless/model
 
 ```php
 /**
- * Example middleware to check if an option is set
- * and bail with 401 if not
+ * Example middleware to check if `foo` is sent with the request
+ * and bail with an 401 error if not
  *
  * @param array $context
  * @return mixed
  */
 public static function exampleMiddleware($context)
 {
-    if (empty(option('some.option'))) {
+    if (empty(get('foo'))) {
         return Api::createResponse(401);
     }
 }
