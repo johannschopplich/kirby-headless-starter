@@ -11,7 +11,7 @@ Routing and JSON-encoded responses are handled by the internal [kirby-headless](
   - Post requests to `/query`
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
-- 🦾 Express-esque and flexible [API builder](#api-builder)
+- 🦾 Express-esque [API builder](#api-builder) with middleware support
 
 ## Prerequisites
 
@@ -116,6 +116,8 @@ console.log(response);
 
 The internal `kirby-headless` plugin includes an Express-esque API builder. You can use it to re-use logic like handling a token or verifying some other incoming data.
 
+Take a look at the [built-in routes]([built-in middlewares](/site/plugins/kirby-headless/config/routes.php)) to get an idea how you can use the API builder to chain complex route logic.
+
 It is also useful to consume POST requests including JSON data:
 
 ```php
@@ -126,16 +128,33 @@ It is also useful to consume POST requests including JSON data:
     'action' => Api::createHandler(
         [Middlewares::class, 'hasBearerToken'],
         [Middlewares::class, 'parseJson'],
-        [Middlewares::class, 'jsonBodyHasDataKey'],
         function ($context) {
-            $data = $context['json']['data'];
+            $data = $context['json'];
 
             // Do something with `$data` here
 
             return Api::createResponse(201);
         }
     )
-],
+]
+```
+
+You you use one of the [built-in middlewares](/site/plugins/kirby-headless/models/Middlewares.php) or write custom ones:
+
+```php
+/**
+ * Example middleware to check if an option is set
+ * and bail with 401 if not
+ *
+ * @param array $context
+ * @return mixed
+ */
+public static function exampleMiddleware($context)
+{
+    if (empty(option('some.option'))) {
+        return Api::createResponse(401);
+    }
+}
 ```
 
 ### Deployment

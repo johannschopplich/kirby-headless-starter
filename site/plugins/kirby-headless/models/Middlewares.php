@@ -31,7 +31,7 @@ class Middlewares
      * Tries to parse the raw request body as JSON and
      * ends the request with 400 if that fails
      *
-     * @param mixed $context
+     * @param array $context
      * @return mixed
      * @throws Exception
      */
