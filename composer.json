@@ -5,6 +5,14 @@
     "getkirby/kql": "^1.0",
     "johannschopplich/kirby-extended": "^2.10"
   },
+  "autoload": {
+    "psr-4": {
+      "KirbyHeadless\\Api\\": "site/headless/"
+    },
+    "files": [
+      "helpers.php"
+    ]
+  },
   "config": {
     "optimize-autoloader": true,
     "allow-plugins": {

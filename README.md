@@ -1,10 +1,10 @@
 # Kirby Headless Starter
 
-> ℹ️ Send a `Bearer test` authorization token in the [live playground](https://kirby-headless-starter.jhnn.dev) to test this headless starter.
+> ℹ️ Send a `Bearer test` authorization header with a request to the [live playground](https://kirby-headless-starter.jhnn.dev) to test this headless starter.
 
 This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented.
 
-Routing and JSON-encoded responses are handled by the internal [kirby-headless](./site/plugins/kirby-headless/) plugin.
+Routing and JSON-encoded responses are handled by the [internal routes](./site/config/routes.php).
 
 ## Key Features
 
@@ -116,9 +116,9 @@ console.log(response);
 
 ### API Builder
 
-The internal `kirby-headless` plugin includes an Express-esque API builder. You can use it to re-use logic like handling a token or verifying some other incoming data.
+This headless starter includes an Express-esque API builder, defined in the [`KirbyHeadless\Api\Api` class](/site/headless/Api.php). You can use it to re-use logic like handling a token or verifying some other incoming data.
 
-Take a look at the [built-in routes]([built-in middlewares](/site/plugins/kirby-headless/config/routes.php)) to get an idea how you can use the API builder to chain complex route logic.
+Take a look at the [built-in routes](/site/config/routes.php) to get an idea how you can use the API builder to chain complex route logic.
 
 It is also useful to consume POST requests including JSON data:
 
@@ -142,7 +142,7 @@ It is also useful to consume POST requests including JSON data:
 ]
 ```
 
-You you use one of the [built-in middlewares](/site/plugins/kirby-headless/models/Middlewares.php) or write custom ones:
+You you use one of the [built-in middlewares](/site/headless/Middlewares.php) or write custom ones:
 
 ```php
 /**
@@ -178,7 +178,7 @@ public static function exampleMiddleware($context)
 - `home.json.php`
 - … and so on
 
-To simplify this approach, we use the standard template structure, but encode their content as JSON via the internal [kirby-headless](./site//plugins/kirby-headless/) plugin.
+To simplify this approach, we use the standard template structure, but encode their content as JSON via the internal [`templateToJson` middleware](./site/headless/Middlewares.php).
 
 ## License
 

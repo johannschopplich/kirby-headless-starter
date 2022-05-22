@@ -37,10 +37,10 @@ class Api
      * Enforces consistent JSON responses by wrapping Kirby's `Response` class
      *
      * @param int $code
-     * @param null|array $data
+     * @param mixed $data
      * @return \Kirby\Http\Response
      */
-    public static function createResponse(int $code, ?array $data = null): Response
+    public static function createResponse(int $code, $data = null): Response
     {
         $body = [
             'code' => $code,
