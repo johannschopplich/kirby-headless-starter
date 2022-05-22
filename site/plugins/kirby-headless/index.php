@@ -13,9 +13,12 @@ load([
         // Explicitly register catch-all routes only when Kirby and all plugins
         // have been loaded to ensure no other routes are overwritten
         'system.loadPlugins:after' => function () {
-            kirby()->extend([
-                'routes' => require __DIR__ . '/config/routes.php'
-            ], kirby()->plugin('johannschopplich/kirby-headless'));
+            kirby()->extend(
+                [
+                  'routes' => require __DIR__ . '/config/routes.php'
+                ],
+                kirby()->plugin('johannschopplich/kirby-headless')
+            );
         }
     ]
 ]);
