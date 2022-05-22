@@ -1,5 +1,7 @@
 # Kirby Headless Starter
 
+> ℹ️ Send a `Bearer test` authorization token in the [live playground](https://kirby-headless-starter.jhnn.dev) to test this headless starter.
+
 This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented.
 
 Routing and JSON-encoded responses are handled by the internal [kirby-headless](./site/plugins/kirby-headless/) plugin.
@@ -88,7 +90,7 @@ KQL is available under `/query` and requires a bearer token set.
 ```js
 import { $fetch } from "ohmyfetch"
 
-const apiToken = "token"
+const apiToken = "test"
 
 const response = await $fetch(
   "https://example.com/query",
@@ -127,7 +129,7 @@ It is also useful to consume POST requests including JSON data:
     'method' => 'POST',
     'action' => Api::createHandler(
         [Middlewares::class, 'hasBearerToken'],
-        [Middlewares::class, 'hasData'],
+        [Middlewares::class, 'hasBody'],
         function ($context) {
             // Get the data of the POST request
             $data = $context['body'];

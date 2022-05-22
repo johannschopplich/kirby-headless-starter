@@ -31,7 +31,7 @@ class Middlewares
      * @param array $context
      * @return \Kirby\Http\Response|array
      */
-    public static function hasData($context)
+    public static function hasBody($context)
     {
         $body = kirby()->request()->body();
 
