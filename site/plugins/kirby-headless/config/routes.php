@@ -58,10 +58,9 @@ return [
 
                 // Try to get the page from cache
                 if ($page->isCacheable()) {
-                    $cache    = $kirby->cache('pages');
-                    $cacheId  = $page->id() . '.headless.json';
-                    $result   = $cache->get($cacheId);
-                    $data     = $result['data'] ?? null;
+                    $cache = $kirby->cache('johannschopplich.kirby-headless');
+                    $cacheId = $page->id() . '.json';
+                    $data = $cache->get($cacheId);
                 }
 
                 // Fetch the page regularly
@@ -79,7 +78,7 @@ return [
 
                     // Cache the result
                     if ($cache !== null) {
-                        $cache->set($cacheId, compact('data'));
+                        $cache->set($cacheId, $data);
                     }
                 }
 

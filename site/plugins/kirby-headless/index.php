@@ -6,6 +6,9 @@ load([
 ], __DIR__);
 
 \Kirby\Cms\App::plugin('johannschopplich/kirby-headless', [
+    'options' => [
+        'cache' => true
+    ],
     'hooks' => [
         // Explicitly register catch-all routes only when Kirby and all plugins
         // have been loaded to ensure no other routes are overwritten
