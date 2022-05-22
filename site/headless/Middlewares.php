@@ -8,6 +8,21 @@ use Kirby\Http\Response;
 class Middlewares
 {
     /**
+     * Redirect to the Kirby Panel if no
+     * authorization header is provided
+     *
+     * @return void
+     */
+    public static function hasAuthHeader()
+    {
+        $authorization = kirby()->request()->header('Authorization');
+
+        if (empty($authorization)) {
+            go('panel');
+        }
+    }
+
+    /**
      * Checks if a bearer token was sent with the request and
      * if it matches the one configured in `.env`
      *
@@ -33,7 +48,7 @@ class Middlewares
      * @param array $args
      * @return \Kirby\Http\Response|void
      */
-    public static function templateToJson($context, $args)
+    public static function templateToJson(array $context, array $args)
     {
         // The `$args` array contains the route parameters
         [$pageId] = $args;
@@ -87,7 +102,7 @@ class Middlewares
      * @param array $context
      * @return \Kirby\Http\Response|array
      */
-    public static function hasBody($context)
+    public static function hasBody(array $context)
     {
         $body = kirby()->request()->body();
 
