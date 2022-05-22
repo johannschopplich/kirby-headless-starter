@@ -146,13 +146,13 @@ You you use one of the [built-in middlewares](/site/headless/Middlewares.php) or
 
 ```php
 /**
- * Example middleware to check if `foo` is sent with the request
+ * Check if `foo` is sent with the request
  * and bail with an 401 error if not
  *
  * @param array $context
  * @return mixed
  */
-public static function exampleMiddleware($context)
+public static function hasFooParam($context)
 {
     if (empty(get('foo'))) {
         return Api::createResponse(401);
