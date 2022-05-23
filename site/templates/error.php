@@ -11,4 +11,4 @@ $data = [
   'title' => $page->title()->value()
 ];
 
-echo toJson($data);
+echo \Kirby\Data\Json::encode($data);

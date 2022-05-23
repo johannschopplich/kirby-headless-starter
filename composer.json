@@ -8,10 +8,7 @@
   "autoload": {
     "psr-4": {
       "KirbyHeadless\\Api\\": "src/"
-    },
-    "files": [
-      "helpers.php"
-    ]
+    }
   },
   "config": {
     "optimize-autoloader": true,
