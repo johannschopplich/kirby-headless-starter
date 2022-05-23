@@ -61,7 +61,7 @@ class Middlewares
 
         $page = $kirby->page($pageId);
 
-        if (!$page /* || !$page->isReadable() */) {
+        if (!$page) {
             $page = $kirby->site()->errorPage();
         }
 
