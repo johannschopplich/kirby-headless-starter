@@ -116,7 +116,7 @@ console.log(response);
 
 ### API Builder
 
-This headless starter includes an Express-esque API builder, defined in the [`KirbyHeadless\Api\Api` class](/site/headless/Api.php). You can use it to re-use logic like handling a token or verifying some other incoming data.
+This headless starter includes an Express-esque API builder, defined in the [`KirbyHeadless\Api\Api` class](/src/Api.php). You can use it to re-use logic like handling a token or verifying some other incoming data.
 
 Take a look at the [built-in routes](/site/config/routes.php) to get an idea how you can use the API builder to chain complex route logic.
 
@@ -142,7 +142,7 @@ It is also useful to consume POST requests including JSON data:
 ]
 ```
 
-You you use one of the [built-in middlewares](/site/headless/Middlewares.php) or write custom ones:
+You you use one of the [built-in middlewares](/src/Middlewares.php) or write custom ones:
 
 ```php
 /**
@@ -178,7 +178,7 @@ public static function hasFooParam($context)
 - `home.json.php`
 - … and so on
 
-To simplify this approach, we use the standard template structure, but encode their content as JSON via the internal [`templateToJson` middleware](./site/headless/Middlewares.php).
+To simplify this approach, we use the standard template structure, but encode their content as JSON via the internal [`templateToJson` middleware](./src/Middlewares.php).
 
 ## License
 

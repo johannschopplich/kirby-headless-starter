@@ -372,16 +372,16 @@
         },
         {
             "name": "johannschopplich/kirby-extended",
-            "version": "2.10.3",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-extended.git",
-                "reference": "b4f10330ba7d20c5c23507af0c046f92afde1b0f"
+                "reference": "2651645e030d95a27deb7979915dab9c4b0c68ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-extended/zipball/b4f10330ba7d20c5c23507af0c046f92afde1b0f",
-                "reference": "b4f10330ba7d20c5c23507af0c046f92afde1b0f",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-extended/zipball/2651645e030d95a27deb7979915dab9c4b0c68ef",
+                "reference": "2651645e030d95a27deb7979915dab9c4b0c68ef",
                 "shasum": ""
             },
             "require": {
@@ -428,9 +428,9 @@
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-extended/issues",
-                "source": "https://github.com/johannschopplich/kirby-extended/tree/v2.10.3"
+                "source": "https://github.com/johannschopplich/kirby-extended/tree/v2.11.0"
             },
-            "time": "2021-11-23T12:56:39+00:00"
+            "time": "2022-05-23T10:33:26+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
