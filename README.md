@@ -78,7 +78,7 @@ $data = [
   'social' => $page->social()->toStructure()->toArray()
 ];
 
-echo toJson($data);
+echo \Kirby\Data\Json::encode($data);
 ```
 
 #### KQL

@@ -30,7 +30,7 @@ return [
     ],
 
     /**
-     * Return JSON-encoded data for each other page
+     * Return JSON-encoded page data for each other request
      */
     [
         'pattern' => ['(:all)', '(:all).json'],
