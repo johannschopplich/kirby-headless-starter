@@ -19,15 +19,7 @@ return [
         'action' => Api::createHandler(
             [Middlewares::class, 'hasBearerToken'],
             function ($context, $args) {
-                $input = [
-                    'query' => get('query'),
-                    'select' => get('select'),
-                    'pagination' => [
-                        'page' => get('page', 1),
-                        'limit' => get('limit', 100)
-                    ]
-                ];
-
+                $input = get();
                 $hash = sha1(Json::encode($input));
                 $cache = kirby()->cache('pages');
                 $cacheKey = 'query-' . $hash . '.json';
