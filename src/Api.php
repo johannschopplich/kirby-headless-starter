@@ -44,7 +44,7 @@ class Api
     {
         $body = [
             'code' => $code,
-            'status' => static::getStatusMessage($code),
+            'status' => static::getStatusMessage($code)
         ];
 
         if ($data !== null) {
