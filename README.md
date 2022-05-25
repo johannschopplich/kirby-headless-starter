@@ -66,11 +66,6 @@ Example template:
 # /site/templates/about.php
 
 $data = [
-  '__meta' => [
-    'template' => $page->intendedTemplate()->name(),
-    'isHomePage' => $page->isHomePage(),
-    'isErrorPage' => $page->isErrorPage()
-  ],
   'title' => $page->title()->value(),
   'layout' => $page->layout()->toLayouts()->toArray(),
   'address' => $page->address()->value(),
