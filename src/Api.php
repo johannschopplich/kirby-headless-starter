@@ -74,7 +74,7 @@ class Api
             405 => 'Method Not Allowed',
             409 => 'Conflict',
             422 => 'Unprocessable Entity',
-            500 => 'Internal Server Error',
+            500 => 'Internal Server Error'
         ];
 
         if (!isset($messages[$code])) {
