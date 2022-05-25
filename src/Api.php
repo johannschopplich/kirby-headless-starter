@@ -48,7 +48,7 @@ class Api
         ];
 
         if ($data !== null) {
-            $body['data'] = $data;
+            $body['result'] = $data;
         }
 
         return Response::json($body, $code);

@@ -11,6 +11,7 @@ Routing and JSON-encoded responses are handled by the [internal routes](./site/c
 - 🦭 Optional bearer token for authentication
 - 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support
   - Post requests to `/query`
+- ⚡️ Cached KQL results
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
 - 🦾 Express-esque [API builder](#api-builder) with middleware support
@@ -178,7 +179,7 @@ public static function hasFooParam($context)
 - `home.json.php`
 - … and so on
 
-To simplify this approach, we use the standard template structure, but encode their content as JSON via the internal [`templateToJson` middleware](./src/Middlewares.php).
+To simplify this approach, we use the standard template structure, but encode each template's content as JSON via the internal [route middleware](./site/config/routes.php).
 
 ## License
 

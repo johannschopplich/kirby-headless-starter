@@ -2,9 +2,6 @@
 
 namespace KirbyHeadless\Api;
 
-use Kirby\Exception\NotFoundException;
-use Kirby\Http\Response;
-
 class Middlewares
 {
     /**
@@ -39,61 +36,6 @@ class Middlewares
         ) {
             return Api::createResponse(401);
         }
-    }
-
-    /**
-     * Returns page data as a JSON response
-     *
-     * @param array $context
-     * @param array $args
-     * @return \Kirby\Http\Response|void
-     */
-    public static function templateToJson(array $context, array $args)
-    {
-        // The `$args` array contains the route parameters
-        [$pageId] = $args;
-        $kirby = kirby();
-
-        // Fall back to homepage id
-        if (empty($pageId)) {
-            $pageId = $kirby->site()->homePageId();
-        }
-
-        $page = $kirby->page($pageId);
-
-        if (!$page) {
-            $page = $kirby->site()->errorPage();
-        }
-
-        $cache = $cacheId = $data = null;
-
-        // Try to get the page from cache
-        if ($page->isCacheable()) {
-            $cache = $kirby->cache('pages');
-            $cacheId = $page->id() . '.headless.json';
-            $data = $cache->get($cacheId);
-        }
-
-        // Fetch the page regularly
-        if ($data === null) {
-            $template = $page->template();
-
-            if (!$template->exists()) {
-                throw new NotFoundException([
-                    'key' => 'template.default.notFound'
-                ]);
-            }
-
-            $kirby->data = $page->controller();
-            $data = $template->render($kirby->data);
-
-            // Cache the result
-            if ($cache !== null) {
-                $cache->set($cacheId, $data);
-            }
-        }
-
-        return Response::json($data);
     }
 
     /**
