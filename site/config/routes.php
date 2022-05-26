@@ -25,7 +25,7 @@ return [
                 $cacheKey = 'query-' . $hash . '.json';
                 $data = $cache->get($cacheKey);
 
-                if ($data === null && $cache !== null) {
+                if (!empty($input) && $data === null && $cache !== null) {
                     $data = Kql::run($input);
                     $cache->set($cacheKey, $data);
                 }
