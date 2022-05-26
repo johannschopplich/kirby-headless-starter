@@ -20,14 +20,21 @@ return [
             [Middlewares::class, 'hasBearerToken'],
             function ($context, $args) {
                 $input = get();
-                $hash = sha1(Json::encode($input));
-                $cache = kirby()->cache('pages');
-                $cacheKey = 'query-' . $hash . '.json';
-                $data = $cache->get($cacheKey);
+                $cache = $cacheKey = $data = null;
 
-                if (!empty($input) && $data === null && $cache !== null) {
+                if (!empty($input)) {
+                    $hash = sha1(Json::encode($input));
+                    $cache = kirby()->cache('pages');
+                    $cacheKey = 'query-' . $hash . '.json';
+                    $data = $cache->get($cacheKey);
+                }
+
+                if ($data === null) {
                     $data = Kql::run($input);
-                    $cache->set($cacheKey, $data);
+
+                    if ($cache !== null) {
+                        $cache->set($cacheKey, $data);
+                    }
                 }
 
                 return Api::createResponse(200, $data);
@@ -59,13 +66,13 @@ return [
                     $page = $kirby->site()->errorPage();
                 }
 
-                $cache = $cacheId = $data = null;
+                $cache = $cacheKey = $data = null;
 
                 // Try to get the page from cache
                 if ($page->isCacheable()) {
                     $cache = $kirby->cache('pages');
-                    $cacheId = $page->id() . '.headless.json';
-                    $data = $cache->get($cacheId);
+                    $cacheKey = $page->id() . '.headless.json';
+                    $data = $cache->get($cacheKey);
                 }
 
                 // Fetch the page regularly
@@ -83,7 +90,7 @@ return [
 
                     // Cache the result
                     if ($cache !== null) {
-                        $cache->set($cacheId, $data);
+                        $cache->set($cacheKey, $data);
                     }
                 }
 
