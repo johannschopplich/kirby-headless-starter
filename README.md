@@ -13,6 +13,7 @@ Routing and JSON-encoded responses are handled by the [internal routes](./site/c
 - ⚡️ Cached KQL results
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
+  - You decide, which data you share
 - 🦾 Express-esque [API builder](#api-builder) with middleware support
 
 ## Prerequisites
