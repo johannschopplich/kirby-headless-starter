@@ -4,6 +4,7 @@ namespace KirbyHeadless\Api;
 
 use Exception;
 use Kirby\Http\Response;
+use Kirby\Toolkit\A;
 
 class Api
 {
@@ -26,7 +27,7 @@ class Api
                 }
 
                 if (is_array($result)) {
-                    $context = $result;
+                    $context = A::merge($context, $result);
                 }
             }
         };

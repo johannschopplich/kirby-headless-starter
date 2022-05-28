@@ -2,7 +2,7 @@
 
 > ℹ️ Send a `Bearer test` authorization header with a request to the [live playground](https://kirby-headless-starter.jhnn.dev) to test this headless starter.
 
-This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented.
+This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented. You can either use Kirby's default template system to build data later to be JSON-encoded or use KQL t fetch data in your consuming application.
 
 Routing and JSON-encoded responses are handled by the [internal routes](./site/config/routes.php).
 
@@ -10,7 +10,6 @@ Routing and JSON-encoded responses are handled by the [internal routes](./site/c
 
 - 🦭 Optional bearer token for authentication
 - 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support
-  - Post requests to `/query`
 - ⚡️ Cached KQL results
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
@@ -50,15 +49,11 @@ If you prefer to use a token to secure your Kirby installation, set the environm
 
 You will then have to provide the header `Bearer ${token}` with each request.
 
-> ⚠️ Without a token the `/query` route would be publicly accessible by everyone. Be careful.
+> ⚠️ Without a token your content will be publicly accessible by everyone – page data as well as the KQL endpoint. Be careful.
 
-### Data Fetching
+### Templates
 
-You can fetch data by using KQL or Templates.
-
-#### Templates
-
-Create templates just like you normally would in any Kirby project. Instead of writing HTML, we build arrays and encode them to JSON. The internal headless plugin will add the correct content type and also handles correct caching.
+Create templates just like you normally would in any Kirby project. Instead of writing HTML, we build arrays and encode them to JSON. The internal route handler will add the correct content type and also handles caching (if enabled).
 
 Example template:
 
@@ -77,37 +72,63 @@ $data = [
 echo \Kirby\Data\Json::encode($data);
 ```
 
-#### KQL
-
-> ℹ️ Keep in mind the KQL endpoint `/api/query` remains and uses the username/password authentication.
-
-KQL is available under `/query` and requires a bearer token set.
+To fetch that data in the frontend:
 
 ```js
-import { $fetch } from "ohmyfetch"
+import { $fetch } from "ohmyfetch";
 
-const apiToken = "test"
+const apiToken = "test";
 
 const response = await $fetch(
-  "https://example.com/query",
+  "<website-url>/about.json",
   {
-    method: 'POST'
-    body: {
-      query: "page('notes').children",
-      select: {
-        title: true,
-        text: "page.text.toBlocks.toArray",
-        slug: true,
-        date: "page.date.toDate('d.m.Y')",
-      },
-    },
+    // Optional, only if you use `KIRBY_HEADLESS_API_TOKEN`
     headers: {
       Authentication: `Bearer ${apiToken}`,
     },
-  },
+  }
 );
 
 console.log(response);
+```
+
+### KQL
+
+> ℹ️ The KQL endpoint `/api/query` stays the same, although it is configured to use a bearer token authentication method.
+
+Fetch KQL query results like you always do, but provide an `Authentication` header with your request:
+
+```js
+import { $fetch } from "ohmyfetch";
+
+const apiToken = "test";
+
+const response = await $fetch("<website-url>/api/query", {
+  method: "POST",
+  body: {
+    query: "page('notes').children",
+    select: {
+      title: true,
+      text: "page.text.toBlocks.toArray",
+      slug: true,
+      date: "page.date.toDate('d.m.Y')",
+    },
+  },
+  // Optional, only if you use `KIRBY_HEADLESS_API_TOKEN`
+  headers: {
+    Authentication: `Bearer ${apiToken}`,
+  },
+});
+
+console.log(response);
+```
+
+To **disable** the bearer token authentication for your Kirby instance, turn on the username/password authentication method in your [`config.php`](/site/config/config.php):
+
+```php
+'kql' => [
+    'auth' => true
+]
 ```
 
 ### API Builder
