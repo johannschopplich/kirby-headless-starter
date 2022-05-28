@@ -124,7 +124,7 @@ const response = await $fetch("<website-url>/api/query", {
 console.log(response);
 ```
 
-To **disable** the bearer token authentication for your Kirby instance, turn on the username/password authentication method in your [`config.php`](/site/config/config.php):
+To **disable** the bearer token authentication for your Kirby instance, turn on the username/password authentication method in your [`config.php`](./site/config/config.php):
 
 ```php
 'kql' => [
@@ -134,9 +134,9 @@ To **disable** the bearer token authentication for your Kirby instance, turn on 
 
 ### API Builder
 
-This headless starter includes an Express-esque API builder, defined in the [`KirbyHeadless\Api\Api` class](/src/Api.php). You can use it to re-use logic like handling a token or verifying some other incoming data.
+This headless starter includes an Express-esque API builder, defined in the [`KirbyHeadless\Api\Api` class](./src/Api.php). You can use it to re-use logic like handling a token or verifying some other incoming data.
 
-Take a look at the [built-in routes](/site/config/routes.php) to get an idea how you can use the API builder to chain complex route logic.
+Take a look at the [built-in routes](./site/config/routes.php) to get an idea how you can use the API builder to chain complex route logic.
 
 It is also useful to consume POST requests including JSON data:
 
@@ -160,7 +160,7 @@ It is also useful to consume POST requests including JSON data:
 ]
 ```
 
-You you use one of the [built-in middlewares](/src/Middlewares.php) or write custom ones:
+You you use one of the [built-in middlewares](./src/Middlewares.php) or write custom ones:
 
 ```php
 /**
@@ -182,7 +182,7 @@ public static function hasFooParam($context)
 
 > ℹ️ See [ploi-deploy.sh](./scripts/ploi-deploy.sh) for exemplary deployment instructions.
 
-> ℹ️ Some hosting environments require to uncomment `RewriteBase /` in [`.htaccess`](public/.htaccess) to make site links work.
+> ℹ️ Some hosting environments require to uncomment `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
 
 ## Background
 
