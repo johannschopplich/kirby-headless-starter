@@ -14,8 +14,8 @@ return [
         // have been loaded to ensure no other routes are overwritten
         'system.loadPlugins:after' => function () {
             kirby()->extend([
-               'api' => require __DIR__ . '/api.php',
-               'routes' => require __DIR__ . '/routes.php'
+                'api' => require __DIR__ . '/api.php',
+                'routes' => require __DIR__ . '/routes.php'
             ]);
         }
     ],

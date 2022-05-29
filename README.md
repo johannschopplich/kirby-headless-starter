@@ -9,8 +9,8 @@ Routing and JSON-encoded responses are handled by the [internal routes](./site/c
 ## Key Features
 
 - 🦭 Optional bearer token for authentication
-- 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support
-- ⚡️ Cached KQL results
+- ⚡️ Cached KQL queries
+- 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support via new `/api/kql` route
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
   - You decide, which data you share
@@ -46,9 +46,11 @@ Optionally, adapt it's values.
 
 ### Bearer Token
 
-If you prefer to use a token to secure your Kirby installation, set the environment variable `KIRBY_HEADLESS_API_TOKEN` with a token of your choice.
+It's recommended to secure your API with a token. To do so, set the environment variable `KIRBY_HEADLESS_API_TOKEN` with a token string of your choice.
 
-You will then have to provide the header `Bearer ${token}` with each request.
+You will then have to provide the HTTP header `Authentication: Bearer ${token}` with each request.
+
+> ℹ️ The internal `/api/kql` route will always enforce bearer token usage, unless you explicitly disable it in your config (see below).
 
 > ⚠️ Without a token your content will be publicly accessible by everyone – page data as well as the KQL endpoint. Be careful.
 
@@ -95,7 +97,7 @@ console.log(response);
 
 ### KQL
 
-> ℹ️ The KQL endpoint `/api/query` stays the same, although it is configured to use a bearer token authentication method.
+A new KQL endpoint supporting caching and bearer token authentication is implemented under `/api/kql`.
 
 Fetch KQL query results like you always do, but provide an `Authentication` header with your request:
 
@@ -104,7 +106,7 @@ import { $fetch } from "ohmyfetch";
 
 const apiToken = "test";
 
-const response = await $fetch("<website-url>/api/query", {
+const response = await $fetch("<website-url>/api/kql", {
   method: "POST",
   body: {
     query: "page('notes').children",
@@ -124,13 +126,15 @@ const response = await $fetch("<website-url>/api/query", {
 console.log(response);
 ```
 
-To **disable** the bearer token authentication for your Kirby instance, turn on the username/password authentication method in your [`config.php`](./site/config/config.php):
+To **disable** the bearer token authentication for your Kirby instance and use the basic authentication method, set the following in your [`config.php`](./site/config/config.php):
 
 ```php
 'kql' => [
     'auth' => true
 ]
 ```
+
+> ℹ️ The KQL default endpoint `/api/query` remains using basic authentication.
 
 ### API Builder
 

@@ -27,9 +27,6 @@ class Middlewares
      */
     public static function hasBearerToken()
     {
-        // Skip this middleware if KQL uses a different authentication method
-        if (kirby()->option('kql.auth') !== 'bearer') return;
-
         $token = env('KIRBY_HEADLESS_API_TOKEN');
         $authorization = kirby()->request()->header('Authorization');
 
