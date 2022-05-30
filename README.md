@@ -50,9 +50,9 @@ It's recommended to secure your API with a token. To do so, set the environment 
 
 You will then have to provide the HTTP header `Authentication: Bearer ${token}` with each request.
 
-> ℹ️ The internal `/api/kql` route will always enforce bearer token usage, unless you explicitly disable it in your config (see below).
+> ℹ️ The internal `/api/kql` route will always enforce bearer authentication, unless you explicitly disable it in your config (see below).
 
-> ⚠️ Without a token your content will be publicly accessible by everyone – page data as well as the KQL endpoint. Be careful.
+> ⚠️ Without a token your page content will be publicly accessible by everyone.
 
 ### Templates
 
