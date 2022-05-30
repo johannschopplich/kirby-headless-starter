@@ -1,14 +1,15 @@
 # Kirby Headless Starter
 
-> ℹ️ Send a `Bearer test` authorization header with a request to the [live playground](https://kirby-headless-starter.jhnn.dev) to test this headless starter.
+> ℹ️ Send a request with a `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.jhnn.dev) for an example response.
 
-This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented. You can either use Kirby's default template system to build data later to be JSON-encoded or use KQL t fetch data in your consuming application.
+This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented. You can either use Kirby's default template system to build data (which will be auto-encoded to JSON) or use KQL to fetch data in your consuming application.
 
 Routing and JSON-encoded responses are handled by the [internal routes](./site/config/routes.php).
 
 ## Key Features
 
 - 🦭 Optional bearer token for authentication
+- 🔒 **public** or **private** API
 - ⚡️ Cached KQL queries
 - 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support via new `/api/kql` route
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
@@ -50,9 +51,13 @@ It's recommended to secure your API with a token. To do so, set the environment 
 
 You will then have to provide the HTTP header `Authentication: Bearer ${token}` with each request.
 
-> ℹ️ The internal `/api/kql` route will always enforce bearer authentication, unless you explicitly disable it in your config (see below).
-
 > ⚠️ Without a token your page content will be publicly accessible by everyone.
+
+### Public API
+
+If the environment variable `KIRBY_HEADLESS_API_TOKEN` is left empty, the API will be publicly accessible
+
+> ℹ️ The internal `/api/kql` route will always enforce bearer authentication, unless you explicitly disable it in your config (see below).
 
 ### Templates
 
