@@ -19,7 +19,9 @@ return [
                 'auth' => $kqlAuth !== false && $kqlAuth !== 'bearer',
                 'action' => Api::createHandler(
                     function ($context, $args) use ($kqlAuth) {
-                        if ($kqlAuth !== 'bearer') return;
+                        if ($kqlAuth !== 'bearer') {
+                            return;
+                        }
 
                         $token = env('KIRBY_HEADLESS_API_TOKEN');
                         $authorization = kirby()->request()->header('Authorization');
