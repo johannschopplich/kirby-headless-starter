@@ -51,11 +51,11 @@ It's recommended to secure your API with a token. To do so, set the environment 
 
 You will then have to provide the HTTP header `Authentication: Bearer ${token}` with each request.
 
-> ⚠️ Without a token your page content will be publicly accessible by everyone.
+> ⚠️ Without a token your page content will be publicly accessible to everyone.
 
 ### Public API
 
-If the environment variable `KIRBY_HEADLESS_API_TOKEN` is left empty, the API will be publicly accessible
+If the environment variable `KIRBY_HEADLESS_API_TOKEN` is left empty, the API will be publicly accessible.
 
 > ℹ️ The internal `/api/kql` route will always enforce bearer authentication, unless you explicitly disable it in your config (see below).
 
