@@ -43,10 +43,7 @@ return [
 
                         if ($data === null) {
                             $data = Kql::run($input);
-
-                            if ($cache !== null) {
-                                $cache->set($cacheKey, $data);
-                            }
+                            $cache?->set($cacheKey, $data);
                         }
 
                         return Api::createResponse(200, $data);

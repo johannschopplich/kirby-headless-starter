@@ -53,9 +53,7 @@ return [
                     $data = $template->render($kirby->data);
 
                     // Cache the result
-                    if ($cache !== null) {
-                        $cache->set($cacheKey, $data);
-                    }
+                    $cache?->set($cacheKey, $data);
                 }
 
                 return Response::json($data);
