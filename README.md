@@ -122,7 +122,6 @@ const response = await $fetch("<website-url>/api/kql", {
       date: "page.date.toDate('d.m.Y')",
     },
   },
-  // Optional, only if you use `KIRBY_HEADLESS_API_TOKEN`
   headers: {
     Authentication: `Bearer ${apiToken}`,
   },
@@ -131,7 +130,7 @@ const response = await $fetch("<website-url>/api/kql", {
 console.log(response);
 ```
 
-To **disable** the bearer token authentication for your Kirby instance and use the basic authentication method, set the following in your [`config.php`](./site/config/config.php):
+To **disable** the bearer token authentication for your Kirby instance and instead use the **basic authentication** method, set the following in your [`config.php`](./site/config/config.php):
 
 ```php
 'kql' => [
@@ -139,7 +138,7 @@ To **disable** the bearer token authentication for your Kirby instance and use t
 ]
 ```
 
-> ℹ️ The KQL default endpoint `/api/query` remains using basic authentication.
+> ℹ️ The KQL default endpoint `/api/query` remains using basic authentication and also infers the `kql.auth` config option.
 
 ### API Builder
 
