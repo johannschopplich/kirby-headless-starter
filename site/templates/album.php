@@ -4,7 +4,7 @@
 
 $data = [
   'title' => $page->title()->value(),
-  'cover' => ($i = $page->cover()->toFile()) ? $i->toArray() : null,
+  'cover' => $page->cover()->toFile()?->toArray(),
   'headline' => $page->headline()->value(),
   'subheadline' => $page->subheadline()->value(),
   'text' => $page->text()->value(),

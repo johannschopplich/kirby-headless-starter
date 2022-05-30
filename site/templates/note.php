@@ -4,7 +4,7 @@
 
 $data = [
   'title' => $page->title()->value(),
-  'cover' => ($i = $page->cover()->toFile()) ? $i->toArray() : null,
+  'cover' => $page->cover()->toFile()?->toArray(),
   'date' => $page->date()->value(),
   'tags' => $page->tags()->split(),
   'text' => $page->text()->toBlocks()->toArray()
