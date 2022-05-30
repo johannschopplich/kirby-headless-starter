@@ -11,7 +11,7 @@ $data = [
     ->map(fn ($note) => [
       'id' => $note->id(),
       'title' => $note->title()->value(),
-      'date' => $note->date()->toDate('d M, Y')
+      'date' => $note->date()->value()
     ])
     ->values()
 ];
