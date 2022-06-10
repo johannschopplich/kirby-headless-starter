@@ -10,6 +10,19 @@ return [
 
         return [
             /**
+             * Allow for preflight requests, mainly for `fetch`
+             */
+            [
+                'pattern' => '(:all)',
+                'method' => 'OPTIONS',
+                'auth' => $kqlAuth !== false && $kqlAuth !== 'bearer',
+                'action' => function () {
+                    Api::addCorsAllowHeaders();
+                    return true;
+                }
+            ],
+
+            /**
              * Allow KQL to be used with bearer token authentication and
              * cache query results
              */

@@ -52,7 +52,9 @@ class Api
             $body['result'] = $data;
         }
 
-        return Response::json($body, $code);
+        return Response::json($body, $code, null, [
+            'Access-Control-Allow-Origin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN')
+        ]);
     }
 
     /**
@@ -83,5 +85,25 @@ class Api
         }
 
         return $messages[$code];
+    }
+
+    /**
+     * Add CORS headers to the response
+     *
+     * @return void
+     */
+    public static function addCorsAllowHeaders(): void
+    {
+        $headers = [
+            'Access-Control-Allow-Origin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN'),
+            'Access-Control-Allow-Methods' => 'GET, POST, OPTIONS',
+            'Access-Control-Allow-Headers' => 'Authorization, Content-Type'
+        ];
+
+        foreach ($headers as $key => $value) {
+            if ($value !== null) {
+                kirby()->response()->header($key, $value);
+            }
+        }
     }
 }

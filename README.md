@@ -38,10 +38,12 @@ composer install
 Duplicate the [`.env.development.example`](.env.development.example) as `.env`:
 
 ```bash
-cp .env.example .env
+cp .env.development.example .env
 ```
 
 Optionally, adapt it's values.
+
+> ℹ️ Make sure to not publish `KIRBY_HEADLESS_ALLOW_ORIGIN=*` when deploying, rather set the correct requesting origin.
 
 ## Usage
 

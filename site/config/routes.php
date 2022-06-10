@@ -7,6 +7,18 @@ use KirbyHeadless\Api\Middlewares;
 
 return [
     /**
+     * Allow for preflight requests, mainly for `fetch`
+     */
+    [
+        'pattern' => '(:all)',
+        'method' => 'OPTIONS',
+        'action' => function () {
+            Api::addCorsAllowHeaders();
+            return true;
+        }
+    ],
+
+    /**
      * Return JSON-encoded page data for each request
      */
     [
