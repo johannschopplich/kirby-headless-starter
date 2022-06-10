@@ -2,8 +2,45 @@
 
 namespace KirbyHeadless\Api;
 
+use Kirby\Filesystem\F;
+
 class Middlewares
 {
+    /**
+     * Try to resolve page and site files
+     *
+     * @return \Kirby\Cms\File|void
+     */
+    public static function tryResolveFiles($context, $args)
+    {
+        // The `$args` array contains the route parameters
+        [$path] = $args;
+        $kirby = kirby();
+
+        if (empty($path)) {
+            return;
+        }
+
+        $extension = F::extension($path);
+
+        if (empty($extension)) {
+            return;
+        }
+
+        $id = dirname($path);
+        $filename = basename($path);
+
+        // Try to resolve image urls for pages and drafts
+        if ($page = $kirby->site()->findPageOrDraft($id)) {
+            return $page->file($filename);
+        }
+
+        // Try to resolve site files at least
+        if ($file = $kirby->site()->file($filename)) {
+            return $file;
+        }
+    }
+
     /**
      * Redirect to the Kirby Panel if no
      * authorization header is provided

@@ -3,6 +3,7 @@
 namespace KirbyHeadless\Api;
 
 use Exception;
+use Kirby\Cms\File;
 use Kirby\Http\Response;
 use Kirby\Toolkit\A;
 
@@ -22,7 +23,7 @@ class Api
             foreach ($fns as $fn) {
                 $result = $fn($context, $args);
 
-                if (is_a($result, Response::class)) {
+                if (is_a($result, Response::class) || is_a($result, File::class)) {
                     return $result;
                 }
 

@@ -22,21 +22,23 @@ return [
      * Return JSON-encoded page data for each request
      */
     [
-        'pattern' => ['(:all)', '(:all).json'],
+        'pattern' => '(:all)',
         'action' => Api::createHandler(
+            [Middlewares::class, 'tryResolveFiles'],
             // [Middlewares::class, 'hasAuthHeader'],
             [Middlewares::class, 'hasBearerToken'],
             function ($context, $args) {
                 // The `$args` array contains the route parameters
-                [$pageId] = $args;
+                [$path] = $args;
                 $kirby = kirby();
 
                 // Fall back to homepage id
-                if (empty($pageId)) {
-                    $pageId = $kirby->site()->homePageId();
+                if (empty($path)) {
+                    $path = $kirby->site()->homePage();
+                } else {
+                    $path = rtrim($path, '.json');
+                    $page = $kirby->page($path);
                 }
-
-                $page = $kirby->page($pageId);
 
                 if (!$page) {
                     $page = $kirby->site()->errorPage();
