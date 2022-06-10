@@ -12,6 +12,7 @@ Routing and JSON-encoded responses are handled by the [internal routes](./site/c
 - 🔒 **public** or **private** API
 - 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support via new `/api/kql` route
 - ⚡️ Cached KQL queries
+- 😵‍💫 No CORS issues!
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
   - You decide, which data you share
