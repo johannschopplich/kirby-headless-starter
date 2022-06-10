@@ -2,6 +2,7 @@
 
 use Kirby\Exception\NotFoundException;
 use Kirby\Http\Response;
+use Kirby\Toolkit\Str;
 use KirbyHeadless\Api\Api;
 use KirbyHeadless\Api\Middlewares;
 
@@ -36,12 +37,12 @@ return [
                 if (empty($path)) {
                     $path = $kirby->site()->homePage();
                 } else {
-                    $path = rtrim($path, '.json');
-                    $page = $kirby->page($path);
-                }
+                    $path = Str::rtrim($path, '.json');
+                    $page = $kirby->site()->find($path);
 
-                if (!$page) {
-                    $page = $kirby->site()->errorPage();
+                    if (!$page) {
+                        $page = $kirby->site()->errorPage();
+                    }
                 }
 
                 $cache = $cacheKey = $data = null;
