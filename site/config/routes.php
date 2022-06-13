@@ -13,10 +13,7 @@ return [
     [
         'pattern' => '(:all)',
         'method' => 'OPTIONS',
-        'action' => function () {
-            Api::addCorsAllowHeaders();
-            return true;
-        }
+        'action' => fn () => Api::preflightResponse()
     ],
 
     /**

@@ -6,7 +6,8 @@ use KirbyHeadless\Api\Api;
 
 return [
     'routes' => function (\Kirby\Cms\App $kirby) {
-        $kqlAuth = $kirby->option('kql.auth', true);
+        $authMethod = $kirby->option('kql.auth', true);
+        $auth = $authMethod !== false && $authMethod !== 'bearer';
 
         return [
             /**
@@ -15,11 +16,8 @@ return [
             [
                 'pattern' => '(:all)',
                 'method' => 'OPTIONS',
-                'auth' => $kqlAuth !== false && $kqlAuth !== 'bearer',
-                'action' => function () {
-                    Api::addCorsAllowHeaders();
-                    return true;
-                }
+                'auth' => $auth,
+                'action' => fn () => Api::preflightResponse()
             ],
 
             /**
@@ -29,10 +27,10 @@ return [
             [
                 'pattern' => 'kql',
                 'method' => 'GET|POST',
-                'auth' => $kqlAuth !== false && $kqlAuth !== 'bearer',
+                'auth' => $auth,
                 'action' => Api::createHandler(
-                    function ($context, $args) use ($kqlAuth) {
-                        if ($kqlAuth !== 'bearer') {
+                    function ($context, $args) use ($authMethod) {
+                        if ($authMethod !== 'bearer') {
                             return;
                         }
 

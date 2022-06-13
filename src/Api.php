@@ -89,22 +89,17 @@ class Api
     }
 
     /**
-     * Add CORS headers to the response
+     * Respond to CORS preflight requests
      *
-     * @return void
+     * @return \Kirby\Http\Response
      */
-    public static function addCorsAllowHeaders(): void
+    public static function preflightResponse(): \Kirby\Http\Response
     {
-        $headers = [
+        return new Response('', null, 200, [
             'Access-Control-Allow-Origin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN'),
             'Access-Control-Allow-Methods' => 'GET, POST, OPTIONS',
-            'Access-Control-Allow-Headers' => 'Authorization, Content-Type'
-        ];
-
-        foreach ($headers as $key => $value) {
-            if ($value !== null) {
-                kirby()->response()->header($key, $value);
-            }
-        }
+            'Access-Control-Allow-Headers' => 'Authorization, Content-Type',
+            'Access-Control-Max-Age' => '86400'
+        ]);
     }
 }
