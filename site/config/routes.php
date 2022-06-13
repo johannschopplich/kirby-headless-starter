@@ -26,7 +26,7 @@ return [
         'pattern' => '(:all)',
         'action' => Api::createHandler(
             [Middlewares::class, 'tryResolveFiles'],
-            // [Middlewares::class, 'hasAuthHeader'],
+            // [Middlewares::class, 'hasAuthHeaderOrRedirect'],
             [Middlewares::class, 'hasBearerToken'],
             function ($context, $args) {
                 // The `$args` array contains the route parameters

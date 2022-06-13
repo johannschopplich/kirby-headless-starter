@@ -47,7 +47,7 @@ class Middlewares
      *
      * @return void
      */
-    public static function hasAuthHeader()
+    public static function hasAuthHeaderOrRedirect()
     {
         $authorization = kirby()->request()->header('Authorization');
 
