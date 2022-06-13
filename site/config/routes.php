@@ -32,7 +32,7 @@ return [
 
                 // Fall back to homepage id
                 if (empty($path)) {
-                    $path = $kirby->site()->homePage();
+                    $page = $kirby->site()->homePage();
                 } else {
                     $path = Str::rtrim($path, '.json');
                     $page = $kirby->site()->find($path);
