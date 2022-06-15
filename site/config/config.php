@@ -27,6 +27,12 @@ return [
         ]
     ],
 
+    // Enable basic auth when using KQL with username/password pair
+    // See https://getkirby.com/docs/guide/api/authentication#http-basic-auth
+    // 'api' => [
+    //     'basicAuth' => true
+    // ],
+
     'kql' => [
         'auth' => 'bearer'
     ]
