@@ -23,11 +23,11 @@ return [
     'cache' => [
         'pages' => [
             'active' => env('KIRBY_CACHE', false),
-            'ignore' => fn (\Kirby\Cms\Page $page) => kirby()->user() !== null
+            'ignore' => fn (\Kirby\Cms\Page $page) => $page->kirby()->user() !== null
         ]
     ],
 
-    // Enable basic auth when using KQL with default `/api/query` endpoint
+    // Enable basic authentication for KQL
     'api' => [
         'basicAuth' => true
     ],
