@@ -4,7 +4,7 @@
 
 This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented. You can either use Kirby's default template system to build data (which will be auto-encoded to JSON) or use KQL to fetch data in your consuming application.
 
-Routing and JSON-encoded responses are handled by the [internal routes](./site/config/routes.php).
+Routing and JSON-encoded responses are handled by the internal [kirby-headless](./site/plugins/kirby-headless/) plugin, specifically its [internal routes](./site/plugins/headless/src/extensions/routes.php).
 
 ## Key Features
 
@@ -44,7 +44,7 @@ cp .env.development.example .env
 
 Optionally, adapt it's values.
 
-> ℹ️ Make sure to not publish `KIRBY_HEADLESS_ALLOW_ORIGIN=*` when deploying, rather set the correct requesting origin.
+> ℹ️ Make sure to set the correct requesting origin instead of the wildcard `KIRBY_HEADLESS_ALLOW_ORIGIN=*` for your deployment.
 
 ## Usage
 
@@ -145,33 +145,37 @@ To **disable** the bearer token authentication for your Kirby instance and inste
 
 ### API Builder
 
-This headless starter includes an Express-esque API builder, defined in the [`KirbyHeadless\Api\Api` class](./src/Api.php). You can use it to re-use logic like handling a token or verifying some other incoming data.
+This headless starter includes an Express-esque API builder, defined in the [`KirbyHeadless\Api\Api` class](./site/plugins/headless/src/classes/Api.php). You can use it to re-use logic like handling a token or verifying some other incoming data.
 
-Take a look at the [built-in routes](./site/config/routes.php) to get an idea how you can use the API builder to chain complex route logic.
+Take a look at the [built-in routes](./site/plugins/headless/src/extensions/routes.php) to get an idea how you can use the API builder to chain complex route logic.
 
 It is also useful to consume POST requests including JSON data:
 
 ```php
-# /site/config/routes.php
-[
-    'pattern' => 'post-example',
-    'method' => 'POST',
-    'action' => Api::createHandler(
-        [Middlewares::class, 'hasBearerToken'],
-        [Middlewares::class, 'hasBody'],
-        function ($context) {
-            // Get the data of the POST request
-            $data = $context['body'];
+# /site/config/config.php
+return [
+    'routes' => [
+        [
+            'pattern' => 'post-example',
+            'method' => 'POST',
+            'action' => Api::createHandler(
+                [Middlewares::class, 'hasBearerToken'],
+                [Middlewares::class, 'hasBody'],
+                function ($context) {
+                    // Get the data of the POST request
+                    $data = $context['body'];
 
-            // Do something with `$data` here
+                    // Do something with `$data` here
 
-            return Api::createResponse(201);
-        }
-    )
-]
+                    return Api::createResponse(201);
+                }
+            )
+        ]
+    ]
+];
 ```
 
-You you use one of the [built-in middlewares](./src/Middlewares.php) or write custom ones:
+You you use one of the [built-in middlewares](./site/plugins/headless/src/classes/Middlewares.php) or write custom ones in the [`src/UserMiddlewares.php`](./src/UserMiddlewares.php):
 
 ```php
 /**
@@ -207,7 +211,7 @@ public static function hasFooParam($context)
 - `home.json.php`
 - … and so on
 
-To simplify this approach, we use the standard template structure, but encode each template's content as JSON via the internal [route middleware](./site/config/routes.php).
+To simplify this approach, we use the standard template structure, but encode each template's content as JSON via the internal [route middleware](./site/plugins/headless/src/extensions/routes.php).
 
 ## License
 
