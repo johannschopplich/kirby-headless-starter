@@ -2,7 +2,10 @@
 
 namespace KirbyHeadless\Api;
 
+use Kirby\Exception\NotFoundException;
 use Kirby\Filesystem\F;
+use Kirby\Http\Response;
+use Kirby\Toolkit\Str;
 
 class Middlewares
 {
@@ -11,7 +14,7 @@ class Middlewares
      *
      * @return \Kirby\Cms\File|void
      */
-    public static function tryResolveFiles($context, $args)
+    public static function tryResolveFiles(array $context, array $args)
     {
         // The `$args` array contains the route parameters
         [$path] = $args;
@@ -42,18 +45,55 @@ class Middlewares
     }
 
     /**
-     * Redirect to the Kirby Panel if no
-     * authorization header is provided
+     * Try to resolve JSON page content
      *
-     * @return void
+     * @return \Kirby\Http\Response|void
      */
-    public static function hasAuthHeaderOrRedirect()
+    public static function tryResolvePage(array $context, array $args)
     {
-        $authorization = kirby()->request()->header('Authorization');
+        // The `$args` array contains the route parameters
+        [$path] = $args;
+        $kirby = kirby();
 
-        if (empty($authorization)) {
-            go('panel');
+        // Fall back to homepage id
+        if (empty($path)) {
+            $page = $kirby->site()->homePage();
+        } else {
+            $path = Str::rtrim($path, '.json');
+            $page = $kirby->site()->find($path);
+
+            if (!$page) {
+                $page = $kirby->site()->errorPage();
+            }
         }
+
+        $cache = $cacheKey = $data = null;
+
+        // Try to get the page from cache
+        if ($page->isCacheable()) {
+            $cache = $kirby->cache('pages');
+            $cacheKey = $page->id() . '.headless.json';
+            $data = $cache->get($cacheKey);
+        }
+
+        // Fetch the page regularly
+        if ($data === null) {
+            $template = $page->template();
+
+            if (!$template->exists()) {
+                throw new NotFoundException([
+                    'key' => 'template.default.notFound'
+                ]);
+            }
+
+            $kirby->data = $page->controller();
+            $data = $template->render($kirby->data);
+
+            // Cache the result
+            $cache?->set($cacheKey, $data);
+        }
+
+        return Response::json($data);
     }
 
     /**
@@ -78,7 +118,6 @@ class Middlewares
     /**
      * Checks if a body was sent with the request
      *
-     * @param array $context
      * @return \Kirby\Http\Response|array
      */
     public static function hasBody(array $context)

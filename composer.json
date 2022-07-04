@@ -5,11 +5,6 @@
     "getkirby/kql": "^1.0",
     "johannschopplich/kirby-extended": "^2.11"
   },
-  "autoload": {
-    "psr-4": {
-      "KirbyHeadless\\Api\\": "src/"
-    }
-  },
   "config": {
     "optimize-autoloader": true,
     "allow-plugins": {

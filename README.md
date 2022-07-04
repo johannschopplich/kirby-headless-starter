@@ -13,6 +13,7 @@ Routing and JSON-encoded responses are handled by the internal [kirby-headless](
 - 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support via new `/api/kql` route
 - ⚡️ Cached KQL queries
 - 😵‍💫 No CORS issues!
+- 🍢 Build your own [API chain](./site/plugins/headless/src/extensions/routes.php)
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
   - You decide, which data you share
@@ -175,7 +176,7 @@ return [
 ];
 ```
 
-You you use one of the [built-in middlewares](./site/plugins/headless/src/classes/Middlewares.php) or write custom ones in the [`src/UserMiddlewares.php`](./src/UserMiddlewares.php):
+You you use one of the [built-in middlewares](./site/plugins/headless/src/classes/Middlewares.php) or write custom ones in the [`UserMiddlewares.php`](./site/plugins/headless/src/classes/UserMiddlewares.php):
 
 ```php
 /**

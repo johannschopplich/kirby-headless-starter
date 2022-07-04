@@ -11,7 +11,7 @@ return [
 
         return [
             /**
-             * Allow for preflight requests, mainly for `fetch`
+             * Allow preflight requests, mainly for `fetch`
              */
             [
                 'pattern' => '(:all)',
@@ -29,7 +29,7 @@ return [
                 'method' => 'GET|POST',
                 'auth' => $auth,
                 'action' => Api::createHandler(
-                    function ($context, $args) use ($authMethod) {
+                    function (array $context, array $args) use ($authMethod) {
                         if ($authMethod !== 'bearer') {
                             return;
                         }
@@ -41,7 +41,7 @@ return [
                             return Api::createResponse(401);
                         }
                     },
-                    function ($context, $args) {
+                    function (array $context, array $args) {
                         $input = get();
                         $cache = $cacheKey = $data = null;
 
