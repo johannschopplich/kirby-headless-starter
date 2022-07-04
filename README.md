@@ -218,7 +218,7 @@ If left empty, the preview button will be disabled.
 
 > ℹ️ Some hosting environments require to uncomment `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
 
-## Background
+## FAQ
 
 ## Why Not Use Content Representations?
 
@@ -231,6 +231,23 @@ If left empty, the preview button will be disabled.
 - … and so on
 
 To simplify this approach, we use the standard template structure, but encode each template's content as JSON via the internal [route middleware](./site/plugins/headless/src/extensions/routes.php).
+
+## How Can I Redirect to the Panel Directly?
+
+Navigate to [`routes.php`](./site/plugins/headless/src/extensions/routes.php) and uncomment the `hasAuthHeaderOrRedirect` user middleware:
+
+```php
+[
+    'pattern' => '(:all)',
+    'action' => Api::createHandler(
+        // ...
+        [UserMiddlewares::class, 'hasAuthHeaderOrRedirect'],
+        // ...
+    )
+]
+```
+
+Now, request via the browser will be redirected to the Kirby Panel.
 
 ## License
 

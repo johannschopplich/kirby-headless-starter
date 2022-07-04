@@ -2,6 +2,7 @@
 
 use KirbyHeadless\Api\Api;
 use KirbyHeadless\Api\Middlewares;
+use KirbyHeadless\Api\UserMiddlewares;
 
 return [
     /**
