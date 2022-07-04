@@ -19,5 +19,7 @@ load([
                 kirby()->plugin('johannschopplich/kirby-headless')
             );
         }
-    ]
+    ],
+    'pageMethods' => require __DIR__ . '/src/extensions/pageMethods.php',
+    'siteMethods' => require __DIR__ . '/src/extensions/siteMethods.php'
 ]);

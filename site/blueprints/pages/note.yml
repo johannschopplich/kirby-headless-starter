@@ -21,6 +21,9 @@ status:
     label: Published
     text: The note is online and listed in the blog
 
+options:
+  preview: "{{ page.frontendUrl }}"
+
 # Define the form layout with two columns
 # Columns are optional but help structure the form layout
 # More about columns: https://getkirby.com/docs/guide/blueprints/layout#defining-columns

@@ -4,15 +4,18 @@ title: Photos
 # Each page can have an icon that is shown in page listings when no preview image is available.
 icon: 🖼
 
+options:
+  preview: "{{ page.frontendUrl }}"
+
 # Here we extend two sections which are defined in `/site/blueprints/sections/albums.yml`
 # They differ in their page status and the headline.
 sections:
   drafts:
     extends: sections/albums
-    headline: Drafts
+    label: Drafts
     status: draft
 
   listed:
     extends: sections/albums
-    headline: Published Albums
+    label: Published Albums
     status: listed

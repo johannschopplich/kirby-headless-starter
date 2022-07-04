@@ -7,3 +7,4 @@ title: Error
 # More about page options: https://getkirby.com/docs/reference/panel/blueprints/page#options
 options:
   read: false
+  preview: "{{ page.frontendUrl }}"

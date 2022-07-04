@@ -104,7 +104,7 @@ const response = await $fetch(
 console.log(response);
 ```
 
-### KQL
+### KirbyQL
 
 A new KQL endpoint supporting caching and bearer token authentication is implemented under `/api/kql`.
 
@@ -193,6 +193,24 @@ public static function hasFooParam($context)
     }
 }
 ```
+
+### Preview URL to the Frontend
+
+With the headless approach, the default preview link from the Kirby Panel won't make much sense. Thus, we have to overwrite it. With a custom page method provided by this headless kit:
+
+```yaml
+options:
+  # Or `site.frontendUrl` for the `site.yml`
+  preview: "{{ page.frontendUrl }}"
+```
+
+Set your frontend URL in your `.env`:
+
+```
+KIRBY_HEADLESS_FRONTEND_URL=https://example.com
+```
+
+If left empty, the preview button will be disabled.
 
 ### Deployment
 

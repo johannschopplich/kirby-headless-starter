@@ -4,6 +4,9 @@
 # In this example blueprint, we also show subpages of the `photography` and `notes` pages.
 # More about the site blueprint: https://getkirby.com/docs/reference/panel/blueprints/site
 
+options:
+  preview: "{{ site.frontendUrl }}"
+
 # The layout of this form has two columns:
 columns:
   # The first column has one section for the subpages of the `photography` page in card layout

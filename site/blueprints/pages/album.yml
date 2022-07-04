@@ -10,6 +10,9 @@ status:
   draft: true
   listed: true
 
+options:
+  preview: "{{ page.frontendUrl }}"
+
 # Define the form layout with two columns
 # Columns are optional but help structure the form layout
 # The first column defines an files section, the second a set of fields

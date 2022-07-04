@@ -7,6 +7,9 @@ icon: 📖
 # Define the form layout with two columns
 # More about columns: https://getkirby.com/docs/guide/blueprints/layout#defining-columns
 
+options:
+  preview: "{{ page.frontendUrl }}"
+
 columns:
   - width: 1/3
     # In the first column, we reuse the `notes` section
@@ -14,12 +17,12 @@ columns:
     sections:
       drafts:
         extends: sections/notes
-        headline: Drafts
+        label: Drafts
         status: draft
 
       unlisted:
         extends: sections/notes
-        headline: In Review
+        label: In Review
         status: unlisted
 
   - width: 2/3
@@ -27,7 +30,7 @@ columns:
     sections:
       listed:
         extends: sections/notes
-        headline: Published
+        label: Published
         status: listed
         size: small
         layout: cards
