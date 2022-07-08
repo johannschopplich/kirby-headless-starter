@@ -5,6 +5,12 @@
     "getkirby/kql": "^1.0",
     "johannschopplich/kirby-extended": "^2.11"
   },
+  "scripts": {
+    "start": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php -S localhost:8000 -t public vendor/getkirby/cms/router.php"
+    ]
+  },
   "config": {
     "optimize-autoloader": true,
     "allow-plugins": {
