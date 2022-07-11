@@ -160,8 +160,8 @@ return [
             'pattern' => 'post-example',
             'method' => 'POST',
             'action' => Api::createHandler(
-                [Middlewares::class, 'hasBearerToken'],
-                [Middlewares::class, 'hasBody'],
+                [\KirbyHeadless\Api\Middlewares::class, 'hasBearerToken'],
+                [\KirbyHeadless\Api\Middlewares::class, 'hasBody'],
                 function ($context) {
                     // Get the data of the POST request
                     $data = $context['body'];
@@ -241,7 +241,7 @@ Navigate to [`routes.php`](./site/plugins/headless/src/extensions/routes.php) an
     'pattern' => '(:all)',
     'action' => Api::createHandler(
         // ...
-        [UserMiddlewares::class, 'hasAuthHeaderOrRedirect'],
+        [\KirbyHeadless\Api\UserMiddlewares::class, 'hasAuthHeaderOrRedirect'],
         // ...
     )
 ]
