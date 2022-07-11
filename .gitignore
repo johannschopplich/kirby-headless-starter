@@ -6,7 +6,7 @@ vendor
 # Kirby
 .lock
 /public/media/*
-!/public/media/index.html
+!/public/media/.gitkeep
 /storage/accounts/*
 !/storage/accounts/.gitkeep
 /storage/cache/*
