@@ -15,7 +15,7 @@ class UserMiddlewares
         $authorization = kirby()->request()->header('Authorization');
 
         if (empty($authorization)) {
-            go('panel');
+            go(option('panel.slug'));
         }
     }
 }
