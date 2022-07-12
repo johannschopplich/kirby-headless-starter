@@ -4,7 +4,13 @@
 
 This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented. You can either use Kirby's default template system to build data (which will be auto-encoded to JSON) or use KQL to fetch data in your consuming application.
 
-Routing and JSON-encoded responses are handled by the internal [kirby-headless](./site/plugins/kirby-headless/) plugin, specifically its [internal routes](./site/plugins/headless/src/extensions/routes.php).
+Routing and JSON-encoded responses are handled by the internal [headless](./site/plugins/headless/) plugin, specifically its [internal routes](./site/plugins/headless/src/extensions/routes.php).
+
+This project works well with [nuxt-kql](https://nuxt-kql.jhnn.dev).
+
+## Example Projects
+
+- [kirby-nuxt-starterkit](https://github.com/johannschopplich/kirby-nuxt-starterkit): 💚 Kirby's sample site – ported to Nuxt 3 and KirbyQL
 
 ## Key Features
 
