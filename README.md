@@ -127,7 +127,7 @@ const response = await $fetch("<website-url>/api/kql", {
     query: "page('notes').children",
     select: {
       title: true,
-      text: "page.text.toBlocks.toArray",
+      text: "page.text.toBlocks",
       slug: true,
       date: "page.date.toDate('d.m.Y')",
     },
