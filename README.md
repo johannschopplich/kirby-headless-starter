@@ -241,7 +241,7 @@ Navigate to [`routes.php`](./site/plugins/headless/src/extensions/routes.php) an
     'pattern' => '(:all)',
     'action' => Api::createHandler(
         // ...
-        [\KirbyHeadless\Api\UserMiddlewares::class, 'hasAuthHeaderOrRedirect'],
+        [UserMiddlewares::class, 'hasAuthHeaderOrRedirect'],
         // ...
     )
 ]
