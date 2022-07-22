@@ -19,6 +19,7 @@ This project works well with [nuxt-kql](https://nuxt-kql.jhnn.dev).
 - 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support via new `/api/kql` route
 - ⚡️ Cached KQL queries
 - 😵‍💫 No CORS issues!
+- 🌐 Multilang support for KQL queries
 - 🍢 Build your own [API chain](./site/plugins/headless/src/extensions/routes.php)
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
@@ -73,7 +74,8 @@ If the environment variable `KIRBY_HEADLESS_API_TOKEN` is left empty, the API wi
 
 Create templates just like you normally would in any Kirby project. Instead of writing HTML, we build arrays and encode them to JSON. The internal route handler will add the correct content type and also handles caching (if enabled).
 
-Example template:
+<details>
+<summary>👉 Example template</summary>
 
 ```php
 # /site/templates/about.php
@@ -90,7 +92,10 @@ $data = [
 echo \Kirby\Data\Json::encode($data);
 ```
 
-To fetch that data in the frontend:
+</details>
+
+<details>
+<summary>👉 Fetch that data in the frontend</summary>
 
 ```js
 import { $fetch } from "ohmyfetch";
@@ -110,11 +115,16 @@ const response = await $fetch(
 console.log(response);
 ```
 
+</details>
+
 ### KirbyQL
 
 A new KQL endpoint supporting caching and bearer token authentication is implemented under `/api/kql`.
 
 Fetch KQL query results like you always do, but provide an `Authentication` header with your request:
+
+<details>
+<summary>👉 Fetch example</summary>
 
 ```js
 import { $fetch } from "ohmyfetch";
@@ -140,6 +150,8 @@ const response = await $fetch("<website-url>/api/kql", {
 console.log(response);
 ```
 
+</details>
+
 To **disable** the bearer token authentication for your Kirby instance and instead use the **basic authentication** method, set the following in your [`config.php`](./site/config/config.php):
 
 ```php
@@ -157,6 +169,9 @@ This headless starter includes an Express-esque API builder, defined in the [`Ki
 Take a look at the [built-in routes](./site/plugins/headless/src/extensions/routes.php) to get an idea how you can use the API builder to chain complex route logic.
 
 It is also useful to consume POST requests including JSON data:
+
+<details>
+<summary>👉 Example custom route</summary>
 
 ```php
 # /site/config/config.php
@@ -182,7 +197,12 @@ return [
 ];
 ```
 
+</details>
+
 You you use one of the [built-in middlewares](./site/plugins/headless/src/classes/Middlewares.php) or write custom ones in the [`UserMiddlewares.php`](./site/plugins/headless/src/classes/UserMiddlewares.php):
+
+<details>
+<summary>👉 Example custom middleware</summary>
 
 ```php
 /**
@@ -199,6 +219,8 @@ public static function hasFooParam($context)
     }
 }
 ```
+
+</details>
 
 ### Preview URL to the Frontend
 

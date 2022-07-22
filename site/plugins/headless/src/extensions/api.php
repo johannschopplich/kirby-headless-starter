@@ -43,13 +43,19 @@ return [
                     },
                     function (array $context, array $args) {
                         $input = get();
+                        $kirby = kirby();
                         $cache = $cacheKey = $data = null;
 
                         if (!empty($input)) {
                             $hash = sha1(Json::encode($input));
-                            $cache = kirby()->cache('pages');
+                            $cache = $kirby->cache('pages');
                             $cacheKey = 'query-' . $hash . '.json';
                             $data = $cache->get($cacheKey);
+                        }
+
+                        if ($kirby->multilang()) {
+                            $languageCode = kirby()->request()->header('X-Language');
+                            $kirby->setCurrentLanguage($languageCode);
                         }
 
                         if ($data === null) {
