@@ -53,8 +53,10 @@ return [
                             $data = $cache->get($cacheKey);
                         }
 
-                        if ($kirby->multilang()) {
-                            $languageCode = kirby()->request()->header('X-Language');
+                        if (
+                            $kirby->multilang() &&
+                            ($languageCode = kirby()->request()->header('X-Language'))
+                        ) {
                             $kirby->setCurrentLanguage($languageCode);
                         }
 
