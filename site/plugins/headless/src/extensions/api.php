@@ -55,7 +55,7 @@ return [
 
                         if (
                             $kirby->multilang() &&
-                            ($languageCode = kirby()->request()->header('X-Language'))
+                            ($languageCode = $kirby->request()->header('X-Language'))
                         ) {
                             $kirby->setCurrentLanguage($languageCode);
                         }
