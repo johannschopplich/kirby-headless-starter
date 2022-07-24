@@ -29,21 +29,30 @@ return [
                 'method' => 'GET|POST',
                 'auth' => $auth,
                 'action' => Api::createHandler(
-                    function (array $context, array $args) use ($authMethod) {
+                    // Middleware to validate the bearer token
+                    function (array $context, array $args) use ($kirby, $authMethod) {
                         if ($authMethod !== 'bearer') {
                             return;
                         }
 
+                        $authorization = $kirby->request()->header('Authorization');
                         $token = env('KIRBY_HEADLESS_API_TOKEN');
-                        $authorization = kirby()->request()->header('Authorization');
 
-                        if (empty($authorization) || $authorization !== 'Bearer ' . $token) {
+                        if ($authorization !== 'Bearer ' . $token) {
                             return Api::createResponse(401);
                         }
                     },
-                    function (array $context, array $args) {
+                    // Middleware to run queries and cache their results
+                    function (array $context, array $args) use ($kirby) {
+                        // Set the Kirby language in multilanguage sites
+                        if (
+                            $kirby->multilang() &&
+                            ($languageCode = $kirby->request()->header('X-Language'))
+                        ) {
+                            $kirby->setCurrentLanguage($languageCode);
+                        }
+
                         $input = get();
-                        $kirby = kirby();
                         $cache = $cacheKey = $data = null;
 
                         if (!empty($input)) {
@@ -51,13 +60,6 @@ return [
                             $cache = $kirby->cache('pages');
                             $cacheKey = 'query-' . $hash . '.json';
                             $data = $cache->get($cacheKey);
-                        }
-
-                        if (
-                            $kirby->multilang() &&
-                            ($languageCode = $kirby->request()->header('X-Language'))
-                        ) {
-                            $kirby->setCurrentLanguage($languageCode);
                         }
 
                         if ($data === null) {
