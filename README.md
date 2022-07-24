@@ -75,7 +75,7 @@ If the environment variable `KIRBY_HEADLESS_API_TOKEN` is left empty, the API wi
 Create templates just like you normally would in any Kirby project. Instead of writing HTML, we build arrays and encode them to JSON. The internal route handler will add the correct content type and also handles caching (if enabled).
 
 <details>
-<summary>👉 Example template</summary>
+<summary>🆒 Example template</summary>
 
 ```php
 # /site/templates/about.php
@@ -95,7 +95,7 @@ echo \Kirby\Data\Json::encode($data);
 </details>
 
 <details>
-<summary>👉 Fetch that data in the frontend</summary>
+<summary>🆒 Fetch that data in the frontend</summary>
 
 ```js
 import { $fetch } from "ohmyfetch";
@@ -124,7 +124,7 @@ A new KQL endpoint supporting caching and bearer token authentication is impleme
 Fetch KQL query results like you always do, but provide an `Authentication` header with your request:
 
 <details>
-<summary>👉 Fetch example</summary>
+<summary>🆒 Fetch example</summary>
 
 ```js
 import { $fetch } from "ohmyfetch";
@@ -171,7 +171,7 @@ Take a look at the [built-in routes](./site/plugins/headless/src/extensions/rout
 It is also useful to consume POST requests including JSON data:
 
 <details>
-<summary>👉 Example custom route</summary>
+<summary>🆒 Example custom route</summary>
 
 ```php
 # /site/config/config.php
@@ -202,7 +202,7 @@ return [
 You you use one of the [built-in middlewares](./site/plugins/headless/src/classes/Middlewares.php) or write custom ones in the [`UserMiddlewares.php`](./site/plugins/headless/src/classes/UserMiddlewares.php):
 
 <details>
-<summary>👉 Example custom middleware</summary>
+<summary>🆒 Example custom middleware</summary>
 
 ```php
 /**
