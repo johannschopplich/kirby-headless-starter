@@ -44,21 +44,20 @@ return [
                     },
                     // Middleware to run queries and cache their results
                     function (array $context, array $args) use ($kirby) {
+                        $input = get();
+                        $cache = $cacheKey = $languageCode = $data = null;
+
                         // Set the Kirby language in multilanguage sites
                         if (
-                            $kirby->multilang() &&
-                            ($languageCode = $kirby->request()->header('X-Language'))
+                            $kirby->multilang() && ($languageCode = $kirby->request()->header('X-Language'))
                         ) {
                             $kirby->setCurrentLanguage($languageCode);
                         }
 
-                        $input = get();
-                        $cache = $cacheKey = $data = null;
-
                         if (!empty($input)) {
                             $hash = sha1(Json::encode($input));
                             $cache = $kirby->cache('pages');
-                            $cacheKey = 'query-' . $hash . '.json';
+                            $cacheKey = 'query-' . $hash . (!empty($languageCode) ? '-' . $languageCode : '') . '.json';
                             $data = $cache->get($cacheKey);
                         }
 
