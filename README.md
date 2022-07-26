@@ -4,7 +4,7 @@
 
 This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented. You can either use Kirby's default template system to build data (which will be auto-encoded to JSON) or use KQL to fetch data in your consuming application.
 
-Routing and JSON-encoded responses are handled by the internal [headless](./site/plugins/headless/) plugin, specifically its [internal routes](./site/plugins/headless/src/extensions/routes.php).
+Routing and JSON-encoded responses are handled by the internal [headless](./site/plugins/headless/) plugin, specifically its [global routes](./site/plugins/headless/src/extensions/routes.php) and [API routes](./site/plugins/headless/src/extensions/api.php) for KQL.
 
 This project works well with [nuxt-kql](https://nuxt-kql.jhnn.dev).
 
@@ -18,13 +18,23 @@ This project works well with [nuxt-kql](https://nuxt-kql.jhnn.dev).
 - 🔒 **public** or **private** API
 - 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support via new `/api/kql` route
 - ⚡️ Cached KQL queries
-- 😵‍💫 No CORS issues!
 - 🌐 Multilang support for KQL queries
+- 😵‍💫 No CORS issues!
 - 🍢 Build your own [API chain](./site/plugins/headless/src/extensions/routes.php)
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
   - Fetch either `/example` or `/example.json`
   - You decide, which data you share
 - 🦾 Express-esque [API builder](#api-builder) with middleware support
+
+
+## Use Cases
+
+Fetch data from a headless Kirby instance:
+
+- 1️⃣ by using Kirby's default template system
+- 2️⃣ by using KQL
+
+Head over to the [usage](#usage) section for instructions.
 
 ## Prerequisites
 
