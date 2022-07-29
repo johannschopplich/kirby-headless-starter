@@ -4,6 +4,7 @@
 
 $data = [
   'title' => $page->title()->value(),
+  'subheadline' => $page->subheadline()->value(),
   'text' => $page->text()->value(),
   'gallery' => $page
     ->images()
