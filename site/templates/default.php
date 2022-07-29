@@ -8,7 +8,8 @@ $data = [
     'isHomePage' => $page->isHomePage(),
     'isErrorPage' => $page->isErrorPage()
   ],
-  'title' => $page->title()->value()
+  'title' => $page->title()->value(),
+  'text' => $page->text()->kirbytext()->value(),
 ];
 
 echo \Kirby\Data\Json::encode($data);

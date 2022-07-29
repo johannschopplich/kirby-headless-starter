@@ -4,6 +4,7 @@
 
 $data = [
   'title' => $page->title()->value(),
+  'text' => $page->text()->kirbytext()->value(),
   'children' => $page
     ->children()
     ->listed()
@@ -11,7 +12,12 @@ $data = [
     ->map(fn ($note) => [
       'id' => $note->id(),
       'title' => $note->title()->value(),
-      'date' => $note->date()->value()
+      'tags' => $note->tags()->split(','),
+      'text' => $note->text()->toBlocks()->excerpt(280),
+      'published' => $note->date()->value(),
+      'cover' => [
+        'url' => ($note->cover()->toFile()?->toArray() ?? $note->images()->first()?->toArray() ?? [])['url'] ?? '',
+      ]
     ])
     ->values()
 ];

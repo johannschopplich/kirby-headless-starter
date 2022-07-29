@@ -4,11 +4,20 @@
 
 $data = [
   'title' => $page->title()->value(),
-  'layout' => $page->layout()->toLayouts()->toArray(),
-  'address' => $page->address()->value(),
+  'layouts' => $page->layouts()->toLayouts()->toArray(),
+  'address' => $page->address()->kirbytext()->value(),
   'email' => $page->email()->value(),
   'phone' => $page->phone()->value(),
-  'social' => $page->social()->toStructure()->toArray()
+  'social' => $page->social()->toStructure()->toArray(),
+  'images' => $page
+    ->images()
+    ->map(fn ($i) => [
+      'id' => $note->id(),
+      'filename' => $note->filename(),
+      'url' => $note->url(),
+      'alt' => $note->alt()
+    ])
+    ->values()
 ];
 
 echo \Kirby\Data\Json::encode($data);

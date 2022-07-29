@@ -4,10 +4,13 @@
 
 $data = [
   'title' => $page->title()->value(),
-  'cover' => $page->cover()->toFile()?->toArray(),
-  'date' => $page->date()->value(),
-  'tags' => $page->tags()->split(),
-  'text' => $page->text()->toBlocks()->toArray()
+  'subheading' => $page->subheading()->value(),
+  'tags' => $page->tags()->split(','),
+  'text' => $page->text()->toBlocks()->toArray(),
+  'published' => $page->date()->toDate('c'),
+  'cover' => [
+    'url' => ($page->cover()->toFile()?->toArray() ?? $page->images()->first()?->toArray() ?? [])['url'] ?? '',
+  ]
 ];
 
 echo \Kirby\Data\Json::encode($data);

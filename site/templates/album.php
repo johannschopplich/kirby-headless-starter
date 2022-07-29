@@ -4,11 +4,20 @@
 
 $data = [
   'title' => $page->title()->value(),
-  'cover' => $page->cover()->toFile()?->toArray(),
-  'headline' => $page->headline()->value(),
-  'subheadline' => $page->subheadline()->value(),
   'text' => $page->text()->value(),
-  'tags' => $page->tags()->split()
+  'gallery' => $page
+    ->images()
+    ->sortBy('sort', 'filename')
+    ->map(fn ($file) => [
+      'resized' => [
+        'url' => ($file->resize(800)?->toArray() ?? [])['url'] ?? ''
+      ],
+      'width' => $file->width(),
+      'height' => $file->height(),
+      'url' => $file->url(),
+      'alt' => $file->alt()->value()
+    ])
+    ->values()
 ];
 
 echo \Kirby\Data\Json::encode($data);
