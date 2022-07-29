@@ -5,7 +5,7 @@
 $data = [
   'title' => $page->title()->value(),
   'headline' => $page->headline()->value(),
-  'subheading' => $page->subheading()->value(),
+  'subheadline' => $page->subheadline()->value(),
   'children' => $kirby
     ->page('photography')
     ->children()
