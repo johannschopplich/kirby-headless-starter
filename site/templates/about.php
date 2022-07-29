@@ -12,10 +12,10 @@ $data = [
   'images' => $page
     ->images()
     ->map(fn ($i) => [
-      'id' => $note->id(),
-      'filename' => $note->filename(),
-      'url' => $note->url(),
-      'alt' => $note->alt()
+      'id' => $i->id(),
+      'filename' => $i->filename(),
+      'url' => $i->url(),
+      'alt' => $i->alt()
     ])
     ->values()
 ];

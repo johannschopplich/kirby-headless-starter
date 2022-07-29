@@ -10,7 +10,16 @@ $data = [
   'published' => $page->date()->toDate('c'),
   'cover' => [
     'url' => ($page->cover()->toFile()?->toArray() ?? $page->images()->first()?->toArray() ?? [])['url'] ?? '',
-  ]
+  ],
+  'images' => $page
+    ->images()
+    ->map(fn ($i) => [
+      'id' => $i->id(),
+      'filename' => $i->filename(),
+      'url' => $i->url(),
+      'alt' => $i->alt()
+    ])
+    ->values()
 ];
 
 echo \Kirby\Data\Json::encode($data);
