@@ -4,87 +4,72 @@ Kirby's Query Language API combines the flexibility of Kirby's data structures, 
 
 The Kirby QL API takes POST requests with standard JSON objects and returns highly customized results that fit your application.
 
-## Playground
+## Demo
 
-You can play in our [KQL sandbox](https://kql.getkirby.com). The sandbox is based on the Kirby starterkit.
-
-> ℹ️ Source code of the playground is [available on GitHub](https://github.com/getkirby/kql.getkirby.com).
+You can play in our KQL sandbox here: https://kql.getkirby.com The sandbox is based on the Kirby starterkit.
 
 ## Example
 
-Given a POST request to: `/api/query`
+POST: /api/query
 
 ```json
 {
-  "query": "page('photography').children",
-  "select": {
-    "url": true,
-    "title": true,
-    "text": "page.text.markdown",
-    "images": {
-      "query": "page.images",
-      "select": {
-        "url": true
-      }
-    }
-  },
-  "pagination": {
-    "limit": 10
-  }
-}
-```
-
-<details open>
-<summary>🆗 Response</summary>
-
-```json
-{
-  "code": 200,
-  "result": {
-    "data": [
-      {
-        "url": "https://example.com/photography/trees",
-        "title": "Trees",
-        "text": "Lorem <strong>ipsum</strong> …",
-        "images": [
-          {
-            "url": "https://example.com/media/pages/photography/trees/1353177920-1579007734/cheesy-autumn.jpg"
-          },
-          {
-            "url": "https://example.com/media/pages/photography/trees/1940579124-1579007734/last-tree-standing.jpg"
-          },
-          {
-            "url": "https://example.com/media/pages/photography/trees/3506294441-1579007734/monster-trees-in-the-fog.jpg"
-          }
-        ]
-      },
-      {
-        "url": "https://example.com/photography/sky",
-        "title": "Sky",
-        "text": "<h1>Dolor sit amet</h1> …",
-        "images": [
-          {
-            "url": "https://example.com/media/pages/photography/sky/183363500-1579007734/blood-moon.jpg"
-          },
-          {
-            "url": "https://example.com/media/pages/photography/sky/3904851178-1579007734/coconut-milkyway.jpg"
-          }
-        ]
-      }
-    ],
+    "query": "page('photography').children",
+    "select": {
+        "url": true,
+        "title": true,
+        "text": "page.text.markdown",
+        "images": {
+            "query": "page.images",
+            "select": {
+                "url": true
+            }
+        }
+    },
     "pagination": {
-      "page": 1,
-      "pages": 1,
-      "offset": 0,
-      "limit": 10,
-      "total": 2
+        "limit": 10
     }
-  },
-  "status": "ok"
 }
 ```
 
-</details>
+Response:
+
+```json
+{
+    "code": 200,
+    "result": {
+        "data": [
+            {
+                "url": "https://example.com/photography/trees",
+                "title": "Trees",
+                "text": "Lorem <strong>ipsum</strong> …",
+                "images": [
+                    { "url": "https://example.com/media/pages/photography/trees/1353177920-1579007734/cheesy-autumn.jpg" },
+                    { "url": "https://example.com/media/pages/photography/trees/1940579124-1579007734/last-tree-standing.jpg" },
+                    { "url": "https://example.com/media/pages/photography/trees/3506294441-1579007734/monster-trees-in-the-fog.jpg" }
+                ]
+            },
+            {
+                "url": "https://example.com/photography/sky",
+                "title": "Sky",
+                "text": "<h1>Dolor sit amet</h1> …",
+                "images": [
+                    { "url": "https://example.com/media/pages/photography/sky/183363500-1579007734/blood-moon.jpg" },
+                    { "url": "https://example.com/media/pages/photography/sky/3904851178-1579007734/coconut-milkyway.jpg" }
+                ]
+            }
+        ],
+        "pagination": {
+            "page": 1,
+            "pages": 1,
+            "offset": 0,
+            "limit": 10,
+            "total": 2
+        }
+    },
+    "status": "ok"
+}
+```
 
 ## Installation
 
@@ -94,7 +79,7 @@ Given a POST request to: `/api/query`
 
 ### Composer
 
-```bash
+```
 composer require getkirby/kql
 ```
 
@@ -102,11 +87,13 @@ composer require getkirby/kql
 
 ### API Endpoint
 
-KQL adds a new `query` API endpoint to your Kirby API (i.e. `yoursite.com/api/query`). This endpoint [requires authentication](https://getkirby.com/docs/guide/api/authentication).
+KQL adds a new `query` API endpoint to your Kirby API. (i.e. https://yoursite.com/api/query) The endpoint requires authentication: https://getkirby.com/docs/guide/api/authentication
 
 You can switch off authentication in your config at your own risk:
 
 ```php
+<?php
+
 return [
   'kql' => [
     'auth' => false
@@ -114,34 +101,28 @@ return [
 ];
 ```
 
-### Sending POST Requests
+### Sending POST requests
 
-You can use any HTTP request library in your language of choice to make regular POST requests to your `/api/query` endpoint. In this example, we are using [ohmyfetch](https://github.com/unjs/ohmyfetch) (a better fetch API for Node and the browser) and JavaScript to retreive data from our Kirby installation.
+You can use any HTTP request library in your language of choice to make regular POST requests to your `/api/query` endpoint. In this example, we are using [axios](https://github.com/axios/axios) and Javascript to get data from our Kirby installation.
 
 ```js
-import { $fetch } from "ohmyfetch";
+const axios = require("axios")
 
 const api = "https://yoursite.com/api/query";
-const username = "apiuser";
-const password = "strong-secret-api-password";
-
-const headers = {
-  Authorization: Buffer.from(`${username}:${password}`).toString("base64"),
+const auth = {
+  username: "apiuser",
+  password: "strong-secret-api-password"
 };
 
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "page('notes').children",
-    select: {
-      title: true,
-      text: "page.text.kirbytext",
-      slug: true,
-      date: "page.date.toDate('d.m.Y')",
-    },
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "page('notes').children",
+  select: {
+    title: true,
+    text: "page.text.kirbytext",
+    slug: true,
+    date: "page.date.toDate('d.m.Y')"
+  }
+}, { auth });
 
 console.log(response);
 ```
@@ -150,26 +131,20 @@ console.log(response);
 
 With the query, you can fetch data from anywhere in your Kirby site. You can query fields, pages, files, users, languages, roles and more.
 
-#### Queries Without Selects
+#### Queries without selects
 
 When you don't pass the select option, Kirby will try to come up with the most useful result set for you. This is great for simple queries.
 
-##### Fetching the Site Title
-
+##### Fetching the site title
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "site.title",
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "site.title",
+}, { auth });
 
-console.log(response);
+console.log(response.data);
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -179,24 +154,16 @@ console.log(response);
 }
 ```
 
-</details>
-
-##### Fetching a List of Page IDs
-
+##### Fetching a list of page ids
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "site.children",
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "site.children"
+}, { auth });
 
-console.log(response);
+console.log(response.data);
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -212,26 +179,19 @@ console.log(response);
 }
 ```
 
-</details>
-
-#### Running Field Methods
+#### Running field methods
 
 Queries can even execute field methods.
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "site.title.upper",
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "site.title.upper",
+}, { auth });
 
-console.log(response);
+console.log(response.data);
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -241,31 +201,24 @@ console.log(response);
 }
 ```
 
-</details>
-
 ### `select`
 
 KQL becomes really powerful by its flexible way to control the result set with the select option.
 
-#### Select Single Properties and Fields
+#### Select single properties and fields
 
-To include a property or field in your results, list them as an array. Check out our [reference for available properties](https://getkirby.com/docs/reference) for pages, users, files, etc.
+To include a property or field in your results, list them as an array. Check out our reference for available properties for pages, users, files, etc: https://getkirby.com/docs/reference
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "site.children",
-    select: ["title", "url"],
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "site.children",
+  select: ["title", "url"]
+}, { auth });
 
-console.log(response);
+console.log(response.data);
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -305,28 +258,21 @@ console.log(response);
 }
 ```
 
-</details>
-
 You can also use the object notation and pass true for each key/property you want to include.
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "site.children",
-    select: {
-      title: true,
-      url: true,
-    },
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "site.children",
+  select: {
+    title: true,
+    url: true
+  }
+}, { auth });
 
-console.log(response);
+console.log(response.data);
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -360,29 +306,22 @@ console.log(response);
 }
 ```
 
-</details>
-
-#### Using Queries for Properties and Fields
+#### Using queries for properties and fields
 
 Instead of passing true, you can also pass a string query to specify what you want to return for each key in your select object.
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "site.children",
-    select: {
-      title: "page.title",
-    },
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "site.children",
+  select: {
+    title: "page.title"
+  }
+}, { auth });
 
-console.log(response);
+console.log(response.data);
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -403,27 +342,19 @@ console.log(response);
 }
 ```
 
-</details>
-
-#### Executing Field Methods
-
+#### Executing field methods
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "site.children",
-    select: {
-      title: "page.title.upper",
-    },
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "site.children",
+  select: {
+    title: "page.title.upper"
+  }
+}, { auth });
 
-console.log(response);
+console.log(response.data);
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -444,32 +375,25 @@ console.log(response);
 }
 ```
 
-</details>
-
-#### Creating Aliases
+#### Creating aliases
 
 String queries are a perfect way to create aliases or return variations of the same field or property multiple times.
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "page('notes').children",
-    select: {
-      title: "page.title",
-      upperCaseTitle: "page.title.upper",
-      lowerCaseTitle: "page.title.lower",
-      guid: "page.id",
-      date: "page.date.toDate('d.m.Y')",
-      timestamp: "page.date.toTimestamp",
-    },
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "page('notes').children",
+  select: {
+    title: "page.title",
+    upperCaseTitle: "page.title.upper",
+    lowerCaseTitle: "page.title.lower",
+    guid: "page.id",
+    date: "page.date.toDate('d.m.Y'),
+    timestamp: "page.date.toTimestamp"
+  }
+}, { auth });
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -494,28 +418,21 @@ const response = await $fetch(api, {
 }
 ```
 
-</details>
-
 #### Subqueries
 
 With such string queries you can of course also include nested data
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "page('photography').children",
-    select: {
-      title: "page.title",
-      images: "page.images",
-    },
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "page('photography').children",
+  select: {
+    title: "page.title",
+    images: "page.images"
+  }
+}, { auth });
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -542,33 +459,26 @@ const response = await $fetch(api, {
 }
 ```
 
-</details>
-
-#### Subqueries With Selects
+#### Subqueries with selects
 
 You can also pass an object with a `query` and a `select` option
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "page('photography').children",
-    select: {
-      title: "page.title",
-      images: {
-        query: "page.images",
-        select: {
-          filename: true,
-        },
-      },
-    },
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "page('photography').children",
+  select: {
+    title: "page.title",
+    images: {
+      query: "page.images",
+      select: {
+        filename: true
+      }
+    }
+  }
+}, { auth });
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -605,8 +515,6 @@ const response = await $fetch(api, {
 }
 ```
 
-</details>
-
 ### Pagination
 
 Whenever you query a collection (pages, files, users, roles, languages) you can limit the resultset and also paginate through entries. You've probably already seen the pagination object in the results above. It is included in all results for collections, even if you didn't specify any pagination settings.
@@ -616,23 +524,18 @@ Whenever you query a collection (pages, files, users, roles, languages) you can 
 You can specify a custom limit with the limit option. The default limit for collections is 100 entries.
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "page('notes').children",
-    pagination: {
-      limit: 5,
-    },
-    select: {
-      title: "page.title",
-    },
+const response = await axios.post(api, {
+  query: "page('notes').children",
+  pagination: {
+    limit: 5,
   },
-  headers,
-});
+  select: {
+    title: "page.title"
+  }
+}, { auth });
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -667,31 +570,24 @@ const response = await $fetch(api, {
 }
 ```
 
-</details>
-
 #### `page`
 
 You can jump to any page in the resultset with the `page` option.
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "page('notes').children",
-    pagination: {
-      page: 2,
-      limit: 5,
-    },
-    select: {
-      title: "page.title",
-    },
+const response = await axios.post(api, {
+  query: "page('notes').children",
+  pagination: {
+    page: 2,
+    limit: 5
   },
-  headers,
-});
+  select: {
+    title: "page.title"
+  }
+}, { auth });
 ```
 
-<details>
-<summary>🆗 Response</summary>
+Result:
 
 ```js
 {
@@ -717,88 +613,80 @@ const response = await $fetch(api, {
 }
 ```
 
-</details>
-
-### Pagination in Subqueries
+### Pagination in subqueries
 
 Pagination settings also work for subqueries.
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "page('photography').children",
-    select: {
-      title: "page.title",
-      images: {
-        query: "page.images",
-        pagination: {
-          page: 2,
-          limit: 5,
-        },
-        select: {
-          filename: true,
-        },
-      },
-    },
-  },
-  headers,
-});
+const response = await axios.post(api, {
+  query: "page('photography').children",
+  select: {
+    title: "page.title",
+    images: {
+      query: "page.images",
+      pagination: {
+        page: 2,
+        limit: 5
+      }
+      select: {
+        filename: true
+      }
+    }
+  }
+}, { auth });
 ```
 
-### Multiple Queries in a Single Call
+### Multiple queries in a single call
 
 With the power of selects and subqueries you can basically query the entire site in a single request
 
 ```js
-const response = await $fetch(api, {
-  method: "post",
-  body: {
-    query: "site",
-    select: {
-      title: "site.title",
-      url: "site.url",
-      notes: {
-        query: "page('notes').children.listed",
-        select: {
-          title: true,
-          url: true,
-          date: "page.date.toDate('d.m.Y')",
-          text: "page.text.kirbytext",
-        },
-      },
-      photography: {
-        query: "page('photography').children.listed",
-        select: {
-          title: true,
-          images: {
-            query: "page.images",
-            select: {
-              url: true,
-              alt: true,
-              caption: "file.caption.kirbytext",
-            },
-          },
-        },
-      },
-      about: {
-        text: "page.text.kirbytext",
-      },
+const response = await axios.post(api, {
+  query: "site",
+  select: {
+    title: "site.title",
+    url: "site.url",
+    notes: {
+      query: "page('notes').children.listed",
+      select: {
+        title: true,
+        url: true,
+        date: "page.date.toDate('d.m.Y')"
+        text: "page.text.kirbytext"
+      }
     },
-  },
-  headers,
-});
+    photography: {
+      query: "page('photography').children.listed",
+      select: {
+        title: true,
+        images: {
+          query: "page.images",
+          select: {
+             url: true,
+             alt: true,
+             caption: "file.caption.kirbytext"
+          }
+        }
+      }
+    },
+    about: {
+      text: "page.text.kirbytext"
+    }
+  }
+}, { auth });
 ```
 
-### Allowing Methods
+### Allowing methods
 
 KQL is very strict with allowed methods by default. Custom page methods, file methods or model methods are not allowed to make sure you don't miss an important security issue by accident. You can allow additional methods though.
 
-#### Allow List
+#### Allow list
 
 The most straight forward way is to define allowed methods in your config.
 
 ```php
+<?php
+
 return [
   'kql' => [
     'methods' => [
@@ -810,7 +698,7 @@ return [
 ];
 ```
 
-#### DocBlock Comment
+#### DocBlock comment
 
 You can also add a comment to your methods' doc blocks to allow them:
 
@@ -842,11 +730,13 @@ Kirby::plugin('your-name/your-plugin', [
 ]);
 ```
 
-### Blocking Methods
+### Blocking methods
 
 You can block individual class methods that would normally be accessible by listing them in your config:
 
 ```php
+<?php
+
 return [
   'kql' => [
     'methods' => [
@@ -858,11 +748,13 @@ return [
 ];
 ```
 
-### Blocking Classes
+### Blocking classes
 
 Sometimes you might want to reduce access to various parts of the system. This can be done by blocking individual methods (see above) or by blocking entire classes.
 
 ```php
+<?php
+
 return [
   'kql' => [
     'classes' => [
@@ -876,11 +768,13 @@ return [
 
 Now, access to any user is blocked.
 
-### Custom Classes and Interceptors
+### Custom classes and interceptors
 
 If you want to add support for a custom class or a class in Kirby's source that is not supported yet, you can list your own interceptors in your config
 
 ```php
+<?php
+
 return [
   'kql' => [
     'interceptors' => [
@@ -893,6 +787,8 @@ return [
 You can put the class for such a custom interceptor in a plugin for example.
 
 ```php
+<?php
+
 class SystemInterceptor extends Kirby\Kql\Interceptors\Interceptor
 {
   public const CLASS_ALIAS = 'system';
@@ -910,11 +806,13 @@ class SystemInterceptor extends Kirby\Kql\Interceptors\Interceptor
 }
 ```
 
-Interceptor classes are pretty straight forward. With the `CLASS_ALIAS` you can give objects with that class a short name for KQL queries. The `$toArray` property lists all methods that should be rendered if you don't run a subquery. I.e. in this case `kirby.system` would render an array with the `isInstallable` value.
+Interceptor classes are pretty straight forward. With the CLASS_ALIAS you can give objects with that class a short name for KQL queries. The `$toArray` property lists all methods that should be rendered if you don't run a subquery. I.e. in this case `kirby.system` would render an array with the `isInstallable` value.
 
 The `allowedMethods` method must return an array of all methods that can be access for this object. In addition to that you can also create your own custom methods in an interceptor that will then become available in KQL.
 
 ```php
+<?php
+
 class SystemInterceptor extends Kirby\Kql\Interceptors\Interceptor
 {
   ...
@@ -928,7 +826,7 @@ class SystemInterceptor extends Kirby\Kql\Interceptors\Interceptor
 
 This custom method can now be used with `kirby.system.isReady` in KQL and will return `yes it is!`
 
-### Unintercepted Classes
+### Unintercepted classes
 
 If you want to fully allow access to an entire class without putting an interceptor in between, you can add the class to the allow list in your config:
 
@@ -946,14 +844,14 @@ return [
 
 This will introduce full access to all public class methods. This can be very risky though and you should avoid this if possible.
 
-### No Mutations
+### No mutations
 
 KQL only offers access to data in your site. It does not support any mutations. All destructive methods are blocked and cannot be accessed in queries.
 
-## Plugins
+## Credits
 
-- [nuxt-kql](https://nuxt-kql.jhnn.dev): A Nuxt 3 module for KQL.
+[Bastian Allgeier](https://getkirby.com)
 
 ## License
 
-[MIT](./LICENSE) License © 2020-2022 [Bastian Allgeier](https://getkirby.com)
+<http://www.opensource.org/licenses/mit-license.php>

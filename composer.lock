@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e714509727d9dd042223f4765d2ea1be",
+    "content-hash": "817a790e64fd07ecae0be115d6e5c5c1",
     "packages": [
         {
             "name": "claviska/simpleimage",
@@ -271,6 +271,61 @@
                 }
             ],
             "time": "2020-12-28T12:54:39+00:00"
+        },
+        {
+            "name": "getkirby/kql",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/getkirby/kql.git",
+                "reference": "65d3fdb0ebaf8e3af06ea771682436c10d6b54ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/getkirby/kql/zipball/65d3fdb0ebaf8e3af06ea771682436c10d6b54ab",
+                "reference": "65d3fdb0ebaf8e3af06ea771682436c10d6b54ab",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.2.1"
+            },
+            "type": "kirby-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Kirby\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bastian Allgeier",
+                    "email": "bastian@getkirby.com"
+                }
+            ],
+            "description": "Kirby Query Language",
+            "homepage": "https://getkirby.com",
+            "keywords": [
+                "api",
+                "cms",
+                "headless",
+                "json",
+                "kirby",
+                "query"
+            ],
+            "support": {
+                "issues": "https://github.com/getkirby/kql/issues",
+                "source": "https://github.com/getkirby/kql/tree/develop"
+            },
+            "funding": [
+                {
+                    "url": "https://getkirby.com/buy",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-05-25T13:51:05+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -1276,7 +1331,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "getkirby/kql": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
