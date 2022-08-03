@@ -11,27 +11,23 @@ function kql($input, $model = null)
 
 Kirby::plugin('getkirby/kql', [
     'api' => [
-        'routes' => [
-            [
-                'pattern' => 'query',
-                'method' => 'POST|GET',
-                'action' => function () {
-                    $result = Kql::run([
-                        'query'      => get('query'),
-                        'select'     => get('select'),
-                        'pagination' => [
-                            'page'  => get('page', 1),
-                            'limit' => get('limit', 100)
-                        ]
-                    ]);
+        'routes' => function ($kirby) {
+            return [
+                [
+                    'pattern' => 'query',
+                    'method'  => 'POST|GET',
+                    'auth'    => $kirby->option('kql.auth') === false ? false : true,
+                    'action'  => function () {
+                        $result = Kql::run(get());
 
-                    return [
-                        'code'   => 200,
-                        'result' => $result,
-                        'status' => 'ok',
-                    ];
-                }
-            ]
-        ]
+                        return [
+                            'code'   => 200,
+                            'result' => $result,
+                            'status' => 'ok',
+                        ];
+                    }
+                ]
+            ];
+        }
     ]
 ]);
