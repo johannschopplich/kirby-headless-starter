@@ -2,7 +2,6 @@
 
 namespace Kirby\Kql;
 
-use Exception;
 use Kirby\Cms\Collection;
 use Kirby\Toolkit\Str;
 
@@ -38,11 +37,6 @@ class Kql
             'pagination' => $input['pagination'] ?? null,
         ];
 
-        // check for invalid queries
-        if (is_string($query) === false) {
-            throw new Exception('The query must be a string');
-        }
-
         $result = static::query($query, $model);
 
         return static::select($result, $select, $options);
@@ -64,25 +58,22 @@ class Kql
         return static::run($selection, $model);
     }
 
-    public static function query(string $query, $model = null)
+    public static function query($query, $model = null)
     {
         $kirby = kirby();
         $site  = $kirby->site();
         $model = $model ?? $site;
 
         $query = new Query($query, [
-            'collection' => function (string $id) use ($kirby) {
-                return $kirby->collection($id);
-            },
-            'file'  => function (string $id) use ($kirby) {
+            'kirby' => $kirby,
+            'file'  => function ($id) use ($kirby) {
                 return $kirby->file($id);
             },
-            'kirby' => $kirby,
-            'page'  => function (string $id) use ($site) {
+            'page'  => function ($id) use ($site) {
                 return $site->find($id);
             },
             'site'  => $site,
-            'user'  => function (string $id = null) use ($kirby) {
+            'user'  => function ($id = null) use ($kirby) {
                 return $kirby->user($id);
             },
             $model::CLASS_ALIAS => $model
@@ -94,17 +85,7 @@ class Kql
     public static function render($value)
     {
         if (is_object($value) === true) {
-            $object = Interceptor::replace($value);
-
-            if (method_exists($object, 'toResponse') === true) {
-                return $object->toResponse();
-            }
-
-            if (method_exists($object, 'toArray') === true) {
-                return $object->toArray();
-            }
-
-            throw new Exception('The object "' . get_class($object) . '" cannot be rendered. Try querying one of its methods instead.');
+            return Interceptor::replace($value)->toResponse();
         }
 
         return $value;

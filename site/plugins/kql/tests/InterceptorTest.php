@@ -166,8 +166,8 @@ class InterceptorTest extends TestCase
 
     public function testReplaceUnknownObject()
     {
-        $this->expectException('Kirby\Exception\PermissionException');
-        $this->expectExceptionMessage('Access to the class "stdClass" is not supported');
+        $this->expectException('Exception');
+        $this->expectExceptionMessage('Unsupported object: stdClass');
 
         $object = new \stdClass();
         $result = Interceptor::replace($object);

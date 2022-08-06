@@ -4,7 +4,7 @@ namespace Kirby\Kql\Interceptors\Cms;
 
 class Layouts extends Collection
 {
-    public const CLASS_ALIAS = 'layouts';
+    const CLASS_ALIAS = 'layouts';
 
     public function toArray(): array
     {

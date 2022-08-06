@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "817a790e64fd07ecae0be115d6e5c5c1",
+    "content-hash": "ae39d46e8c574652e12a72dde3e105a1",
     "packages": [
         {
             "name": "claviska/simpleimage",
@@ -274,20 +274,20 @@
         },
         {
             "name": "getkirby/kql",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/kql.git",
-                "reference": "65d3fdb0ebaf8e3af06ea771682436c10d6b54ab"
+                "reference": "8870cb23118e26801141ddfb17af98229f06f05b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/kql/zipball/65d3fdb0ebaf8e3af06ea771682436c10d6b54ab",
-                "reference": "65d3fdb0ebaf8e3af06ea771682436c10d6b54ab",
+                "url": "https://api.github.com/repos/getkirby/kql/zipball/8870cb23118e26801141ddfb17af98229f06f05b",
+                "reference": "8870cb23118e26801141ddfb17af98229f06f05b",
                 "shasum": ""
             },
             "require": {
-                "getkirby/composer-installer": "^1.2.1"
+                "getkirby/composer-installer": "^1.2.0"
             },
             "type": "kirby-plugin",
             "autoload": {
@@ -310,14 +310,13 @@
             "keywords": [
                 "api",
                 "cms",
-                "headless",
                 "json",
                 "kirby",
                 "query"
             ],
             "support": {
                 "issues": "https://github.com/getkirby/kql/issues",
-                "source": "https://github.com/getkirby/kql/tree/develop"
+                "source": "https://github.com/getkirby/kql/tree/1.0.0"
             },
             "funding": [
                 {
@@ -325,7 +324,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-05-25T13:51:05+00:00"
+            "time": "2021-02-12T10:33:03+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -1331,9 +1330,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "getkirby/kql": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

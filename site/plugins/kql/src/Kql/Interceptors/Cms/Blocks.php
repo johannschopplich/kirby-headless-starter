@@ -4,7 +4,7 @@ namespace Kirby\Kql\Interceptors\Cms;
 
 class Blocks extends Collection
 {
-    public const CLASS_ALIAS = 'blocks';
+    const CLASS_ALIAS = 'blocks';
 
     public function allowedMethods(): array
     {

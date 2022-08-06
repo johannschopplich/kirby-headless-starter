@@ -4,10 +4,6 @@ Kirby's Query Language API combines the flexibility of Kirby's data structures, 
 
 The Kirby QL API takes POST requests with standard JSON objects and returns highly customized results that fit your application.
 
-## Demo
-
-You can play in our KQL sandbox here: https://kql.getkirby.com The sandbox is based on the Kirby starterkit.
-
 ## Example
 
 POST: /api/query
@@ -88,18 +84,6 @@ composer require getkirby/kql
 ### API Endpoint
 
 KQL adds a new `query` API endpoint to your Kirby API. (i.e. https://yoursite.com/api/query) The endpoint requires authentication: https://getkirby.com/docs/guide/api/authentication
-
-You can switch off authentication in your config at your own risk:
-
-```php
-<?php
-
-return [
-  'kql' => [
-    'auth' => false
-  ]
-];
-```
 
 ### Sending POST requests
 
@@ -526,9 +510,7 @@ You can specify a custom limit with the limit option. The default limit for coll
 ```js
 const response = await axios.post(api, {
   query: "page('notes').children",
-  pagination: {
-    limit: 5,
-  },
+  limit: 5,
   select: {
     title: "page.title"
   }
@@ -577,10 +559,8 @@ You can jump to any page in the resultset with the `page` option.
 ```js
 const response = await axios.post(api, {
   query: "page('notes').children",
-  pagination: {
-    page: 2,
-    limit: 5
-  },
+  page: 2,
+  limit: 5,
   select: {
     title: "page.title"
   }
@@ -624,10 +604,8 @@ const response = await axios.post(api, {
     title: "page.title",
     images: {
       query: "page.images",
-      pagination: {
-        page: 2,
-        limit: 5
-      }
+      page: 2,
+      limit: 5,
       select: {
         filename: true
       }
@@ -675,174 +653,6 @@ const response = await axios.post(api, {
   }
 }, { auth });
 ```
-
-### Allowing methods
-
-KQL is very strict with allowed methods by default. Custom page methods, file methods or model methods are not allowed to make sure you don't miss an important security issue by accident. You can allow additional methods though.
-
-#### Allow list
-
-The most straight forward way is to define allowed methods in your config.
-
-```php
-<?php
-
-return [
-  'kql' => [
-    'methods' => [
-      'allowed' => [
-        'MyCustomPage::cover'
-      ]
-    ]
-  ]
-];
-```
-
-#### DocBlock comment
-
-You can also add a comment to your methods' doc blocks to allow them:
-
-```php
-class MyCustomPage extends Page
-{
-  /**
-   * @kql-allowed
-   */
-  public function cover()
-  {
-    return $this->images()->findBy('name', 'cover') ?? $this->image();
-  }
-}
-```
-
-This works for model methods as well as for custom page methods, file methods or other methods defined in plugins.
-
-```php
-Kirby::plugin('your-name/your-plugin', [
-  'pageMethods' => [
-    /**
-     * @kql-allowed
-     */
-    'cover' => function () {
-      return $this->images()->findBy('name', 'cover') ?? $this->image();
-    }
-  ]
-]);
-```
-
-### Blocking methods
-
-You can block individual class methods that would normally be accessible by listing them in your config:
-
-```php
-<?php
-
-return [
-  'kql' => [
-    'methods' => [
-      'blocked' => [
-        'Kirby\Cms\Page::url'
-      ]
-    ]
-  ]
-];
-```
-
-### Blocking classes
-
-Sometimes you might want to reduce access to various parts of the system. This can be done by blocking individual methods (see above) or by blocking entire classes.
-
-```php
-<?php
-
-return [
-  'kql' => [
-    'classes' => [
-      'blocked' => [
-        'Kirby\Cms\User'
-      ]
-    ]
-  ]
-];
-```
-
-Now, access to any user is blocked.
-
-### Custom classes and interceptors
-
-If you want to add support for a custom class or a class in Kirby's source that is not supported yet, you can list your own interceptors in your config
-
-```php
-<?php
-
-return [
-  'kql' => [
-    'interceptors' => [
-      'Kirby\Cms\System' => 'SystemInterceptor'
-    ]
-  ]
-];
-```
-
-You can put the class for such a custom interceptor in a plugin for example.
-
-```php
-<?php
-
-class SystemInterceptor extends Kirby\Kql\Interceptors\Interceptor
-{
-  public const CLASS_ALIAS = 'system';
-
-  protected $toArray = [
-    'isInstallable',
-  ];
-
-  public function allowedMethods(): array
-  {
-    return [
-      'isInstallable',
-    ];
-  }
-}
-```
-
-Interceptor classes are pretty straight forward. With the CLASS_ALIAS you can give objects with that class a short name for KQL queries. The `$toArray` property lists all methods that should be rendered if you don't run a subquery. I.e. in this case `kirby.system` would render an array with the `isInstallable` value.
-
-The `allowedMethods` method must return an array of all methods that can be access for this object. In addition to that you can also create your own custom methods in an interceptor that will then become available in KQL.
-
-```php
-<?php
-
-class SystemInterceptor extends Kirby\Kql\Interceptors\Interceptor
-{
-  ...
-
-  public function isReady()
-  {
-    return 'yes it is!';
-  }
-}
-```
-
-This custom method can now be used with `kirby.system.isReady` in KQL and will return `yes it is!`
-
-### Unintercepted classes
-
-If you want to fully allow access to an entire class without putting an interceptor in between, you can add the class to the allow list in your config:
-
-```php
-return [
-  'kql' => [
-    'classes' => [
-      'allow' => [
-        'Kirby\Cms\System'
-      ]
-    ]
-  ]
-];
-```
-
-This will introduce full access to all public class methods. This can be very risky though and you should avoid this if possible.
 
 ### No mutations
 

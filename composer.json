@@ -2,7 +2,7 @@
   "require": {
     "php": ">=8.0.0",
     "getkirby/cms": "^3.7",
-    "getkirby/kql": "dev-develop",
+    "getkirby/kql": "^1.0",
     "johannschopplich/kirby-extended": "^2.11"
   },
   "scripts": {

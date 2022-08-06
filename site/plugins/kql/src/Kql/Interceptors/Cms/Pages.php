@@ -4,7 +4,7 @@ namespace Kirby\Kql\Interceptors\Cms;
 
 class Pages extends Collection
 {
-    public const CLASS_ALIAS = 'pages';
+    const CLASS_ALIAS = 'pages';
 
     public function allowedMethods(): array
     {

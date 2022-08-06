@@ -4,7 +4,7 @@ namespace Kirby\Kql\Interceptors\Cms;
 
 class Layout extends Model
 {
-    public const CLASS_ALIAS = 'layout';
+    const CLASS_ALIAS = 'layout';
 
     protected $toArray = [
         'attrs',

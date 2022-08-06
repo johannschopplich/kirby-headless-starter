@@ -4,7 +4,7 @@ namespace Kirby\Kql\Interceptors\Cms;
 
 class File extends Model
 {
-    public const CLASS_ALIAS = 'file';
+    const CLASS_ALIAS = 'file';
 
     protected $toArray = [
         'extension',

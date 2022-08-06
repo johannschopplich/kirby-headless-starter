@@ -6,7 +6,7 @@ use Kirby\Kql\Interceptors\Interceptor;
 
 class App extends Interceptor
 {
-    public const CLASS_ALIAS = 'kirby';
+    const CLASS_ALIAS = 'kirby';
 
     protected $toArray = [
         'site',

@@ -2,13 +2,12 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->exclude('dependencies')
-    ->exclude('panel/node_modules')
     ->in(__DIR__);
 
-$config = new PhpCsFixer\Config();
-return $config
+return PhpCsFixer\Config::create()
     ->setRules([
-        '@PSR12' => true,
+        '@PSR1' => true,
+        '@PSR2' => true,
         'align_multiline_comment' => ['comment_type' => 'phpdocs_like'],
         'array_indentation' => true,
         'array_syntax' => ['syntax' => 'short'],
