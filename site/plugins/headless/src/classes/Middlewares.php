@@ -45,7 +45,51 @@ class Middlewares
     }
 
     /**
-     * Try to resolve JSON page content
+     * Try to resolve global site data
+     *
+     * @return \Kirby\Http\Response|void
+     */
+    public static function tryResolveSite(array $context, array $args)
+    {
+        // The `$args` array contains the route parameters
+        [$path] = $args;
+
+        if ($path !== '_site') {
+            return;
+        }
+
+        $kirby = kirby();
+        $cache = $cacheKey = $data = null;
+
+        // Try to get the site data from cache
+        $cache = $kirby->cache('pages');
+        $cacheKey = '_site.headless.json';
+        $data = $cache->get($cacheKey);
+
+        // Fetch the site regularly
+        if ($data === null) {
+            $template = $kirby->template('_site');
+
+            if (!$template->exists()) {
+                throw new NotFoundException([
+                    'key' => 'template.default.notFound'
+                ]);
+            }
+
+            $data = $template->render([
+                'kirby' => $kirby,
+                'site'  => $kirby->site()
+            ]);
+
+            // Cache the result
+            $cache?->set($cacheKey, $data);
+        }
+
+        return Response::json($data);
+    }
+
+    /**
+     * Try to resolve the page id
      *
      * @return \Kirby\Http\Response|void
      */
