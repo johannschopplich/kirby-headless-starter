@@ -4,13 +4,14 @@
 /** @var \Kirby\Cms\Site $site */
 
 $data = [
+  'title' => $site->title()->value(),
   'children' => $site
     ->children()
     ->published()
     ->map(fn ($child) => [
         'id' => $child->id(),
         'title' => $child->title()->value(),
-        'template' => $child->intendedTemplate()->name()
+        'isListed' => $child->isListed()
     ])
     ->values()
 ];
