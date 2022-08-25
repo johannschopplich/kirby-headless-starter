@@ -23,7 +23,7 @@ return [
             [Middlewares::class, 'tryResolveFiles'],
             // [UserMiddlewares::class, 'hasAuthHeaderOrRedirect'],
             [Middlewares::class, 'hasBearerToken'],
-            // [Middlewares::class, 'tryResolveSite'],
+            [Middlewares::class, 'tryResolveSite'],
             [Middlewares::class, 'tryResolvePage']
         )
     ]
