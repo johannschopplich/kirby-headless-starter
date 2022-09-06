@@ -6,38 +6,47 @@ use Kirby\Kql\Interceptors\Interceptor;
 
 class Field extends Interceptor
 {
-    const CLASS_ALIAS = 'field';
+	public const CLASS_ALIAS = 'field';
 
-    public function __call($method, array $args = [])
-    {
-        if ($this->isAllowedMethod($method) === true) {
-            return $this->object->$method(...$args);
-        }
+	public function __call($method, array $args = [])
+	{
+		if ($this->isAllowedMethod($method) === true) {
+			return $this->object->$method(...$args);
+		}
 
-        $methods = array_keys($this->object::$methods);
-        $method  = strtolower($method);
+		// field methods
+		$methods = array_keys($this->object::$methods);
+		$method  = strtolower($method);
 
-        if (in_array($method, $methods) === true) {
-            return $this->object->$method(...$args);
-        }
+		if (in_array($method, $methods) === true) {
+			return $this->object->$method(...$args);
+		}
 
-        $this->forbiddenMethod($method);
-    }
+		// aliases
+		$aliases = array_keys($this->object::$aliases);
+		$alias   = strtolower($method);
 
-    public function allowedMethods(): array
-    {
-        return [
-            'exists',
-            'isEmpty',
-            'isNotEmpty',
-            'key',
-            'or',
-            'value'
-        ];
-    }
+		if (in_array($alias, $aliases) === true) {
+			return $this->object->$method(...$args);
+		}
 
-    public function toResponse()
-    {
-        return $this->object->toString();
-    }
+		$this->forbiddenMethod($method);
+	}
+
+	public function allowedMethods(): array
+	{
+		return [
+			'exists',
+			'isEmpty',
+			'isNotEmpty',
+			'key',
+			'or',
+			'value'
+		];
+	}
+
+	public function toResponse()
+	{
+		return $this->object->toString();
+	}
 }
