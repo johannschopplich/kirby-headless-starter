@@ -2,7 +2,6 @@
 
 use KirbyHeadless\Api\Api;
 use KirbyHeadless\Api\Middlewares;
-use KirbyHeadless\Api\UserMiddlewares;
 
 return [
     /**
@@ -21,7 +20,6 @@ return [
         'pattern' => '(:all)',
         'action' => Api::createHandler(
             [Middlewares::class, 'tryResolveFiles'],
-            // [UserMiddlewares::class, 'hasAuthHeaderOrRedirect'],
             [Middlewares::class, 'hasBearerToken'],
             [Middlewares::class, 'tryResolveSite'],
             [Middlewares::class, 'tryResolvePage']

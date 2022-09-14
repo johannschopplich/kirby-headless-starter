@@ -27,6 +27,12 @@ return [
     // Default to token-based authentication
     'kql' => [
         'auth' => 'bearer'
-    ]
+    ],
 
+    // Further Kirby headless options
+    'kirby-headless' => [
+        // Redirect to the Panel if no authorization header is sent, useful for
+        // content managers visiting the site
+        'autoPanelRedirect' => false
+    ]
 ];

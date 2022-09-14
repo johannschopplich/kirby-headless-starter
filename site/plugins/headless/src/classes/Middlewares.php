@@ -148,8 +148,13 @@ class Middlewares
      */
     public static function hasBearerToken()
     {
+        $kirby = kirby();
         $token = env('KIRBY_HEADLESS_API_TOKEN');
-        $authorization = kirby()->request()->header('Authorization');
+        $authorization = $kirby->request()->header('Authorization');
+
+        if ($kirby->option('kirby-headless.panelRedirect', false) && empty($authorization)) {
+            go(option('panel.slug'));
+        }
 
         if (
             !empty($token) &&

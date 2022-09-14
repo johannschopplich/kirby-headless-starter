@@ -26,7 +26,6 @@ This project works well with [nuxt-kql](https://nuxt-kql.jhnn.dev).
   - You decide, which data you share
 - 🦾 Express-esque [API builder](#api-builder) with middleware support
 
-
 ## Use Cases
 
 Fetch data from a headless Kirby instance:
@@ -209,7 +208,7 @@ return [
 
 </details>
 
-You you use one of the [built-in middlewares](./site/plugins/headless/src/classes/Middlewares.php) or write custom ones in the [`UserMiddlewares.php`](./site/plugins/headless/src/classes/UserMiddlewares.php):
+You you use one of the [built-in middlewares](./site/plugins/headless/src/classes/Middlewares.php) or write custom ones in by extending the middleware class or creating a custom class defining your custom middleware functions:
 
 <details>
 <summary>🆒 Example custom middleware</summary>
@@ -270,22 +269,23 @@ If left empty, the preview button will be disabled.
 
 To simplify this approach, we use the standard template structure, but encode each template's content as JSON via the internal [route middleware](./site/plugins/headless/src/extensions/routes.php).
 
-## How Can I Redirect to the Panel Directly?
+## How Can I Redirect Browser Visitors to the Panel?
 
-Navigate to [`routes.php`](./site/plugins/headless/src/extensions/routes.php) and uncomment the `hasAuthHeaderOrRedirect` user middleware:
+Content managers or editors visiting the headless Kirby site may not want to see any API response, but use the Panel solely. To let them automatically be redirected to the Panel, set the following option in your Kirby configuration:
 
 ```php
-[
-    'pattern' => '(:all)',
-    'action' => Api::createHandler(
-        // ...
-        [UserMiddlewares::class, 'hasAuthHeaderOrRedirect'],
-        // ...
-    )
+# /site/config/config.php
+return [
+    // Further Kirby headless options
+    'kirby-headless' => [
+        // Redirect to the Panel if no authorization header is sent, useful for
+        // content managers visiting the site
+        'autoPanelRedirect' => false
+    ]
 ]
 ```
 
-Now, request via the browser will be redirected to the Kirby Panel.
+A middleware checks if an `Authentication` header is set, which is not the case in the browser context.
 
 ## License
 
