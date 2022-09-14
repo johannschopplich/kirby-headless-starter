@@ -1,6 +1,6 @@
 <?php
 
-use Kirby\Http\Uri;
+use Kirby\Toolkit\Str;
 
 return [
     'frontendUrl' => function () {
@@ -11,9 +11,10 @@ return [
             return null;
         }
 
-        $url = new Uri($frontendUrl);
-        $url->path = $this->id();
-
-        return $url->toString();
+        return Str::replace(
+            $this->url(),
+            $this->kirby()->url(),
+            $frontendUrl
+        );
     }
 ];
