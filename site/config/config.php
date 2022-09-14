@@ -35,4 +35,5 @@ return [
         // content managers visiting the site
         'autoPanelRedirect' => false
     ]
+
 ];
