@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35ee6e3c92d24eed8d9d65a7e68f69a6",
+    "content-hash": "835bb5090bfd1a1a1843900ca9b0ace2",
     "packages": [
         {
             "name": "claviska/simpleimage",
@@ -390,23 +390,23 @@
             "time": "2022-07-30T15:56:11+00:00"
         },
         {
-            "name": "johannschopplich/kirby-extended",
-            "version": "2.11.5",
+            "name": "johannschopplich/kirby-helpers",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/johannschopplich/kirby-extended.git",
-                "reference": "06a4dd911477307a74f0afb87cdb9959bb760abb"
+                "url": "https://github.com/johannschopplich/kirby-helpers.git",
+                "reference": "227fbd037608800d6140db1091ed1f7ed46520bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-extended/zipball/06a4dd911477307a74f0afb87cdb9959bb760abb",
-                "reference": "06a4dd911477307a74f0afb87cdb9959bb760abb",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/227fbd037608800d6140db1091ed1f7ed46520bc",
+                "reference": "227fbd037608800d6140db1091ed1f7ed46520bc",
                 "shasum": ""
             },
             "require": {
                 "getkirby/composer-installer": "^1.2",
                 "php": ">=8.0.0",
-                "symfony/polyfill-php80": "^1.23",
+                "symfony/polyfill-php80": "^1.26",
                 "vlucas/phpdotenv": "^5.0"
             },
             "require-dev": {
@@ -421,7 +421,7 @@
                     "helpers.php"
                 ],
                 "psr-4": {
-                    "KirbyExtended\\": "classes/KirbyExtended/"
+                    "KirbyHelpers\\": "classes/KirbyHelpers/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -436,20 +436,23 @@
                 }
             ],
             "description": "Dotenv support, meta tags generation and more for the Kirby CMS",
-            "homepage": "https://github.com/johannschopplich/kirby-extended#readme",
+            "homepage": "https://github.com/johannschopplich/kirby-helpers#readme",
             "keywords": [
                 "dotenv",
                 "env",
+                "getkirby",
                 "kirby",
+                "kirby-cms",
                 "meta",
                 "meta-tags",
-                "seo"
+                "seo",
+                "vite"
             ],
             "support": {
-                "issues": "https://github.com/johannschopplich/kirby-extended/issues",
-                "source": "https://github.com/johannschopplich/kirby-extended/tree/v2.11.5"
+                "issues": "https://github.com/johannschopplich/kirby-helpers/issues",
+                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v3.0.1"
             },
-            "time": "2022-09-14T07:38:46+00:00"
+            "time": "2022-09-20T18:55:33+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
