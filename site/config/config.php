@@ -30,7 +30,7 @@ return [
     ],
 
     // Further Kirby headless options
-    'kirby-headless' => [
+    'headless' => [
         // Redirect to the Panel if no authorization header is sent, useful for
         // content managers visiting the site
         'autoPanelRedirect' => false

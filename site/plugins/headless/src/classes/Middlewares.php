@@ -152,7 +152,7 @@ class Middlewares
         $token = env('KIRBY_HEADLESS_API_TOKEN');
         $authorization = $kirby->request()->header('Authorization');
 
-        if ($kirby->option('kirby-headless.autoPanelRedirect', false) && empty($authorization)) {
+        if ($kirby->option('headless.autoPanelRedirect', false) && empty($authorization)) {
             go(option('panel.slug'));
         }
 
