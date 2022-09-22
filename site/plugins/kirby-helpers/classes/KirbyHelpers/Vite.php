@@ -2,6 +2,7 @@
 
 namespace KirbyHelpers;
 
+use Kirby\Data\Data;
 use Kirby\Http\Environment;
 use Kirby\Http\Uri;
 
@@ -25,7 +26,7 @@ class Vite
         ], 'strlen'));
 
         try {
-            $this->manifest = json_decode(file_get_contents($path), true);
+            $this->manifest = Data::read($path);
         } catch (\Throwable $t) {
             // Vite is running in development mode.
         }

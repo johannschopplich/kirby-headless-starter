@@ -391,16 +391,16 @@
         },
         {
             "name": "johannschopplich/kirby-helpers",
-            "version": "3.0.1",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-helpers.git",
-                "reference": "227fbd037608800d6140db1091ed1f7ed46520bc"
+                "reference": "3a88274343fd493a202089b109dcd55597ff6662"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/227fbd037608800d6140db1091ed1f7ed46520bc",
-                "reference": "227fbd037608800d6140db1091ed1f7ed46520bc",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/3a88274343fd493a202089b109dcd55597ff6662",
+                "reference": "3a88274343fd493a202089b109dcd55597ff6662",
                 "shasum": ""
             },
             "require": {
@@ -450,9 +450,9 @@
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-helpers/issues",
-                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v3.0.1"
+                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v3.0.4"
             },
-            "time": "2022-09-20T18:55:33+00:00"
+            "time": "2022-09-22T07:15:50+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
