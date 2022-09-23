@@ -3,7 +3,6 @@
 namespace KirbyHelpers;
 
 use Kirby\Data\Data;
-use Kirby\Http\Environment;
 use Kirby\Http\Uri;
 
 class Vite
@@ -50,7 +49,7 @@ class Vite
     {
         $uri = new Uri([
             'scheme' => option('kirby-helpers.vite.server.https', false) ? 'https' : 'http',
-            'host'   => option('kirby-helpers.vite.server.host', (new Environment())->host()),
+            'host'   => option('kirby-helpers.vite.server.host', 'localhost'),
             'port'   => option('kirby-helpers.vite.server.port', 5173),
             'path'   => $path
         ]);
