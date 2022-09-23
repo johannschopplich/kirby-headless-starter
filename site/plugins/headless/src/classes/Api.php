@@ -23,7 +23,7 @@ class Api
             foreach ($fns as $fn) {
                 $result = $fn($context, $args);
 
-                if (is_a($result, Response::class) || is_a($result, File::class)) {
+                if ($result instanceof Response || $result instanceof File) {
                     return $result;
                 }
 
