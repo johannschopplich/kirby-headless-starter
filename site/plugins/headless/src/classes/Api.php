@@ -98,7 +98,7 @@ class Api
         return new Response('', null, 200, [
             'Access-Control-Allow-Origin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN'),
             'Access-Control-Allow-Methods' => 'GET, POST, OPTIONS',
-            'Access-Control-Allow-Headers' => 'Authorization, Content-Type',
+            'Access-Control-Allow-Headers' => '*',
             'Access-Control-Max-Age' => '86400'
         ]);
     }
