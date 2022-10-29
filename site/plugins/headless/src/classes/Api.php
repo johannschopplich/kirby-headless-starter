@@ -95,11 +95,12 @@ class Api
      */
     public static function preflightResponse(): \Kirby\Http\Response
     {
-        return new Response('', null, 200, [
+        return new Response('', null, 204, [
             'Access-Control-Allow-Origin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN'),
             'Access-Control-Allow-Methods' => 'GET, POST, OPTIONS',
             'Access-Control-Allow-Headers' => '*',
-            'Access-Control-Max-Age' => '86400'
+            'Access-Control-Max-Age' => '86400',
+            'Content-Length' => '0'
         ]);
     }
 }
