@@ -15,9 +15,9 @@ $data = [
     ->images()
     ->map(fn ($i) => [
       'id' => $i->id(),
-      'filename' => $i->filename(),
+      'uuid' => $i->uuid()->toString(),
       'url' => $i->url(),
-      'alt' => $i->alt()
+      'alt' => $i->alt()->value()
     ])
     ->values()
 ];
