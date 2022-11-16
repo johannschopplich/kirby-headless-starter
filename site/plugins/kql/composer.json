@@ -2,6 +2,7 @@
 	"name": "getkirby/kql",
 	"description": "Kirby Query Language",
 	"license": "MIT",
+	"version": "1.2.0",
 	"keywords": [
 		"kirby",
 		"cms",
@@ -12,7 +13,6 @@
 	],
 	"homepage": "https://getkirby.com",
 	"type": "kirby-plugin",
-	"version": "1.1.0",
 	"authors": [
 		{
 			"name": "Bastian Allgeier",
