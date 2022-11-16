@@ -23,3 +23,7 @@ Template: image
 ----
 
 Sort: 2
+
+----
+
+Uuid: 5QuRiDBuOn3Mg3Sx

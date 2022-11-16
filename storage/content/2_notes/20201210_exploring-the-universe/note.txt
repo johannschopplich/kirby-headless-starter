@@ -6,9 +6,7 @@ Text: [{"content":{"text":"<p>Far far away, behind the word mountains, far from 
 
 ----
 
-Cover:
-
-- dark-forest.jpg
+Cover: - dark-forest.jpg
 
 ----
 
@@ -25,3 +23,7 @@ Tags: universe, sky
 ----
 
 Subheading: Our quest to the edge of nowhere
+
+----
+
+Uuid: 3LqaapjQsir8n39b
