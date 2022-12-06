@@ -138,16 +138,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.14.5",
+            "version": "2.14.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "a63e5e8f26ebbebf8ed3c5c691637325512eb0dc"
+                "reference": "f7948baaa0330277c729714910336383286305da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/a63e5e8f26ebbebf8ed3c5c691637325512eb0dc",
-                "reference": "a63e5e8f26ebbebf8ed3c5c691637325512eb0dc",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/f7948baaa0330277c729714910336383286305da",
+                "reference": "f7948baaa0330277c729714910336383286305da",
                 "shasum": ""
             },
             "require": {
@@ -197,7 +197,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.14.5"
+                "source": "https://github.com/filp/whoops/tree/2.14.6"
             },
             "funding": [
                 {
@@ -205,20 +205,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-07T12:00:00+00:00"
+            "time": "2022-11-02T16:23:29+00:00"
         },
         {
             "name": "getkirby/cms",
-            "version": "3.8.2",
+            "version": "3.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/kirby.git",
-                "reference": "f16b0b41db19ab5dbcf22e27f4aa2c35cb2c490c"
+                "reference": "41719bd54310dfc2e321a75a8549da98ccf5cd1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/kirby/zipball/f16b0b41db19ab5dbcf22e27f4aa2c35cb2c490c",
-                "reference": "f16b0b41db19ab5dbcf22e27f4aa2c35cb2c490c",
+                "url": "https://api.github.com/repos/getkirby/kirby/zipball/41719bd54310dfc2e321a75a8549da98ccf5cd1d",
+                "reference": "41719bd54310dfc2e321a75a8549da98ccf5cd1d",
                 "shasum": ""
             },
             "require": {
@@ -235,7 +235,7 @@
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
                 "ext-simplexml": "*",
-                "filp/whoops": "2.14.5",
+                "filp/whoops": "2.14.6",
                 "getkirby/composer-installer": "^1.2.1",
                 "laminas/laminas-escaper": "2.12.0",
                 "michelf/php-smartypants": "1.8.1",
@@ -305,7 +305,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-11-15T12:18:18+00:00"
+            "time": "2022-12-06T14:31:06+00:00"
         },
         {
             "name": "getkirby/composer-installer",
@@ -473,26 +473,25 @@
         },
         {
             "name": "johannschopplich/kirby-helpers",
-            "version": "3.0.6",
+            "version": "3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-helpers.git",
-                "reference": "fe30dfe7ba9345c17e9a5843978f232987b782cb"
+                "reference": "b9aac395bedad0eccbdda2f5a061165143362944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/fe30dfe7ba9345c17e9a5843978f232987b782cb",
-                "reference": "fe30dfe7ba9345c17e9a5843978f232987b782cb",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/b9aac395bedad0eccbdda2f5a061165143362944",
+                "reference": "b9aac395bedad0eccbdda2f5a061165143362944",
                 "shasum": ""
             },
             "require": {
                 "getkirby/composer-installer": "^1.2",
                 "php": ">=8.0.0",
-                "symfony/polyfill-php80": "^1.26",
                 "vlucas/phpdotenv": "^5.0"
             },
             "require-dev": {
-                "getkirby/cms": "^3.7"
+                "getkirby/cms": "^3.8"
             },
             "type": "kirby-plugin",
             "extra": {
@@ -532,9 +531,9 @@
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-helpers/issues",
-                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v3.0.6"
+                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v3.0.7"
             },
-            "time": "2022-09-26T19:24:54+00:00"
+            "time": "2022-11-18T18:34:34+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
