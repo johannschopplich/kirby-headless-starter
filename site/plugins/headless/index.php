@@ -19,7 +19,7 @@ load([
             );
         }
     ],
-    'fieldMethods' => require __DIR__ . '/extensions/fieldMethods.php',
+    'fieldMethods' => require __DIR__ . '/src/extensions/fieldMethods.php',
     'pageMethods' => require __DIR__ . '/src/extensions/pageMethods.php',
     'siteMethods' => require __DIR__ . '/src/extensions/siteMethods.php'
 ]);
