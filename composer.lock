@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d1dafa8559e91cc3a26bb1687bf56e1",
+    "content-hash": "6601f86950b1d6d98999d3128161324f",
     "packages": [
         {
             "name": "claviska/simpleimage",
@@ -356,25 +356,33 @@
         },
         {
             "name": "getkirby/kql",
-            "version": "1.2.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/kql.git",
-                "reference": "4c8cdd88c076cdef5323efcd4f0fda38c0865eed"
+                "reference": "bfcc2368d366902a36afdb2fa2547a5a617cacc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/kql/zipball/4c8cdd88c076cdef5323efcd4f0fda38c0865eed",
-                "reference": "4c8cdd88c076cdef5323efcd4f0fda38c0865eed",
+                "url": "https://api.github.com/repos/getkirby/kql/zipball/bfcc2368d366902a36afdb2fa2547a5a617cacc6",
+                "reference": "bfcc2368d366902a36afdb2fa2547a5a617cacc6",
                 "shasum": ""
             },
             "require": {
-                "getkirby/composer-installer": "^1.2.1"
+                "getkirby/cms": ">=3.8.2",
+                "getkirby/composer-installer": "^1.2.1",
+                "php": ">=8.0.0 <8.3.0"
             },
             "type": "kirby-plugin",
+            "extra": {
+                "installer-name": "kql",
+                "kirby-cms-path": false
+            },
             "autoload": {
                 "psr-4": {
-                    "Kirby\\": "src/"
+                    "Kirby\\": [
+                        "tests/"
+                    ]
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -385,6 +393,10 @@
                 {
                     "name": "Bastian Allgeier",
                     "email": "bastian@getkirby.com"
+                },
+                {
+                    "name": "Nico Hoffmann",
+                    "email": "nico@getkirby.com"
                 }
             ],
             "description": "Kirby Query Language",
@@ -398,8 +410,10 @@
                 "query"
             ],
             "support": {
+                "email": "support@getkirby.com",
+                "forum": "https://forum.getkirby.com",
                 "issues": "https://github.com/getkirby/kql/issues",
-                "source": "https://github.com/getkirby/kql/tree/1.2.0"
+                "source": "https://github.com/getkirby/kql"
             },
             "funding": [
                 {
@@ -407,7 +421,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-10-06T10:44:26+00:00"
+            "time": "2022-12-07T16:11:59+00:00"
         },
         {
             "name": "graham-campbell/result-type",
