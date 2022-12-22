@@ -93,14 +93,15 @@ class Api
      *
      * @return \Kirby\Http\Response
      */
-    public static function preflightResponse(): \Kirby\Http\Response
+    public static function createPreflightResponse(): \Kirby\Http\Response
     {
         return new Response('', null, 204, [
             'Access-Control-Allow-Origin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN', '*'),
             'Access-Control-Allow-Methods' => env('KIRBY_HEADLESS_ALLOW_METHODS', 'GET, POST, OPTIONS'),
             'Access-Control-Allow-Headers' => '*',
-            'Access-Control-Max-Age' => '86400',
-            'Content-Length' => '0'
+            'Access-Control-Max-Age' => '86400'
+            // 204 responses **must not** have a `Content-Length` header
+            // (https://www.rfc-editor.org/rfc/rfc7230#section-3.3.2)
         ]);
     }
 }

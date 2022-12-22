@@ -17,7 +17,7 @@ return [
                 'pattern' => '(:all)',
                 'method' => 'OPTIONS',
                 'auth' => $auth,
-                'action' => fn () => Api::preflightResponse()
+                'action' => fn () => Api::createPreflightResponse()
             ],
 
             /**

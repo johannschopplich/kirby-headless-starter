@@ -10,7 +10,7 @@ return [
     [
         'pattern' => '(:all)',
         'method' => 'OPTIONS',
-        'action' => fn () => Api::preflightResponse()
+        'action' => fn () => Api::createPreflightResponse()
     ],
 
     /**
