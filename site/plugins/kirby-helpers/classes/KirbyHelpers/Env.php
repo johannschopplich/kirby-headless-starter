@@ -9,31 +9,8 @@ use PhpOption\Option;
 
 class Env
 {
-    protected static RepositoryInterface $repository;
     protected static bool $loaded = false;
-
-    public static function load(string $path, string $filename = '.env'): array|null
-    {
-        $repository = static::getRepository();
-
-        static::$loaded = true;
-        return Dotenv::create($repository, $path, $filename)->load();
-    }
-
-    public static function isLoaded(): bool
-    {
-        return static::$loaded;
-    }
-
-    public static function getRepository(): \Dotenv\Repository\RepositoryInterface
-    {
-        if (!isset(static::$repository)) {
-            $builder = RepositoryBuilder::createWithDefaultAdapters();
-            static::$repository = $builder->immutable()->make();
-        }
-
-        return static::$repository;
-    }
+    protected static RepositoryInterface|null $repository = null;
 
     public static function get(string $key, $default = null)
     {
@@ -61,5 +38,26 @@ class Env
                 return $value;
             })
             ->getOrCall(fn () => value($default));
+    }
+
+    public static function getRepository(): \Dotenv\Repository\RepositoryInterface
+    {
+        return static::$repository ??= RepositoryBuilder::createWithDefaultAdapters()->immutable()->make();
+    }
+
+    public static function isLoaded(): bool
+    {
+        return static::$loaded;
+    }
+
+    public static function load(string $path, string $filename = '.env'): array
+    {
+        static::$loaded = true;
+
+        return Dotenv::create(
+            static::getRepository(),
+            $path,
+            $filename
+        )->load();
     }
 }

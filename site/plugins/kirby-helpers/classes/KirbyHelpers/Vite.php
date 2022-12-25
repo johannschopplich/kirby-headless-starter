@@ -7,14 +7,8 @@ use Kirby\Http\Uri;
 
 class Vite
 {
-    protected static $instance;
-
-    public static function instance()
-    {
-        return static::$instance ??= new static();
-    }
-
-    public $manifest;
+    public array|null $manifest = null;
+    protected static Vite|null $instance = null;
 
     public function __construct()
     {
@@ -31,18 +25,18 @@ class Vite
         }
     }
 
-    public function isDev(): bool
+    /**
+     * Outputs `<link>` tags for each CSS file of an entry point
+     *
+     * @param string $entry The JavaScript entry point that includes your CSS
+     */
+    public function css(string $entry)
     {
-        return $this->manifest === null;
-    }
-
-    public function prodUrl(string $path): string
-    {
-        return implode('/', array_filter([
-            kirby()->url(),
-            option('kirby-helpers.vite.build.outDir', 'dist'),
-            $path
-        ], 'strlen'));
+        if (is_array($this->manifest)) {
+            foreach ($this->manifest[$entry]['css'] as $file) {
+                return css($this->prodUrl($file));
+            }
+        }
     }
 
     public function devUrl(string $path): string
@@ -55,6 +49,16 @@ class Vite
         ]);
 
         return $uri->toString();
+    }
+
+    public static function instance(): Vite
+    {
+        return static::$instance ??= new static();
+    }
+
+    public function isDev(): bool
+    {
+        return $this->manifest === null;
     }
 
     /**
@@ -73,17 +77,12 @@ class Vite
         return js($url, ['type' => 'module']);
     }
 
-    /**
-     * Outputs `<link>` tags for each CSS file of an entry point
-     *
-     * @param string $entry The JavaScript entry point that includes your CSS
-     */
-    public function css(string $entry)
+    public function prodUrl(string $path): string
     {
-        if (is_array($this->manifest)) {
-            foreach ($this->manifest[$entry]['css'] as $file) {
-                return css($this->prodUrl($file));
-            }
-        }
+        return implode('/', array_filter([
+            kirby()->url(),
+            option('kirby-helpers.vite.build.outDir', 'dist'),
+            $path
+        ], 'strlen'));
     }
 }

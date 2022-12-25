@@ -44,8 +44,8 @@ if (!function_exists('vite')) {
     /**
      * Returns the Vite singleton class instance
      */
-	function vite(): Vite
-	{
-		return Vite::instance();
-	}
+    function vite(): Vite
+    {
+        return Vite::instance();
+    }
 }

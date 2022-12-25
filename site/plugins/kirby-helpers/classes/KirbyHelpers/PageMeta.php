@@ -9,17 +9,12 @@ use Kirby\Toolkit\Html;
 
 class PageMeta
 {
-    protected Page $page;
     protected array $metadata = [];
 
-    public function __construct($page)
+    public function __construct(protected Page $page)
     {
-        $this->page = $page;
         $defaults = option('kirby-helpers.meta.defaults', []);
-
-        if (!empty($defaults)) {
-            $this->metadata = is_callable($defaults) ? $defaults(kirby(), site(), $this->page) : $defaults;
-        }
+        $this->metadata = is_callable($defaults) ? $defaults(kirby(), site(), $this->page) : $defaults;
 
         if (method_exists($this->page, 'metadata')) {
             $this->metadata = A::merge($this->metadata, $this->page->metadata());
@@ -52,6 +47,7 @@ class PageMeta
         }
 
         $field = $this->page->content()->get($key);
+
         if ($field->exists() && $field->isNotEmpty() && $field->value() !== '[]') {
             return $field;
         }
@@ -94,6 +90,22 @@ class PageMeta
         }
 
         return implode(PHP_EOL, $html) . PHP_EOL;
+    }
+
+    public function opensearch(): string
+    {
+        return Html::tag('link', null, [
+            'rel' => 'search',
+            'type' => 'application/opensearchdescription+xml',
+            'title' => site()->title(),
+            'href' => url('open-search.xml'),
+        ]) . PHP_EOL;
+    }
+
+    public function priority(): float
+    {
+        $priority = $this->get('priority', false)->or(0.5)->value();
+        return (float)min(1, max(0, $priority));
     }
 
     public function robots(): string
@@ -193,21 +205,5 @@ class PageMeta
         }
 
         return implode(PHP_EOL, $html) . PHP_EOL;
-    }
-
-    public function opensearch(): string
-    {
-        return Html::tag('link', null, [
-            'rel' => 'search',
-            'type' => 'application/opensearchdescription+xml',
-            'title' => site()->title(),
-            'href' => url('open-search.xml'),
-        ]) . PHP_EOL;
-    }
-
-    public function priority(): float
-    {
-        $priority = $this->get('priority', false)->or(0.5)->value();
-        return (float)min(1, max(0, $priority));
     }
 }

@@ -487,16 +487,16 @@
         },
         {
             "name": "johannschopplich/kirby-helpers",
-            "version": "3.0.7",
+            "version": "3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-helpers.git",
-                "reference": "b9aac395bedad0eccbdda2f5a061165143362944"
+                "reference": "7eaff48898edc177066cf4aed3dd577c65fd3366"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/b9aac395bedad0eccbdda2f5a061165143362944",
-                "reference": "b9aac395bedad0eccbdda2f5a061165143362944",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/7eaff48898edc177066cf4aed3dd577c65fd3366",
+                "reference": "7eaff48898edc177066cf4aed3dd577c65fd3366",
                 "shasum": ""
             },
             "require": {
@@ -505,6 +505,7 @@
                 "vlucas/phpdotenv": "^5.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "@stable",
                 "getkirby/cms": "^3.8"
             },
             "type": "kirby-plugin",
@@ -545,9 +546,9 @@
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-helpers/issues",
-                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v3.0.7"
+                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v3.0.11"
             },
-            "time": "2022-11-18T18:34:34+00:00"
+            "time": "2022-12-25T16:31:40+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
