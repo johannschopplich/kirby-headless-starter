@@ -10,6 +10,11 @@ class Vite
     public array|null $manifest = null;
     protected static Vite|null $instance = null;
 
+    public static function instance(): Vite
+    {
+        return static::$instance ??= new static();
+    }
+
     public function __construct()
     {
         $path = implode(DIRECTORY_SEPARATOR, array_filter([
@@ -23,6 +28,32 @@ class Vite
         } catch (\Throwable $t) {
             // Vite is running in development mode.
         }
+    }
+
+    public function isDev(): bool
+    {
+        return $this->manifest === null;
+    }
+
+    public function devUrl(string $path): string
+    {
+        $uri = new Uri([
+            'scheme' => option('kirby-helpers.vite.server.https', false) ? 'https' : 'http',
+            'host'   => option('kirby-helpers.vite.server.host', 'localhost'),
+            'port'   => option('kirby-helpers.vite.server.port', 5173),
+            'path'   => $path
+        ]);
+
+        return $uri->toString();
+    }
+
+    public function prodUrl(string $path): string
+    {
+        return implode('/', array_filter([
+            kirby()->url(),
+            option('kirby-helpers.vite.build.outDir', 'dist'),
+            $path
+        ], 'strlen'));
     }
 
     /**
@@ -39,28 +70,6 @@ class Vite
         }
     }
 
-    public function devUrl(string $path): string
-    {
-        $uri = new Uri([
-            'scheme' => option('kirby-helpers.vite.server.https', false) ? 'https' : 'http',
-            'host'   => option('kirby-helpers.vite.server.host', 'localhost'),
-            'port'   => option('kirby-helpers.vite.server.port', 5173),
-            'path'   => $path
-        ]);
-
-        return $uri->toString();
-    }
-
-    public static function instance(): Vite
-    {
-        return static::$instance ??= new static();
-    }
-
-    public function isDev(): bool
-    {
-        return $this->manifest === null;
-    }
-
     /**
      * Output a `<script>` tag for an entry point
      *
@@ -75,14 +84,5 @@ class Vite
         }
 
         return js($url, ['type' => 'module']);
-    }
-
-    public function prodUrl(string $path): string
-    {
-        return implode('/', array_filter([
-            kirby()->url(),
-            option('kirby-helpers.vite.build.outDir', 'dist'),
-            $path
-        ], 'strlen'));
     }
 }

@@ -92,22 +92,6 @@ class PageMeta
         return implode(PHP_EOL, $html) . PHP_EOL;
     }
 
-    public function opensearch(): string
-    {
-        return Html::tag('link', null, [
-            'rel' => 'search',
-            'type' => 'application/opensearchdescription+xml',
-            'title' => site()->title(),
-            'href' => url('open-search.xml'),
-        ]) . PHP_EOL;
-    }
-
-    public function priority(): float
-    {
-        $priority = $this->get('priority', false)->or(0.5)->value();
-        return (float)min(1, max(0, $priority));
-    }
-
     public function robots(): string
     {
         $html = [];
@@ -205,5 +189,21 @@ class PageMeta
         }
 
         return implode(PHP_EOL, $html) . PHP_EOL;
+    }
+
+    public function opensearch(): string
+    {
+        return Html::tag('link', null, [
+            'rel' => 'search',
+            'type' => 'application/opensearchdescription+xml',
+            'title' => site()->title(),
+            'href' => url('open-search.xml'),
+        ]) . PHP_EOL;
+    }
+
+    public function priority(): float
+    {
+        $priority = $this->get('priority', false)->or(0.5)->value();
+        return (float)min(1, max(0, $priority));
     }
 }
