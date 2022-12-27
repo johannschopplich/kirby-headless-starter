@@ -46,11 +46,10 @@ return [
                     function (array $context, array $args) use ($kirby) {
                         $input = get();
                         $cache = $cacheKey = $languageCode = $data = null;
+                        $languageCode = $kirby->request()->header('X-Language');
 
                         // Set the Kirby language in multilanguage sites
-                        if (
-                            $kirby->multilang() && ($languageCode = $kirby->request()->header('X-Language'))
-                        ) {
+                        if ($kirby->multilang() && $languageCode) {
                             $kirby->setCurrentLanguage($languageCode);
                         }
 
