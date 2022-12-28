@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6601f86950b1d6d98999d3128161324f",
+    "content-hash": "3495ca8cee3c893042dfe97697a14faf",
     "packages": [
         {
             "name": "claviska/simpleimage",
@@ -484,6 +484,54 @@
                 }
             ],
             "time": "2022-07-30T15:56:11+00:00"
+        },
+        {
+            "name": "johannschopplich/kirby-headless",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johannschopplich/kirby-headless.git",
+                "reference": "f43c9989976eb8077cb4f2dd1e07becbbe0aa3ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/f43c9989976eb8077cb4f2dd1e07becbbe0aa3ea",
+                "reference": "f43c9989976eb8077cb4f2dd1e07becbbe0aa3ea",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "@stable",
+                "getkirby/cms": "^3.8"
+            },
+            "type": "kirby-plugin",
+            "extra": {
+                "kirby-cms-path": false
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Johann Schopplich",
+                    "email": "pkg@johannschopplich.com",
+                    "homepage": "https://johannschopplich.com"
+                }
+            ],
+            "description": "Kirby, but headless only – KQL with bearer token, Express-esque middlewares & more",
+            "homepage": "https://github.com/johannschopplich/kirby-headless-starter#readme",
+            "keywords": [
+                "headless",
+                "kirby"
+            ],
+            "support": {
+                "issues": "https://github.com/johannschopplich/kirby-headless/issues",
+                "source": "https://github.com/johannschopplich/kirby-headless/tree/v1.0.1"
+            },
+            "time": "2022-12-28T14:19:32+00:00"
         },
         {
             "name": "johannschopplich/kirby-helpers",
