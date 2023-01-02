@@ -10,6 +10,7 @@ return [
     [
         'pattern' => '(:all)',
         'method' => 'OPTIONS',
+        'language' => '*',
         'action' => fn () => Api::createPreflightResponse()
     ],
 
@@ -18,6 +19,7 @@ return [
      */
     [
         'pattern' => '(:all)',
+        'language' => '*',
         'action' => Api::createHandler(
             [Middlewares::class, 'tryResolveFiles'],
             [Middlewares::class, 'hasBearerToken'],

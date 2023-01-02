@@ -47,15 +47,19 @@ class Middlewares
      */
     public static function tryResolveSite(array $context, array $args)
     {
+        $kirby = kirby();
+        $cache = $cacheKey = $data = null;
+
         // The `$args` array contains the route parameters
-        [$path] = $args;
+        if ($kirby->multilang()) {
+            [$languageCode, $path] = $args;
+        } else {
+            [$path] = $args;
+        }
 
         if ($path !== '_site') {
             return;
         }
-
-        $kirby = kirby();
-        $cache = $cacheKey = $data = null;
 
         // Try to get the site data from cache
         $cache = $kirby->cache('pages');
@@ -89,9 +93,15 @@ class Middlewares
      */
     public static function tryResolvePage(array $context, array $args)
     {
-        // The `$args` array contains the route parameters
-        [$path] = $args;
         $kirby = kirby();
+        $cache = $cacheKey = $data = null;
+
+        // The `$args` array contains the route parameters
+        if ($kirby->multilang()) {
+            [$languageCode, $path] = $args;
+        } else {
+            [$path] = $args;
+        }
 
         // Fall back to homepage id
         if (empty($path)) {
@@ -104,8 +114,6 @@ class Middlewares
                 $page = $kirby->site()->errorPage();
             }
         }
-
-        $cache = $cacheKey = $data = null;
 
         // Try to get the page from cache
         if ($page->isCacheable()) {
