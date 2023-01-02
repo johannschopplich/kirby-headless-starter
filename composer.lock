@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3495ca8cee3c893042dfe97697a14faf",
+    "content-hash": "3afc0822c68f1449fa4ab8b11d527e73",
     "packages": [
         {
             "name": "claviska/simpleimage",
@@ -535,21 +535,20 @@
         },
         {
             "name": "johannschopplich/kirby-helpers",
-            "version": "3.0.12",
+            "version": "3.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-helpers.git",
-                "reference": "9a5a42eff834bde2e99bb865bfa352afed56e803"
+                "reference": "d3c1fe3c8d2f72fe083796ffd3e64871b577d5d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/9a5a42eff834bde2e99bb865bfa352afed56e803",
-                "reference": "9a5a42eff834bde2e99bb865bfa352afed56e803",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/d3c1fe3c8d2f72fe083796ffd3e64871b577d5d3",
+                "reference": "d3c1fe3c8d2f72fe083796ffd3e64871b577d5d3",
                 "shasum": ""
             },
             "require": {
                 "getkirby/composer-installer": "^1.2",
-                "php": ">=8.0.0",
                 "vlucas/phpdotenv": "^5.0"
             },
             "require-dev": {
@@ -594,9 +593,9 @@
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-helpers/issues",
-                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v3.0.12"
+                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v3.0.13"
             },
-            "time": "2022-12-25T18:50:02+00:00"
+            "time": "2022-12-28T20:47:59+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -1485,9 +1484,7 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {
-        "php": ">=8.0.0"
-    },
+    "platform": [],
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
 }

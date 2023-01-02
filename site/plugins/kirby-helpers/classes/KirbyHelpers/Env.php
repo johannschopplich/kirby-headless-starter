@@ -33,7 +33,7 @@ class Env
         )->load();
     }
 
-    public static function get(string $key, $default = null)
+    public static function get(string $key, $default = null): mixed
     {
         return Option::fromValue(static::getRepository()->get($key))
             ->map(function ($value) {

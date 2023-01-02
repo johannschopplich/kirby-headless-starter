@@ -2,7 +2,7 @@
   "name": "johannschopplich/kirby-helpers",
   "description": "Dotenv support, meta tags generation and more for the Kirby CMS",
   "type": "kirby-plugin",
-  "version": "3.0.12",
+  "version": "3.0.13",
   "keywords": [
     "getkirby",
     "kirby",
@@ -24,7 +24,6 @@
     }
   ],
   "require": {
-    "php": ">=8.0.0",
     "getkirby/composer-installer": "^1.2",
     "vlucas/phpdotenv": "^5.0"
   },
