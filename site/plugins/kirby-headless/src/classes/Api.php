@@ -11,9 +11,6 @@ class Api
 {
     /**
      * Create an API handler
-     *
-     * @param callable[] $fns
-     * @return mixed
      */
     public static function createHandler(callable ...$fns)
     {
@@ -37,10 +34,6 @@ class Api
     /**
      * Create an API response
      * Enforces consistent JSON responses by wrapping Kirby's `Response` class
-     *
-     * @param int $code
-     * @param mixed $data
-     * @return \Kirby\Http\Response
      */
     public static function createResponse(int $code, $data = null): Response
     {
@@ -61,9 +54,7 @@ class Api
     /**
      * Get the status message for the given code
      *
-     * @param int $code
-     * @return string
-     * @throws Exception
+     * @throws \Exception
      */
     private static function getStatusMessage(int $code): string
     {
@@ -90,10 +81,8 @@ class Api
 
     /**
      * Respond to CORS preflight requests
-     *
-     * @return \Kirby\Http\Response
      */
-    public static function createPreflightResponse(): \Kirby\Http\Response
+    public static function createPreflightResponse(): Response
     {
         return new Response('', null, 204, [
             'Access-Control-Allow-Origin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN', '*'),

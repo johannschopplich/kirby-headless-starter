@@ -11,8 +11,6 @@ class Middlewares
 {
     /**
      * Try to resolve page and site files
-     *
-     * @return \Kirby\Cms\File|void
      */
     public static function tryResolveFiles(array $context, array $args)
     {
@@ -46,8 +44,6 @@ class Middlewares
 
     /**
      * Try to resolve global site data
-     *
-     * @return \Kirby\Http\Response|void
      */
     public static function tryResolveSite(array $context, array $args)
     {
@@ -90,8 +86,6 @@ class Middlewares
 
     /**
      * Try to resolve the page id
-     *
-     * @return \Kirby\Http\Response|void
      */
     public static function tryResolvePage(array $context, array $args)
     {
@@ -143,8 +137,6 @@ class Middlewares
     /**
      * Checks if a bearer token was sent with the request and
      * if it matches the one configured in `.env`
-     *
-     * @return \Kirby\Http\Response|void
      */
     public static function hasBearerToken()
     {
@@ -166,8 +158,6 @@ class Middlewares
 
     /**
      * Checks if a body was sent with the request
-     *
-     * @return \Kirby\Http\Response|array
      */
     public static function hasBody(array $context)
     {

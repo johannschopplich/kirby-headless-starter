@@ -289,4 +289,4 @@ A middleware checks if an `Authentication` header is set, which is not the case 
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [Johann Schopplich](https://github.com/johannschopplich)
+[MIT](./LICENSE) License © 2022-2023 [Johann Schopplich](https://github.com/johannschopplich)
