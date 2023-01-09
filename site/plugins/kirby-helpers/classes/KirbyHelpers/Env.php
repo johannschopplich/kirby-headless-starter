@@ -12,7 +12,7 @@ class Env
     protected static bool $loaded = false;
     protected static RepositoryInterface|null $repository = null;
 
-    public static function getRepository(): \Dotenv\Repository\RepositoryInterface
+    public static function getRepository(): RepositoryInterface
     {
         return static::$repository ??= RepositoryBuilder::createWithDefaultAdapters()->immutable()->make();
     }

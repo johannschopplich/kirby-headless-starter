@@ -8,7 +8,7 @@ use KirbyHelpers\PageMeta;
 use KirbyHelpers\Redirects;
 use KirbyHelpers\SiteMeta;
 
-Kirby::plugin('johannschopplich/kirby-helpers', [
+Kirby::plugin('johannschopplich/helpers', [
     'hooks' => [
         'route:after' => function (\Kirby\Http\Route $route, string $path, string $method, $result, bool $final) {
             if ($final && empty($result)) {

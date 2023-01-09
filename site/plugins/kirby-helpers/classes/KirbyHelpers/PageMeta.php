@@ -163,7 +163,7 @@ class PageMeta
         foreach ($opengraph as $prop => $content) {
             if (is_array($content)) {
                 if (str_starts_with($prop, 'namespace:')) {
-                    $prop = preg_replace('/^(namespace:)/', '', $prop);
+                    $prop = substr($prop, 10);
                 }
 
                 foreach ($content as $typeProp => $typeContent) {
