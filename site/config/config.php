@@ -5,7 +5,6 @@ return [
     'debug' => env('KIRBY_DEBUG', false),
 
     'languages' => env('KIRBY_MULTILANG', false),
-    'languages.detect' => env('KIRBY_MULTILANG_DETECT', false),
 
     'panel' => [
         'install' => env('KIRBY_PANEL_INSTALL', false),
@@ -29,11 +28,26 @@ return [
         'auth' => 'bearer'
     ],
 
-    // Further Kirby headless options
+    // Kirby headless options
     'headless' => [
-        // Redirect to the Panel if no authorization header is sent, useful for
-        // content managers visiting the site
-        'autoPanelRedirect' => false
+        // Optional API token to use for authentication, also used
+        // for for KQL endpoint
+        'token' => env('KIRBY_HEADLESS_API_TOKEN'),
+
+        'panel' => [
+            // Preview URL for the Panel preview button
+            'frontendUrl' => env('KIRBY_HEADLESS_FRONTEND_URL'),
+            // Redirect to the Panel if no authorization header is sent,
+            // useful for editors visiting the site directly
+            'redirect' => false
+        ],
+
+        'cors' => [
+            'allowOrigin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN', '*'),
+            'allowMethods' => env('KIRBY_HEADLESS_ALLOW_METHODS', 'GET, POST, OPTIONS'),
+            'allowHeaders' => env('KIRBY_HEADLESS_ALLOW_HEADERS', '*'),
+            'maxAge' => env('KIRBY_HEADLESS_MAX_AGE', '86400')
+        ]
     ]
 
 ];

@@ -5,7 +5,7 @@ use Kirby\Toolkit\Str;
 return [
     'frontendUrl' => function () {
         /** @var \Kirby\Cms\Page $this */
-        $frontendUrl = env('KIRBY_HEADLESS_FRONTEND_URL');
+        $frontendUrl = $this->kirby()->option('headless.panel.frontendUrl');
 
         if (empty($frontendUrl)) {
             return null;

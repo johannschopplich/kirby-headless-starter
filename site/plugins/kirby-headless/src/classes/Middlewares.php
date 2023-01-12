@@ -149,11 +149,11 @@ class Middlewares
     public static function hasBearerToken()
     {
         $kirby = kirby();
-        $token = env('KIRBY_HEADLESS_API_TOKEN');
+        $token = $kirby->option('headless.token');
         $authorization = $kirby->request()->header('Authorization');
 
-        if ($kirby->option('headless.autoPanelRedirect', false) && empty($authorization)) {
-            go(option('panel.slug'));
+        if ($kirby->option('headless.panel.redirect', false) && empty($authorization)) {
+            go($kirby->option('panel.slug'));
         }
 
         if (
@@ -173,7 +173,7 @@ class Middlewares
 
         if (empty($body)) {
             return Api::createResponse(400, [
-                'error' => 'No data was sent with the request'
+                'error' => 'No body was sent with the request'
             ]);
         }
 

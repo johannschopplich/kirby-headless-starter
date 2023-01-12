@@ -36,7 +36,7 @@ return [
                         }
 
                         $authorization = $kirby->request()->header('Authorization');
-                        $token = env('KIRBY_HEADLESS_API_TOKEN');
+                        $token = $kirby->option('headless.token');
 
                         if ($authorization !== 'Bearer ' . $token) {
                             return Api::createResponse(401);

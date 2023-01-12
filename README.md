@@ -2,9 +2,9 @@
 
 > ℹ️ Send a request with a `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.jhnn.dev) for an example response.
 
-This starter kit is intended for an efficient and straight forward headless usage of Kirby. Thus, you will only be able to fetch JSON-encoded data. No visual data shall be presented. You can either use Kirby's default template system to build data (which will be auto-encoded to JSON) or use KQL to fetch data in your consuming application.
+This starter kit converts any Kirby site a truly headless-first CMS. No visual data shall be presented. You will only be able to fetch JSON-encoded data – either by using Kirby's default template system or use KQL to fetch data in your consuming application.
 
-Routing and JSON-encoded responses are handled by the internal [headless](./site/plugins/headless/) plugin, specifically its [global routes](./site/plugins/headless/src/extensions/routes.php) and [API routes](./site/plugins/headless/src/extensions/api.php) for KQL.
+Routing and JSON-encoded responses are handled by the internal [kirby-headless](https://github.com/johannschopplich/kirby-headless) plugin, specifically its [global routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php) and [API routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/api.php) for KQL.
 
 This project works well with [nuxt-kql](https://nuxt-kql.jhnn.dev).
 
@@ -19,19 +19,17 @@ This project works well with [nuxt-kql](https://nuxt-kql.jhnn.dev).
 - 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support via new `/api/kql` route
 - ⚡️ Cached KQL queries
 - 🌐 Multilang support for KQL queries
-- 😵‍💫 No CORS issues!
-- 🍢 Build your own [API chain](./site/plugins/headless/src/extensions/routes.php)
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
-  - Fetch either `/example` or `/example.json`
-  - You decide, which data you share
-- 🦾 Express-esque [API builder](#api-builder) with middleware support
+- 😵‍💫 No CORS issues!
+- 🍢 Build your own [API chain](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php)
+- 🦾 Express-esque [API builder](https://github.com/johannschopplich/kirby-headless#api-builder) with middleware support
 
 ## Use Cases
 
-Fetch data from a headless Kirby instance:
+If you intend to fetch data from a headless Kirby instance, you have two options with this plugin:
 
-- 1️⃣ by using Kirby's default template system
-- 2️⃣ by using KQL
+- 1️⃣ use [Kirby's default template system](#templates)
+- 2️⃣ use [KQL](#kirbyql)
 
 Head over to the [usage](#usage) section for instructions.
 
@@ -65,175 +63,29 @@ Optionally, adapt it's values.
 
 ## Usage
 
-### Bearer Token
+### Private vs. Public API
 
-It's recommended to secure your API with a token. To do so, set the environment variable `KIRBY_HEADLESS_API_TOKEN` with a token string of your choice.
+It's recommended to secure your API with a token. To do so, set the environment variable `KIRBY_HEADLESS_API_TOKEN` to a token string of your choice.
 
 You will then have to provide the HTTP header `Authentication: Bearer ${token}` with each request.
 
 > ⚠️ Without a token your page content will be publicly accessible to everyone.
 
-### Public API
-
-If the environment variable `KIRBY_HEADLESS_API_TOKEN` is left empty, the API will be publicly accessible.
-
 > ℹ️ The internal `/api/kql` route will always enforce bearer authentication, unless you explicitly disable it in your config (see below).
 
 ### Templates
 
-Create templates just like you normally would in any Kirby project. Instead of writing HTML, we build arrays and encode them to JSON. The internal route handler will add the correct content type and also handles caching (if enabled).
-
-<details>
-<summary>🆒 Example template</summary>
-
-```php
-# /site/templates/about.php
-
-$data = [
-  'title' => $page->title()->value(),
-  'layout' => $page->layout()->toLayouts()->toArray(),
-  'address' => $page->address()->value(),
-  'email' => $page->email()->value(),
-  'phone' => $page->phone()->value(),
-  'social' => $page->social()->toStructure()->toArray()
-];
-
-echo \Kirby\Data\Json::encode($data);
-```
-
-</details>
-
-<details>
-<summary>🆒 Fetch that data in the frontend</summary>
-
-```js
-import { $fetch } from "ohmyfetch";
-
-const apiToken = "test";
-
-const response = await $fetch(
-  "<website-url>/about.json",
-  {
-    // Optional, only if you use `KIRBY_HEADLESS_API_TOKEN`
-    headers: {
-      Authentication: `Bearer ${apiToken}`,
-    },
-  }
-);
-
-console.log(response);
-```
-
-</details>
+> 📖 [See documentation in `kirby-headless` plugin](https://github.com/johannschopplich/kirby-headless#templates)
 
 ### KirbyQL
 
-A new KQL endpoint supporting caching and bearer token authentication is implemented under `/api/kql`.
+> 📖 [See documentation in `kirby-headless` plugin](https://github.com/johannschopplich/kirby-headless#kirbyql)
 
-Fetch KQL query results like you always do, but provide an `Authentication` header with your request:
+### Panel Settings
 
-<details>
-<summary>🆒 Fetch example</summary>
+#### Preview URL to the Frontend
 
-```js
-import { $fetch } from "ohmyfetch";
-
-const apiToken = "test";
-
-const response = await $fetch("<website-url>/api/kql", {
-  method: "POST",
-  body: {
-    query: "page('notes').children",
-    select: {
-      title: true,
-      text: "page.text.toBlocks",
-      slug: true,
-      date: "page.date.toDate('d.m.Y')",
-    },
-  },
-  headers: {
-    Authentication: `Bearer ${apiToken}`,
-  },
-});
-
-console.log(response);
-```
-
-</details>
-
-To **disable** the bearer token authentication for your Kirby instance and instead use the **basic authentication** method, set the following in your [`config.php`](./site/config/config.php):
-
-```php
-'kql' => [
-    'auth' => true
-]
-```
-
-> ℹ️ The KQL default endpoint `/api/query` remains using basic authentication and also infers the `kql.auth` config option.
-
-### API Builder
-
-This headless starter includes an Express-esque API builder, defined in the [`KirbyHeadless\Api\Api` class](./site/plugins/headless/src/classes/Api.php). You can use it to re-use logic like handling a token or verifying some other incoming data.
-
-Take a look at the [built-in routes](./site/plugins/headless/src/extensions/routes.php) to get an idea how you can use the API builder to chain complex route logic.
-
-It is also useful to consume POST requests including JSON data:
-
-<details>
-<summary>🆒 Example custom route</summary>
-
-```php
-# /site/config/config.php
-return [
-    'routes' => [
-        [
-            'pattern' => 'post-example',
-            'method' => 'POST',
-            'action' => Api::createHandler(
-                [\KirbyHeadless\Api\Middlewares::class, 'hasBearerToken'],
-                [\KirbyHeadless\Api\Middlewares::class, 'hasBody'],
-                function ($context) {
-                    // Get the data of the POST request
-                    $data = $context['body'];
-
-                    // Do something with `$data` here
-
-                    return Api::createResponse(201);
-                }
-            )
-        ]
-    ]
-];
-```
-
-</details>
-
-You you use one of the [built-in middlewares](./site/plugins/headless/src/classes/Middlewares.php) or write custom ones in by extending the middleware class or creating a custom class defining your custom middleware functions:
-
-<details>
-<summary>🆒 Example custom middleware</summary>
-
-```php
-/**
- * Check if `foo` is sent with the request
- * and bail with an 401 error if not
- *
- * @param array $context
- * @return mixed
- */
-public static function hasFooParam($context)
-{
-    if (empty(get('foo'))) {
-        return Api::createResponse(401);
-    }
-}
-```
-
-</details>
-
-### Preview URL to the Frontend
-
-With the headless approach, the default preview link from the Kirby Panel won't make much sense. Thus, we have to overwrite it. With a custom page method provided by this headless kit:
+With the headless approach, the default preview link from the Kirby Panel won't make much sense, since it will point to the backend API itself. Thus, we have to overwrite it utilizing a custom page method in your site/page blueprints:
 
 ```yaml
 options:
@@ -249,43 +101,26 @@ KIRBY_HEADLESS_FRONTEND_URL=https://example.com
 
 If left empty, the preview button will be disabled.
 
+#### Redirect to the Panel
+
+Editors visiting the headless Kirby site may not want to see any API response, but use the Panel solely. To let them automatically be redirected to the Panel, set the following option in your Kirby configuration:
+
+```php
+# /site/config/config.php
+return [
+    'headless' => [
+        'panel' => [
+            'redirect' => false
+        ]
+    ]
+];
+```
+
 ### Deployment
 
 > ℹ️ See [ploi-deploy.sh](./scripts/ploi-deploy.sh) for exemplary deployment instructions.
 
 > ℹ️ Some hosting environments require to uncomment `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
-
-## FAQ
-
-## Why Not Use Content Representations?
-
-[Content representations](https://getkirby.com/docs/guide/templates/content-representations) are great. But they require a non-representing template. Otherwise, the content representation template just would not be read by Kirby. This means, you would have to create the following template structure:
-
-- `default.php`
-- `default.json.php`
-- `home.php`
-- `home.json.php`
-- … and so on
-
-To simplify this approach, we use the standard template structure, but encode each template's content as JSON via the internal [route middleware](./site/plugins/headless/src/extensions/routes.php).
-
-## How Can I Redirect Browser Visitors to the Panel?
-
-Content managers or editors visiting the headless Kirby site may not want to see any API response, but use the Panel solely. To let them automatically be redirected to the Panel, set the following option in your Kirby configuration:
-
-```php
-# /site/config/config.php
-return [
-    // Further Kirby headless options
-    'headless' => [
-        // Redirect to the Panel if no authorization header is sent, useful for
-        // content managers visiting the site
-        'autoPanelRedirect' => false
-    ]
-]
-```
-
-A middleware checks if an `Authentication` header is set, which is not the case in the browser context.
 
 ## License
 
