@@ -1,6 +1,6 @@
 {
   "require": {
-    "getkirby/cms": "^3.8",
+    "getkirby/cms": "^3.9",
     "getkirby/kql": "^2.0",
     "johannschopplich/kirby-helpers": "^3.0",
     "johannschopplich/kirby-headless": "^1.2"
