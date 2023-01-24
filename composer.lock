@@ -487,16 +487,16 @@
         },
         {
             "name": "johannschopplich/kirby-headless",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-headless.git",
-                "reference": "30733f0aa48be97d331679ab08c1e787e2e6bc99"
+                "reference": "3b81554c8259830eb3e9617e679f49e8dea1e38c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/30733f0aa48be97d331679ab08c1e787e2e6bc99",
-                "reference": "30733f0aa48be97d331679ab08c1e787e2e6bc99",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/3b81554c8259830eb3e9617e679f49e8dea1e38c",
+                "reference": "3b81554c8259830eb3e9617e679f49e8dea1e38c",
                 "shasum": ""
             },
             "require": {
@@ -504,7 +504,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "@stable",
-                "getkirby/cms": "^3.8"
+                "getkirby/cms": "^3.9"
             },
             "type": "kirby-plugin",
             "extra": {
@@ -522,16 +522,16 @@
                 }
             ],
             "description": "Kirby, but headless only – KQL with bearer token, Express-esque middlewares & more",
-            "homepage": "https://github.com/johannschopplich/kirby-headless-starter#readme",
+            "homepage": "https://github.com/johannschopplich/kirby-headless#readme",
             "keywords": [
                 "headless",
                 "kirby"
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-headless/issues",
-                "source": "https://github.com/johannschopplich/kirby-headless/tree/v1.2.0"
+                "source": "https://github.com/johannschopplich/kirby-headless/tree/v1.2.1"
             },
-            "time": "2023-01-12T12:13:09+00:00"
+            "time": "2023-01-23T21:54:50+00:00"
         },
         {
             "name": "johannschopplich/kirby-helpers",

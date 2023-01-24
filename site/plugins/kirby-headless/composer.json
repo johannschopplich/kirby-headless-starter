@@ -2,13 +2,13 @@
   "name": "johannschopplich/kirby-headless",
   "description": "Kirby, but headless only – KQL with bearer token, Express-esque middlewares & more",
   "type": "kirby-plugin",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "keywords": [
     "kirby",
     "headless"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/johannschopplich/kirby-headless-starter#readme",
+  "homepage": "https://github.com/johannschopplich/kirby-headless#readme",
   "authors": [
     {
       "name": "Johann Schopplich",
@@ -21,7 +21,7 @@
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "@stable",
-    "getkirby/cms": "^3.8"
+    "getkirby/cms": "^3.9"
   },
   "scripts": {
     "fix": "php-cs-fixer fix",

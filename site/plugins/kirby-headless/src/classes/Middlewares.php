@@ -48,7 +48,6 @@ class Middlewares
     public static function tryResolveSite(array $context, array $args)
     {
         $kirby = kirby();
-        $cache = $cacheKey = $data = null;
 
         // The `$args` array contains the route parameters
         if ($kirby->multilang()) {
@@ -61,29 +60,23 @@ class Middlewares
             return;
         }
 
-        // Try to get the site data from cache
-        $cache = $kirby->cache('pages');
-        $cacheKey = '_site.headless.json';
-        $data = $cache->get($cacheKey);
+        $data = $kirby->cache('pages')->getOrSet(
+            '_site.headless.json',
+            function () use (&$kirby) {
+                $template = $kirby->template('_site');
 
-        // Fetch the site regularly
-        if ($data === null) {
-            $template = $kirby->template('_site');
+                if (!$template->exists()) {
+                    throw new NotFoundException([
+                        'key' => 'template.default.notFound'
+                    ]);
+                }
 
-            if (!$template->exists()) {
-                throw new NotFoundException([
-                    'key' => 'template.default.notFound'
+                return $template->render([
+                    'kirby' => $kirby,
+                    'site'  => $kirby->site()
                 ]);
             }
-
-            $data = $template->render([
-                'kirby' => $kirby,
-                'site'  => $kirby->site()
-            ]);
-
-            // Cache the result
-            $cache?->set($cacheKey, $data);
-        }
+        );
 
         return Response::json($data);
     }
@@ -169,16 +162,16 @@ class Middlewares
      */
     public static function hasBody(array $context)
     {
-        $body = kirby()->request()->body();
+        $request = kirby()->request();
 
-        if (empty($body)) {
+        if (empty($request->body())) {
             return Api::createResponse(400, [
                 'error' => 'No body was sent with the request'
             ]);
         }
 
-        $context['body'] = $body;
-        $context['query'] = kirby()->request()->query();
+        $context['body'] = $request->body();
+        $context['query'] = $request->query();
 
         return $context;
     }

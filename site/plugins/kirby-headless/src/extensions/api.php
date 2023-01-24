@@ -30,7 +30,7 @@ return [
                 'auth' => $auth,
                 'action' => Api::createHandler(
                     // Middleware to validate the bearer token
-                    function (array $context, array $args) use ($kirby, $authMethod) {
+                    function (array $context, array $args) use (&$kirby, &$authMethod) {
                         if ($authMethod !== 'bearer') {
                             return;
                         }
@@ -43,9 +43,9 @@ return [
                         }
                     },
                     // Middleware to run queries and cache their results
-                    function (array $context, array $args) use ($kirby) {
+                    function (array $context, array $args) use (&$kirby) {
                         $input = get();
-                        $cache = $cacheKey = $languageCode = $data = null;
+                        $cache = $cacheKey = $data = null;
                         $languageCode = $kirby->request()->header('X-Language');
 
                         // Set the Kirby language in multilanguage sites
