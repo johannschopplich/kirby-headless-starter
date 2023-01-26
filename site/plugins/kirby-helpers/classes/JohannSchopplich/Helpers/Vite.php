@@ -1,6 +1,6 @@
 <?php
 
-namespace KirbyHelpers;
+namespace JohannSchopplich\Helpers;
 
 use Kirby\Data\Data;
 use Kirby\Http\Uri;
@@ -19,14 +19,14 @@ class Vite
     {
         $path = implode(DIRECTORY_SEPARATOR, array_filter([
             kirby()->root(),
-            option('kirby-helpers.vite.build.outDir', 'dist'),
+            option('johannschopplich.helpers.vite.build.outDir', 'dist'),
             'manifest.json'
         ], 'strlen'));
 
         try {
             $this->manifest = Data::read($path);
         } catch (\Throwable $t) {
-            // Vite is running in development mode.
+            // Vite is running in development mode
         }
     }
 
@@ -38,9 +38,9 @@ class Vite
     public function devUrl(string $path): string
     {
         $uri = new Uri([
-            'scheme' => option('kirby-helpers.vite.server.https', false) ? 'https' : 'http',
-            'host'   => option('kirby-helpers.vite.server.host', 'localhost'),
-            'port'   => option('kirby-helpers.vite.server.port', 5173),
+            'scheme' => option('johannschopplich.helpers.vite.server.https', false) ? 'https' : 'http',
+            'host'   => option('johannschopplich.helpers.vite.server.host', 'localhost'),
+            'port'   => option('johannschopplich.helpers.vite.server.port', 5173),
             'path'   => $path
         ]);
 
@@ -51,7 +51,7 @@ class Vite
     {
         return implode('/', array_filter([
             kirby()->url(),
-            option('kirby-helpers.vite.build.outDir', 'dist'),
+            option('johannschopplich.helpers.vite.build.outDir', 'dist'),
             $path
         ], 'strlen'));
     }

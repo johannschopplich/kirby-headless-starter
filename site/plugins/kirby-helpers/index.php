@@ -2,11 +2,11 @@
 
 @include_once __DIR__ . '/vendor/autoload.php';
 
+use JohannSchopplich\Helpers\Env;
+use JohannSchopplich\Helpers\PageMeta;
+use JohannSchopplich\Helpers\Redirects;
+use JohannSchopplich\Helpers\SiteMeta;
 use Kirby\Cms\App as Kirby;
-use KirbyHelpers\Env;
-use KirbyHelpers\PageMeta;
-use KirbyHelpers\Redirects;
-use KirbyHelpers\SiteMeta;
 
 Kirby::plugin('johannschopplich/helpers', [
     'hooks' => [
@@ -20,7 +20,7 @@ Kirby::plugin('johannschopplich/helpers', [
         [
             'pattern' => 'robots.txt',
             'action' => function () {
-                if (option('kirby-helpers.robots.enable', false)) {
+                if (option('johannschopplich.helpers.robots.enable', false)) {
                     return SiteMeta::robots();
                 }
 
@@ -30,7 +30,7 @@ Kirby::plugin('johannschopplich/helpers', [
         [
             'pattern' => 'sitemap.xml',
             'action' => function () {
-                if (option('kirby-helpers.sitemap.enable', false)) {
+                if (option('johannschopplich.helpers.sitemap.enable', false)) {
                     return SiteMeta::sitemap();
                 }
 
@@ -40,11 +40,10 @@ Kirby::plugin('johannschopplich/helpers', [
     ],
     'siteMethods' => [
         'env' => function ($key, $default = null) {
-            $kirby = kirby();
-
             if (!Env::isLoaded()) {
-                $path = $kirby->option('kirby-helpers.env.path', $kirby->root('base'));
-                $file = $kirby->option('kirby-helpers.env.filename', '.env');
+                $kirby = kirby();
+                $path = $kirby->option('johannschopplich.helpers.env.path', $kirby->root('base'));
+                $file = $kirby->option('johannschopplich.helpers.env.filename', '.env');
                 Env::load($path, $file);
             }
 
@@ -52,8 +51,6 @@ Kirby::plugin('johannschopplich/helpers', [
         }
     ],
     'pageMethods' => [
-        'meta' => function () {
-            return new PageMeta($this);
-        }
+        'meta' => fn () => new PageMeta($this)
     ]
 ]);

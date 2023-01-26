@@ -1,7 +1,8 @@
 <?php
 
-namespace KirbyHelpers;
+namespace JohannSchopplich\Helpers;
 
+use Closure;
 use Dotenv\Dotenv;
 use Dotenv\Repository\RepositoryBuilder;
 use Dotenv\Repository\RepositoryInterface;
@@ -58,6 +59,6 @@ class Env
 
                 return $value;
             })
-            ->getOrCall(fn () => value($default));
+            ->getOrCall(fn () => $default instanceof Closure ? $default() : $default);
     }
 }
