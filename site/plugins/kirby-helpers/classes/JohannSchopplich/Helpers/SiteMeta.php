@@ -33,7 +33,7 @@ class SiteMeta
                 $sitemap[] = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . ($kirby->multilang() ? " {$xhtmlSchema}" : '') . '>';
 
                 $excludeTemplates = option('johannschopplich.helpers.sitemap.exclude.templates', []);
-                $excludePages     = option('johannschopplich.helpers.sitemap.exclude.pages', []);
+                $excludePages = option('johannschopplich.helpers.sitemap.exclude.pages', []);
 
                 if (is_callable($excludePages)) {
                     $excludePages = $excludePages();

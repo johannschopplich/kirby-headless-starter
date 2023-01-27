@@ -33,7 +33,7 @@ class PageMeta
         if (array_key_exists($key, $this->metadata)) {
             $value = $this->metadata[$key];
 
-            if (is_callable($value) === true) {
+            if (is_callable($value)) {
                 $result = $value->call($this->page);
 
                 if ($result instanceof Field) {
@@ -154,7 +154,7 @@ class PageMeta
         // Generate meta tags
         foreach ($meta as $name => $content) {
             $html[] = Html::tag('meta', null, [
-                'name'    => $name,
+                'name' => $name,
                 'content' => $content,
             ]);
         }
@@ -183,7 +183,7 @@ class PageMeta
         // Generate Twitter tags
         foreach ($twitter as $name => $content) {
             $html[] = Html::tag('meta', null, [
-                'name'    => "twitter:{$name}",
+                'name' => "twitter:{$name}",
                 'content' => $content,
             ]);
         }
