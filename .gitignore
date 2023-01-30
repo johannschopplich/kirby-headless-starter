@@ -18,3 +18,4 @@ vendor
 /storage/sessions/*
 !/storage/sessions/.gitkeep
 /site/config/.license
+/site/plugins/*
