@@ -487,16 +487,16 @@
         },
         {
             "name": "johannschopplich/kirby-headless",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-headless.git",
-                "reference": "4164b056421094cf910ca78a01d3df1a853a5849"
+                "reference": "20f12e075bad729ca41c60ca4290594dc712a9a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/4164b056421094cf910ca78a01d3df1a853a5849",
-                "reference": "4164b056421094cf910ca78a01d3df1a853a5849",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/20f12e075bad729ca41c60ca4290594dc712a9a4",
+                "reference": "20f12e075bad729ca41c60ca4290594dc712a9a4",
                 "shasum": ""
             },
             "require": {
@@ -529,9 +529,9 @@
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-headless/issues",
-                "source": "https://github.com/johannschopplich/kirby-headless/tree/v1.3.0"
+                "source": "https://github.com/johannschopplich/kirby-headless/tree/v1.3.1"
             },
-            "time": "2023-02-02T13:01:12+00:00"
+            "time": "2023-02-07T22:22:45+00:00"
         },
         {
             "name": "johannschopplich/kirby-helpers",
