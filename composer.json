@@ -3,7 +3,7 @@
     "getkirby/cms": "^3.9",
     "getkirby/kql": "^2.0",
     "johannschopplich/kirby-helpers": "^4.0",
-    "johannschopplich/kirby-headless": "^1.3"
+    "johannschopplich/kirby-headless": "^1.4"
   },
   "scripts": {
     "start": [
