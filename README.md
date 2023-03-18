@@ -2,15 +2,16 @@
 
 > ℹ️ Send a request with a `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.jhnn.dev) for an example response.
 
-This starter kit converts any Kirby site a truly headless-first CMS. No visual data shall be presented. You will only be able to fetch JSON-encoded data – either by using Kirby's default template system or use KQL to fetch data in your consuming application.
+This starter kit provides a minimal setup for a headless Kirby site. Only the API is exposed, no visual data is presented. You will only be able to fetch JSON-encoded data – either by using Kirby's default template system or use KQL to fetch data in your consuming application.
 
-Routing and JSON-encoded responses are handled by the internal [kirby-headless](https://github.com/johannschopplich/kirby-headless) plugin, specifically its [global routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php) and [API routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/api.php) for KQL.
+Routing and JSON-encoded responses are handled by the internal [`kirby-headless`](https://github.com/johannschopplich/kirby-headless) plugin, specifically its [global routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php) and [API routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/api.php) for KQL.
 
-This project works well with [nuxt-kql](https://nuxt-kql.jhnn.dev).
+This project works well with [`nuxt-kql`](https://nuxt-kql.jhnn.dev).
 
 ## Example Projects
 
-- [kirby-nuxt-starterkit](https://github.com/johannschopplich/kirby-nuxt-starterkit): 💚 Kirby's sample site – ported to Nuxt 3 and KirbyQL
+- [`cacao-kit-frontend`](https://github.com/johannschopplich/cacao-kit-frontend): 🍫 Best practice Nuxt starter for Kirby with i18n & blocks
+- [`kirby-nuxt-starterkit`](https://github.com/johannschopplich/kirby-nuxt-starterkit): 💚 Kirby's sample site – ported to Nuxt 3 and KirbyQL
 
 ## Key Features
 
@@ -18,7 +19,7 @@ This project works well with [nuxt-kql](https://nuxt-kql.jhnn.dev).
 - 🔒 **public** or **private** API
 - 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support via new `/api/kql` route
 - ⚡️ Cached KQL queries
-- 🌐 Multilang support for KQL queries
+- 🌐 Multi-lang support for KQL queries
 - 🗂 [Templates](./site/templates/) present JSON instead of HTML
 - 😵‍💫 No CORS issues!
 - 🍢 Build your own [API chain](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php)
@@ -57,7 +58,7 @@ Duplicate the [`.env.development.example`](.env.development.example) as `.env`:
 cp .env.development.example .env
 ```
 
-Optionally, adapt it's values.
+Optionally, adapt its values.
 
 > ℹ️ Make sure to set the correct requesting origin instead of the wildcard `KIRBY_HEADLESS_ALLOW_ORIGIN=*` for your deployment.
 
@@ -120,7 +121,7 @@ return [
 
 > ℹ️ See [ploi-deploy.sh](./scripts/ploi-deploy.sh) for exemplary deployment instructions.
 
-> ℹ️ Some hosting environments require to uncomment `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
+> ℹ️ Some hosting environments require uncommenting `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
 
 ## License
 
