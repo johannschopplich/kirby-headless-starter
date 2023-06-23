@@ -18,7 +18,8 @@ return [
         ]
     ],
 
-    // Enable basic authentication for the API and thus KQL
+    // Enable basic authentication for the Kirby API
+    // Only needed, if you prefer basic auth over bearer tokens
     'api' => [
         'basicAuth' => true
     ],
