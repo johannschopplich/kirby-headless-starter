@@ -96,7 +96,7 @@ options:
 
 Set your frontend URL in your `.env`:
 
-```
+```ini
 KIRBY_HEADLESS_FRONTEND_URL=https://example.com
 ```
 
