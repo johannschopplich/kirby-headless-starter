@@ -1,12 +1,13 @@
 # Kirby Headless Starter
 
-> ℹ️ Send a request with a `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.jhnn.dev) for an example response.
+> [!NOTE]
+> Send a request with a `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.jhnn.dev) for an example response.
 
-This starter kit provides a minimal setup for a headless Kirby site. Only the API is exposed, no visual data is presented. You will only be able to fetch JSON-encoded data – either by using Kirby's default template system or use KQL to fetch data in your consuming application.
+This starter kit provides a minimal setup for a headless Kirby site. It lets you fetch JSON-encoded data from your Kirby site using either KQL or Kirby's default template system.
 
 Routing and JSON-encoded responses are handled by the internal [`kirby-headless`](https://github.com/johannschopplich/kirby-headless) plugin, specifically its [global routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php) and [API routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/api.php) for KQL.
 
-This project works well with [`nuxt-kql`](https://nuxt-kql.jhnn.dev).
+This project works well with [`nuxt-kql`](https://nuxt-kql.byjohann.dev).
 
 ## Example Projects
 
@@ -16,29 +17,32 @@ This project works well with [`nuxt-kql`](https://nuxt-kql.jhnn.dev).
 ## Key Features
 
 - 🦭 Optional bearer token for authentication
-- 🔒 **public** or **private** API
-- 🧩 [KQL](https://github.com/getkirby/kql) with bearer token support via new `/api/kql` route
+- 🔒 Choose between **public** or **private** API
+- 🧩 Extends [KQL](https://github.com/getkirby/kql) with bearer token support (new `/api/kql` route)
+- 🧱 [Resolves UUIDs](https://github.com/johannschopplich/kirby-headless#field-methods) to actual file and page objects
 - ⚡️ Cached KQL queries
-- 🌐 Multi-lang support for KQL queries
-- 🗂 [Templates](./site/templates/) present JSON instead of HTML
-- 😵‍💫 No CORS issues!
+- 🌐 Multi-language support for KQL queries
+- 🗂 [Kirby templates](https://github.com/johannschopplich/kirby-headless#templates) that output JSON instead of HTML
+- 😵‍💫 Seamless experience free from CORS issues
 - 🍢 Build your own [API chain](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php)
 - 🦾 Express-esque [API builder](https://github.com/johannschopplich/kirby-headless#api-builder) with middleware support
 
 ## Use Cases
 
-If you intend to fetch data from a headless Kirby instance, you have two options with this plugin:
+This starter kit is designed for developers who want to leverage Kirby's backend to serve content to a frontend application, static site generator, or mobile app. You can either opt-in to headless functionality for your existing Kirby site or use this plugin to build a headless-first CMS from scratch.
 
-- 1️⃣ use [Kirby's default template system](#templates)
-- 2️⃣ use [KQL](#kirbyql)
+Here are scenarios where the Kirby Headless Starter is particularly useful:
 
-Head over to the [usage](#usage) section for instructions.
+- 1️⃣ If you prefer querying data with [Kirby Query Language](#kirbyql).
+- 2️⃣ When you wish to utilize [Kirby's default template system](#templates) to output JSON.
+
+Detailed instructions on how to use these features can be found in the [usage](#usage) section.
 
 ## Prerequisites
 
-- PHP 8.0+
+- PHP 8.1+
 
-> Kirby is not a free software. You can try it for free on your local machine but in order to run Kirby on a public server you must purchase a [valid license](https://getkirby.com/buy).
+Kirby is not a free software. You can try it for free on your local machine but in order to run Kirby on a public server you must purchase a [valid license](https://getkirby.com/buy).
 
 ## Setup
 
@@ -60,9 +64,14 @@ cp .env.development.example .env
 
 Optionally, adapt its values.
 
-> ℹ️ Make sure to set the correct requesting origin instead of the wildcard `KIRBY_HEADLESS_ALLOW_ORIGIN=*` for your deployment.
+> [!NOTE]
+> Make sure to set the correct requesting origin instead of the wildcard `KIRBY_HEADLESS_ALLOW_ORIGIN=*` for your deployment.
 
 ## Usage
+
+### KirbyQL
+
+> 📖 [See documentation in `kirby-headless` plugin](https://github.com/johannschopplich/kirby-headless#kirbyql)
 
 ### Private vs. Public API
 
@@ -70,17 +79,15 @@ It's recommended to secure your API with a token. To do so, set the environment 
 
 You will then have to provide the HTTP header `Authentication: Bearer ${token}` with each request.
 
-> ⚠️ Without a token your page content will be publicly accessible to everyone.
+> [!WARNING]
+> Without a token your page content will be publicly accessible to everyone.
 
-> ℹ️ The internal `/api/kql` route will always enforce bearer authentication, unless you explicitly disable it in your config (see below).
+> [!NOTE]
+> The internal `/api/kql` route will always enforce bearer authentication, unless you explicitly disable it in your config (see below).
 
 ### Templates
 
 > 📖 [See documentation in `kirby-headless` plugin](https://github.com/johannschopplich/kirby-headless#templates)
-
-### KirbyQL
-
-> 📖 [See documentation in `kirby-headless` plugin](https://github.com/johannschopplich/kirby-headless#kirbyql)
 
 ### Panel Settings
 
@@ -119,10 +126,12 @@ return [
 
 ### Deployment
 
-> ℹ️ See [ploi-deploy.sh](./scripts/ploi-deploy.sh) for exemplary deployment instructions.
+> [!NOTE]
+> See [ploi-deploy.sh](./scripts/ploi-deploy.sh) for exemplary deployment instructions.
 
-> ℹ️ Some hosting environments require uncommenting `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
+> [!NOTE]
+> Some hosting environments require uncommenting `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
 
 ## License
 
-[MIT](./LICENSE) License © 2022-2023 [Johann Schopplich](https://github.com/johannschopplich)
+[MIT](./LICENSE) License © 2022-PRESENT [Johann Schopplich](https://github.com/johannschopplich)
