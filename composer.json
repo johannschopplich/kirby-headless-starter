@@ -1,10 +1,12 @@
 {
   "require": {
-    "getkirby/cms": "^3.9",
-    "getkirby/kql": "^2.0",
+    "getkirby/cms": "^4",
+    "getkirby/kql": "^2.1",
     "johannschopplich/kirby-helpers": "^4.2",
-    "johannschopplich/kirby-headless": "^2.1"
+    "johannschopplich/kirby-headless": "^2.2"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "scripts": {
     "start": [
       "Composer\\Config::disableProcessTimeout",
