@@ -128,8 +128,7 @@ return [
 
 > [!NOTE]
 > See [ploi-deploy.sh](./scripts/ploi-deploy.sh) for exemplary deployment instructions.
-
-> [!NOTE]
+>
 > Some hosting environments require uncommenting `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
 
 ## License
