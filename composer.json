@@ -2,7 +2,7 @@
   "require": {
     "getkirby/cms": "^4",
     "getkirby/kql": "^2.1",
-    "johannschopplich/kirby-helpers": "^4.2",
+    "johannschopplich/kirby-helpers": "^5.0",
     "johannschopplich/kirby-headless": "^2.2"
   },
   "minimum-stability": "dev",
