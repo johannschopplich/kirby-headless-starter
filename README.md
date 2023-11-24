@@ -1,6 +1,6 @@
 # Kirby Headless Starter
 
-> [!NOTE]
+> [!TIP]
 > Send a request with a `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.jhnn.dev) for an example response.
 
 This starter kit provides a minimal setup for a headless Kirby site. It lets you fetch JSON-encoded data from your Kirby site using either KQL or Kirby's default template system.
