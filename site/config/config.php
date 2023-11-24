@@ -53,7 +53,7 @@ return [
         'cors' => [
             'allowOrigin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN', '*'),
             'allowMethods' => env('KIRBY_HEADLESS_ALLOW_METHODS', 'GET, POST, OPTIONS'),
-            'allowHeaders' => env('KIRBY_HEADLESS_ALLOW_HEADERS', '*'),
+            'allowHeaders' => env('KIRBY_HEADLESS_ALLOW_HEADERS', 'Accept, Content-Type, Authorization, X-Language'),
             'maxAge' => env('KIRBY_HEADLESS_MAX_AGE', '86400')
         ]
     ]
