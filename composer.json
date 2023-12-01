@@ -5,8 +5,6 @@
     "johannschopplich/kirby-helpers": "^5.0",
     "johannschopplich/kirby-headless": "^2.3"
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "scripts": {
     "start": [
       "Composer\\Config::disableProcessTimeout",
