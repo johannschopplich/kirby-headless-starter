@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11785edea91fdf68786c5e56844a7ae6",
+    "content-hash": "0f8da828f251b64c3309b78b3fc3e57c",
     "packages": [
         {
             "name": "christian-riesen/base32",
@@ -272,16 +272,16 @@
         },
         {
             "name": "getkirby/cms",
-            "version": "4.0.2",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/kirby.git",
-                "reference": "ba8e9e511d797c0c2bc9278d5484020c4aa8cfce"
+                "reference": "a537a4d95c8db03ecaf3ebfd5c6a7747357fde7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/kirby/zipball/ba8e9e511d797c0c2bc9278d5484020c4aa8cfce",
-                "reference": "ba8e9e511d797c0c2bc9278d5484020c4aa8cfce",
+                "url": "https://api.github.com/repos/getkirby/kirby/zipball/a537a4d95c8db03ecaf3ebfd5c6a7747357fde7c",
+                "reference": "a537a4d95c8db03ecaf3ebfd5c6a7747357fde7c",
                 "shasum": ""
             },
             "require": {
@@ -371,7 +371,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2023-12-19T14:29:43+00:00"
+            "time": "2024-01-10T10:28:21+00:00"
         },
         {
             "name": "getkirby/composer-installer",
@@ -553,16 +553,16 @@
         },
         {
             "name": "johannschopplich/kirby-headless",
-            "version": "2.3.2",
+            "version": "2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-headless.git",
-                "reference": "43a29b1013a81dc732fb12fd9f03bb0a6e31f195"
+                "reference": "c84aa4e099745872a3d9ff914c86dad603b6c80b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/43a29b1013a81dc732fb12fd9f03bb0a6e31f195",
-                "reference": "43a29b1013a81dc732fb12fd9f03bb0a6e31f195",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/c84aa4e099745872a3d9ff914c86dad603b6c80b",
+                "reference": "c84aa4e099745872a3d9ff914c86dad603b6c80b",
                 "shasum": ""
             },
             "require": {
@@ -600,7 +600,7 @@
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-headless/issues",
-                "source": "https://github.com/johannschopplich/kirby-headless/tree/v2.3.2"
+                "source": "https://github.com/johannschopplich/kirby-headless/tree/v2.3.3"
             },
             "funding": [
                 {
@@ -608,71 +608,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-01-08T19:55:44+00:00"
-        },
-        {
-            "name": "johannschopplich/kirby-helpers",
-            "version": "5.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johannschopplich/kirby-helpers.git",
-                "reference": "5ca86d8a2c94155183563fa65b6ae285e523e805"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-helpers/zipball/5ca86d8a2c94155183563fa65b6ae285e523e805",
-                "reference": "5ca86d8a2c94155183563fa65b6ae285e523e805",
-                "shasum": ""
-            },
-            "require": {
-                "getkirby/composer-installer": "^1.2",
-                "vlucas/phpdotenv": "^5.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "@stable",
-                "getkirby/cms": "^3.9"
-            },
-            "type": "kirby-plugin",
-            "extra": {
-                "kirby-cms-path": false
-            },
-            "autoload": {
-                "files": [
-                    "helpers.php"
-                ],
-                "psr-4": {
-                    "JohannSchopplich\\": "classes/JohannSchopplich/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Johann Schopplich",
-                    "email": "pkg@johannschopplich.com",
-                    "homepage": "https://johannschopplich.com"
-                }
-            ],
-            "description": "Dotenv support, meta tags generation and more for the Kirby CMS",
-            "homepage": "https://github.com/johannschopplich/kirby-helpers#readme",
-            "keywords": [
-                "dotenv",
-                "env",
-                "getkirby",
-                "kirby",
-                "kirby-cms",
-                "meta",
-                "meta-tags",
-                "seo",
-                "vite"
-            ],
-            "support": {
-                "issues": "https://github.com/johannschopplich/kirby-helpers/issues",
-                "source": "https://github.com/johannschopplich/kirby-helpers/tree/v5.0.0"
-            },
-            "time": "2023-11-19T12:33:19+00:00"
+            "time": "2024-01-15T16:35:50+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
