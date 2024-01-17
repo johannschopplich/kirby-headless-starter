@@ -26,7 +26,7 @@ if (class_exists(\Dotenv\Dotenv::class) && !function_exists('env')) {
             'false', '(false)' => false,
             'empty', '(empty)' => '',
             'null', '(null)' => null,
-            default => preg_match('/\A([\'"])(.*)\1\z/', $value, $matches) ? $matches[2] : $value,
+            default => preg_match('/\A([\'"])(.*)\1\z/', $value, $matches) ? $matches[2] : $value
         };
     }
 }
