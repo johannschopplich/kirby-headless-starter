@@ -272,16 +272,16 @@
         },
         {
             "name": "getkirby/cms",
-            "version": "4.0.3",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/kirby.git",
-                "reference": "a537a4d95c8db03ecaf3ebfd5c6a7747357fde7c"
+                "reference": "2965c3124e3b141072a2d46c798a327dda710060"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/kirby/zipball/a537a4d95c8db03ecaf3ebfd5c6a7747357fde7c",
-                "reference": "a537a4d95c8db03ecaf3ebfd5c6a7747357fde7c",
+                "url": "https://api.github.com/repos/getkirby/kirby/zipball/2965c3124e3b141072a2d46c798a327dda710060",
+                "reference": "2965c3124e3b141072a2d46c798a327dda710060",
                 "shasum": ""
             },
             "require": {
@@ -371,7 +371,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-01-10T10:28:21+00:00"
+            "time": "2024-01-30T15:39:12+00:00"
         },
         {
             "name": "getkirby/composer-installer",
@@ -553,16 +553,16 @@
         },
         {
             "name": "johannschopplich/kirby-headless",
-            "version": "2.3.4",
+            "version": "2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-headless.git",
-                "reference": "3db466f55c57e36a3f9a612d3e53cf3dec29a226"
+                "reference": "125c9ff3d45124956c7b101b3679047ccafbeb9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/3db466f55c57e36a3f9a612d3e53cf3dec29a226",
-                "reference": "3db466f55c57e36a3f9a612d3e53cf3dec29a226",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/125c9ff3d45124956c7b101b3679047ccafbeb9e",
+                "reference": "125c9ff3d45124956c7b101b3679047ccafbeb9e",
                 "shasum": ""
             },
             "require": {
@@ -600,7 +600,7 @@
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-headless/issues",
-                "source": "https://github.com/johannschopplich/kirby-headless/tree/v2.3.4"
+                "source": "https://github.com/johannschopplich/kirby-headless/tree/v2.3.7"
             },
             "funding": [
                 {
@@ -608,7 +608,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-01-15T17:59:18+00:00"
+            "time": "2024-01-23T06:26:05+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
