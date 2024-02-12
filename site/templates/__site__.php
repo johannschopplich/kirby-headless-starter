@@ -9,9 +9,9 @@ $data = [
     ->children()
     ->published()
     ->map(fn ($child) => [
-        'id' => $child->id(),
-        'title' => $child->title()->value(),
-        'isListed' => $child->isListed()
+      'id' => $child->id(),
+      'title' => $child->title()->value(),
+      'isListed' => $child->isListed()
     ])
     ->values()
 ];

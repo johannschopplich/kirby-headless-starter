@@ -38,6 +38,9 @@ return [
 
     // Kirby headless options
     'headless' => [
+        // Enable returning Kirby templates as JSON
+        'globalRoutes' => true,
+
         // Optional API token to use for authentication, also used
         // for for KQL endpoint
         'token' => env('KIRBY_HEADLESS_API_TOKEN'),
