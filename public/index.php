@@ -5,7 +5,7 @@ $base = dirname(__DIR__);
 require $base . '/vendor/autoload.php';
 
 if (class_exists(\Dotenv\Dotenv::class) && !function_exists('env')) {
-    function env($key, $default = null)
+    function env(string $key, $default = null)
     {
         static $repository = null;
 
