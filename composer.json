@@ -1,7 +1,7 @@
 {
   "require": {
     "getkirby/cms": "^4",
-    "getkirby/kql": "^2.1",
+    "getkirby/kql": "^2",
     "johannschopplich/kirby-headless": "^3",
     "vlucas/phpdotenv": "^5.6"
   },
