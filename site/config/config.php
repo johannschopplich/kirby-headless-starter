@@ -1,5 +1,9 @@
 <?php
 
+use Kirby\Cms\Block;
+use Kirby\Cms\Page;
+use Kirby\Content\Field;
+
 return [
 
     'debug' => env('KIRBY_DEBUG', false),
@@ -21,7 +25,18 @@ return [
     'cache' => [
         'pages' => [
             'active' => env('KIRBY_CACHE', false),
-            'ignore' => fn (\Kirby\Cms\Page $page) => $page->kirby()->user() !== null
+            'ignore' => fn (Page $page) => $page->kirby()->user() !== null
+        ]
+    ],
+
+    // See: https://github.com/johannschopplich/kirby-headless#toresolvedblocks
+    'blocksResolver' => [
+        'resolvers' => [
+            // Resolve permalinks (containing UUIDs) to URLs inside the
+            // field `text` of the `prose` block
+            'text:text' => function (Field $field, Block $block) {
+                return $field->permalinksToUrls()->value();
+            }
         ]
     ],
 
