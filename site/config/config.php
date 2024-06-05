@@ -1,5 +1,6 @@
 <?php
 
+use Kirby\Cms\App;
 use Kirby\Cms\Block;
 use Kirby\Cms\Page;
 use Kirby\Content\Field;
@@ -35,9 +36,18 @@ return [
             // Resolve permalinks (containing UUIDs) to URLs inside the
             // field `text` of the `prose` block
             'text:text' => function (Field $field, Block $block) {
-                return $field->permalinksToUrls()->value();
+                return $field->resolvePermalinks()->value();
             }
         ]
+    ],
+
+    // See: https://github.com/johannschopplich/kirby-headless#resolvepermalinks
+    'permalinksResolver' => [
+        // Strip the origin from URLs
+        'urlParser' => function (string $url, App $kirby) {
+            $path = parse_url($url, PHP_URL_PATH);
+            return $path;
+        }
     ],
 
     // Enable basic authentication for the Kirby API
