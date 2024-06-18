@@ -4,7 +4,7 @@
 
 $data = [
   'title' => $page->title()->value(),
-  'layouts' => $page->layout()->toLayouts()->toArray(),
+  'layouts' => $page->layout()->toResolvedLayouts()->toArray(),
   'address' => $page->address()->kirbytext()->value(),
   'email' => $page->email()->value(),
   'phone' => $page->phone()->value(),
