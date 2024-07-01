@@ -1,9 +1,7 @@
 <?php
 
 use Kirby\Cms\App;
-use Kirby\Cms\Block;
 use Kirby\Cms\Page;
-use Kirby\Content\Field;
 
 return [
 
@@ -30,16 +28,9 @@ return [
         ]
     ],
 
+    // Blocks resolver configuration
     // See: https://github.com/johannschopplich/kirby-headless#toresolvedblocks
-    'blocksResolver' => [
-        'resolvers' => [
-            // Resolve permalinks (containing UUIDs) to URLs inside the
-            // field `text` of the `prose` block
-            'text:text' => function (Field $field, Block $block) {
-                return $field->resolvePermalinks()->value();
-            }
-        ]
-    ],
+    'blocksResolver' => require __DIR__ . '/blocks-resolver.php',
 
     // See: https://github.com/johannschopplich/kirby-headless#resolvepermalinks
     'permalinksResolver' => [
