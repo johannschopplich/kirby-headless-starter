@@ -10,6 +10,7 @@ return [
     'yaml' => [
         'handler' => 'symfony'
     ],
+
     'date' => [
         'handler' => 'intl'
     ],
@@ -43,9 +44,9 @@ return [
 
     // Enable basic authentication for the Kirby API
     // Only needed, if you prefer basic auth over bearer tokens
-    'api' => [
-        'basicAuth' => true
-    ],
+    // 'api' => [
+    //     'basicAuth' => true
+    // ],
 
     // Default to token-based authentication
     'kql' => [
