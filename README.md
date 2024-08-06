@@ -14,27 +14,24 @@ This project works well with [`nuxt-kql`](https://nuxt-kql.byjohann.dev).
 - [`cacao-kit-frontend`](https://github.com/johannschopplich/cacao-kit-frontend): 🍫 Best practice Nuxt starter for Kirby with i18n & blocks
 - [`kirby-nuxt-starterkit`](https://github.com/johannschopplich/kirby-nuxt-starterkit): 💚 Kirby's sample site – ported to Nuxt 3 and KirbyQL
 
-## Key Features
-
 - 🦭 Optional bearer token for authentication
 - 🔒 Choose between **public** or **private** API
 - 🧩 Extends [KQL](https://github.com/getkirby/kql) with bearer token support (new `/api/kql` route)
-- 🧱 [Resolves UUIDs](https://github.com/johannschopplich/kirby-headless#field-methods) to actual file and page objects
+- 🧱 Resolves fields in blocks: [UUIDs to file and page objects](https://github.com/johannschopplich/kirby-headless#toresolvedblocks) or [any other field](https://github.com/johannschopplich/kirby-headless#custom-resolver-for-a-specific-block-and-field)
 - ⚡️ Cached KQL queries
 - 🌐 Multi-language support for KQL queries
-- 🗂 [Kirby templates](https://github.com/johannschopplich/kirby-headless#templates) that output JSON instead of HTML
-- 😵‍💫 Seamless experience free from CORS issues
-- 🍢 Build your own [API chain](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php)
-- 🦾 Express-esque [API builder](https://github.com/johannschopplich/kirby-headless#api-builder) with middleware support
+- 🗂 [Kirby templates](#templates) that output JSON instead of HTML
+- 😵‍💫 Seamless experience without CORS issues
+- 🍢 Express-esque [API builder](https://github.com/johannschopplich/kirby-headless#api-builder) with middleware support
 
 ## Use Cases
 
-This starter kit is designed for developers who want to leverage Kirby's backend to serve content to a frontend application, static site generator, or mobile app. You can either opt-in to headless functionality for your existing Kirby site or use this plugin to build a headless-first CMS from scratch.
+This plugin is designed for developers who want to leverage Kirby's backend to serve content to a frontend application, static site generator, or mobile app. You can either opt-in to headless functionality for your existing Kirby site or use this plugin to build a headless-first CMS from scratch.
 
-Here are scenarios where the Kirby Headless Starter is particularly useful:
+Here are scenarios where the Kirby Headless plugin is particularly useful:
 
-- 1️⃣ If you prefer querying data with [Kirby Query Language](#kirbyql).
-- 2️⃣ When you wish to utilize [Kirby's default template system](#templates) to output JSON.
+- 1️⃣ If you prefer to query data using the [Kirby Query Language](#kirby-query-language-kql).
+- 2️⃣ If you want to use [Kirby's default template system](#templates) to output JSON.
 
 Detailed instructions on how to use these features can be found in the [usage](#usage) section.
 
@@ -69,7 +66,7 @@ Optionally, adapt its values.
 
 ## Usage
 
-### KirbyQL
+### Kirby Query Language (KQL)
 
 > 📖 [See documentation in `kirby-headless` plugin](https://github.com/johannschopplich/kirby-headless#kirbyql)
 
@@ -81,9 +78,6 @@ You will then have to provide the HTTP header `Authentication: Bearer ${token}` 
 
 > [!WARNING]
 > Without a token your page content will be publicly accessible to everyone.
-
-> [!NOTE]
-> The internal `/api/kql` route will always enforce bearer authentication, unless you explicitly disable it in your config (see below).
 
 ### Templates
 
