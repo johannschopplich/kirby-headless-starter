@@ -25,7 +25,7 @@ return [
     'cache' => [
         'pages' => [
             'active' => env('KIRBY_CACHE', false),
-            'ignore' => fn (Page $page) => $page->kirby()->user() !== null
+            'ignore' => fn(Page $page) => $page->kirby()->user() !== null
         ]
     ],
 
@@ -41,12 +41,6 @@ return [
             return $path;
         }
     ],
-
-    // Enable basic authentication for the Kirby API
-    // Only needed, if you prefer basic auth over bearer tokens
-    // 'api' => [
-    //     'basicAuth' => true
-    // ],
 
     // Default to token-based authentication
     'kql' => [
