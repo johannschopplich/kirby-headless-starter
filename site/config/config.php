@@ -22,6 +22,17 @@ return [
         'slug' => env('KIRBY_PANEL_SLUG', 'panel')
     ],
 
+    'thumbs' => [
+        'format' => 'webp',
+        'quality' => 80,
+        'presets' => [
+            'default' => ['format' => 'webp', 'quality' => 80],
+        ],
+        'srcsets' => [
+            'default' => [360, 720, 1024, 1280, 1536]
+        ]
+    ],
+
     'cache' => [
         'pages' => [
             'active' => env('KIRBY_CACHE', false),
