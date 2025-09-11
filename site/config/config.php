@@ -44,10 +44,10 @@ return [
     ],
 
     // Blocks resolver configuration
-    // See: https://github.com/johannschopplich/kirby-headless#toresolvedblocks
+    // See: https://kirby.tools/docs/headless/usage/field-methods#toresolvedblocks
     'blocksResolver' => require __DIR__ . '/blocks-resolver.php',
 
-    // See: https://github.com/johannschopplich/kirby-headless#resolvepermalinks
+    // See: https://kirby.tools/docs/headless/usage/field-methods#resolvepermalinks
     'permalinksResolver' => [
         // Strip the origin from URLs
         'urlParser' => function (string $url, App $kirby) {
