@@ -14,18 +14,18 @@ This project works well with [`Nuxt KQL`](https://nuxt-kql.byjohann.dev).
 
 ## Key Features
 
-- 🧩 Optional bearer token authentication for [KQL](https://kirby.tools/docs/headless/usage#kirby-query-language-kql) and custom API endpoints
-- 🧱 Resolve fields in blocks: [UUIDs to file and page objects](https://kirby.tools/docs/headless/field-methods) or [any other field](https://kirby.tools/docs/headless/field-methods)
+- 🧩 Optional bearer token authentication for [KQL](https://kirby.tools/docs/headless/usage/kql) and custom API endpoints
+- 🧱 Resolve fields in blocks: [UUIDs to file and page objects](https://kirby.tools/docs/headless/usage/field-methods) or [any other field](https://kirby.tools/docs/headless/usage/field-methods)
 - ⚡️ Cached KQL queries
 - 🌐 Multi-language support for KQL queries
 - 😵 Built-in CORS handling
-- 🍢 Express-esque [API builder](https://kirby.tools/docs/headless/api-builder) with middleware support
-- 🗂 Return [JSON from templates](https://kirby.tools/docs/headless/usage#json-templates) instead of HTML
+- 🍢 Express-esque [API builder](https://kirby.tools/docs/headless/advanced/api-builder) with middleware support
+- 🗂 Return [JSON from templates](https://kirby.tools/docs/headless/usage/json-templates) instead of HTML
 
 ## Setup
 
 > [!TIP]
-> [📖 Read the documentation](https://kirby.tools/docs/headless#installation)
+> [📖 Read the documentation](https://kirby.tools/docs/headless/getting-started/installation)
 
 Kirby-related dependencies are managed via [Composer](https://getcomposer.org) and located in the `vendor` directory. To install them, run:
 
