@@ -61,6 +61,14 @@ return [
         'auth' => 'bearer'
     ],
 
+    // Kirby 5 native CORS support
+    'cors' => [
+        'allowOrigin' => env('KIRBY_CORS_ALLOW_ORIGIN', '*'),
+        'allowMethods' => ['GET', 'HEAD', 'POST', 'OPTIONS'],
+        'allowHeaders' => true,
+        'maxAge' => 86400
+    ],
+
     // Kirby headless options
     'headless' => [
         // Enable returning Kirby templates as JSON
@@ -76,13 +84,6 @@ return [
             // Redirect to the Panel if no authorization header is sent,
             // useful for editors visiting the site directly
             'redirect' => false
-        ],
-
-        'cors' => [
-            'allowOrigin' => env('KIRBY_HEADLESS_ALLOW_ORIGIN', '*'),
-            'allowMethods' => env('KIRBY_HEADLESS_ALLOW_METHODS', 'GET, POST, OPTIONS'),
-            'allowHeaders' => env('KIRBY_HEADLESS_ALLOW_HEADERS', 'Accept, Content-Type, Authorization, X-Language'),
-            'maxAge' => env('KIRBY_HEADLESS_MAX_AGE', '86400')
         ]
     ]
 
