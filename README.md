@@ -1,16 +1,19 @@
+<div align="center">
+
 # Kirby Headless Starter
 
+A minimal Kirby setup for headless use – JSON from KQL queries or Kirby's template system, behind bearer-token authentication.
+
+[Live Playground](https://kirby-headless-starter.byjohann.dev) •
+[Documentation](https://kirby.tools/docs/headless) •
+[Nuxt Kirby](https://nuxt-kirby.byjohann.dev)
+
+</div>
+
 > [!TIP]
-> Send a request with a `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.byjohann.dev) for an example response.
+> Send a request with an `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.byjohann.dev) for an example response.
 
-This starter kit provides a minimal setup for a headless Kirby site. It allows you to fetch JSON-encoded data from your Kirby site using either KQL or Kirby's default template system. Under the hood, it uses the [Kirby Headless Plugin](https://kirby.tools/docs/headless) to provide a headless API.
-
-This project works well with [`Nuxt KQL`](https://nuxt-kql.byjohann.dev).
-
-## Example Projects
-
-- [`cacao-kit-frontend`](https://github.com/johannschopplich/cacao-kit-frontend): 🍫 Best practice Nuxt and KQL starter for your headless Kirby CMS
-- [`kirby-nuxt-starterkit`](https://github.com/johannschopplich/kirby-nuxt-starterkit): 💚 Kirby's sample site – ported to Nuxt and Kirby Query Language
+Under the hood, this starter uses the [Kirby Headless plugin](https://kirby.tools/docs/headless) to provide a headless API. It pairs well with [Nuxt Kirby](https://nuxt-kirby.byjohann.dev) on the frontend.
 
 ## Key Features
 
@@ -21,33 +24,46 @@ This project works well with [`Nuxt KQL`](https://nuxt-kql.byjohann.dev).
 - 🍢 Express-esque [API builder](https://kirby.tools/docs/headless/advanced/api-builder) with middleware support
 - 🗂 Return [JSON from templates](https://kirby.tools/docs/headless/usage/json-templates) instead of HTML
 
-## Setup
+## Example Projects
+
+- [`cacao-kit-frontend`](https://github.com/johannschopplich/cacao-kit-frontend): 🍫 Best practice Nuxt and KQL starter for your headless Kirby CMS
+- [`kirby-nuxt-starterkit`](https://github.com/johannschopplich/kirby-nuxt-starterkit): 💚 Kirby's sample site – ported to Nuxt and Kirby Query Language
+
+## Development
 
 > [!TIP]
 > [📖 Read the documentation](https://kirby.tools/docs/headless/getting-started/installation)
 
-Kirby-related dependencies are managed via [Composer](https://getcomposer.org) and located in the `vendor` directory. To install them, run:
+1. Create your `.env` from the example:
 
-```bash
-composer install
-```
+   ```bash
+   cp .env.development.example .env
+   ```
 
-### Environment Variables
+2. Install dependencies:
 
-Duplicate the [`.env.development.example`](.env.development.example) as `.env` and adjust its values:
+   ```bash
+   composer install
+   ```
 
-```bash
-cp .env.development.example .env
-```
+3. Run the PHP server – or use a dev server of your choice (e.g. Laravel Valet):
+
+   ```bash
+   composer start
+   ```
+
+Linting and formatting run through pnpm: `pnpm install`, then `pnpm run lint` or `pnpm run format`.
 
 > [!NOTE]
-> Make sure to set the correct requesting origin instead of the wildcard `KIRBY_HEADLESS_ALLOW_ORIGIN=*` for your deployment.
+> Set the correct requesting origin instead of the wildcard in `KIRBY_CORS_ALLOW_ORIGIN` for your deployment.
 
-### Deployment
+Kirby is not free software – you can try it as long as you need to, but [buy a license](https://getkirby.com/buy) once you take a project to production.
+
+## Deployment
+
+Deployment runs through [`scripts/ploi-deploy.sh`](./scripts/ploi-deploy.sh) on [ploi.io](https://ploi.io) – adapt it to your hosting environment as needed.
 
 > [!NOTE]
-> See [ploi-deploy.sh](./scripts/ploi-deploy.sh) for exemplary deployment instructions.
->
 > Some hosting environments require uncommenting `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
 
 ## License
