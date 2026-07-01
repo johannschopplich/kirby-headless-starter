@@ -33,7 +33,7 @@ columns:
         label: Twitter
         type: text
         icon: twitter
-        placeholder: @username
+        placeholder: '@username'
       instagram:
         label: Instagram
         type: text
