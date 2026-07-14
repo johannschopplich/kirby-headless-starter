@@ -18,7 +18,7 @@ Under the hood, this starter uses the [Kirby Headless plugin](https://kirby.tool
 ## Key Features
 
 - 🧩 Optional bearer token authentication for [KQL](https://kirby.tools/docs/headless/usage/kql) and custom API endpoints
-- 🧱 Resolve fields in blocks: [UUIDs to file and page objects](https://kirby.tools/docs/headless/usage/field-methods) or [any other field](https://kirby.tools/docs/headless/usage/field-methods)
+- 🧱 Resolve fields in blocks: [UUIDs to file and page objects, or any other field](https://kirby.tools/docs/headless/usage/field-methods)
 - ⚡️ Cached KQL queries
 - 🌐 Multi-language support for KQL queries
 - 🍢 Express-esque [API builder](https://kirby.tools/docs/headless/advanced/api-builder) with middleware support
