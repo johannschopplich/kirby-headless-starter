@@ -4,7 +4,7 @@ use Kirby\Cms\Block;
 use Kirby\Content\Field;
 
 return [
-    // Custom resolves for `block:field`
+    // Custom resolvers for `block:field`
     'resolvers' => [
         // Resolve permalinks (containing UUIDs) to URLs inside the
         // field `text` of the `prose` block
