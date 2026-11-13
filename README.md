@@ -13,16 +13,18 @@ A minimal Kirby setup for headless use – JSON from KQL queries or Kirby's temp
 > [!TIP]
 > Send a request with an `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.byjohann.dev) for an example response.
 
-Under the hood, this starter uses the [Kirby Headless plugin](https://kirby.tools/docs/headless) to provide a headless API. It pairs well with [Nuxt Kirby](https://nuxt-kirby.byjohann.dev) on the frontend.
-
 ## Key Features
 
 - 🧩 Optional bearer token authentication for [KQL](https://kirby.tools/docs/headless/usage/kql) and custom API endpoints
 - 🧱 Resolve fields in blocks: [UUIDs to file and page objects, or any other field](https://kirby.tools/docs/headless/usage/field-methods)
 - ⚡️ Cached KQL queries
-- 🌐 Multi-language support for KQL queries
-- 🍢 Express-esque [API builder](https://kirby.tools/docs/headless/advanced/api-builder) with middleware support
+- 🌐 Multi-language KQL queries
+- 🍢 Express-esque [API builder](https://kirby.tools/docs/headless/usage/api-builder) with middleware support
 - 🗂 Return [JSON from templates](https://kirby.tools/docs/headless/usage/json-templates) instead of HTML
+
+## Architecture
+
+This starter is built on the [Kirby Headless plugin](https://kirby.tools/docs/headless) and pairs with [Nuxt Kirby](https://nuxt-kirby.byjohann.dev) on the frontend.
 
 ## Example Projects
 
@@ -54,14 +56,13 @@ Under the hood, this starter uses the [Kirby Headless plugin](https://kirby.tool
 
 Linting and formatting run through pnpm: `pnpm install`, then `pnpm run lint` or `pnpm run format`.
 
-> [!NOTE]
-> Set the correct requesting origin instead of the wildcard in `KIRBY_CORS_ALLOW_ORIGIN` for your deployment.
-
 Kirby is not free software – you can try it as long as you need to, but [buy a license](https://getkirby.com/buy) once you take a project to production.
 
 ## Deployment
 
 Pushes to `main` deploy through [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml). A copy without the `DEPLOY_HOST` repository variable skips it – adapt it to your hosting environment as needed.
+
+For your deployment, set `KIRBY_CORS_ALLOW_ORIGIN` to your frontend's origin instead of the wildcard.
 
 > [!NOTE]
 > Some hosting environments require uncommenting `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
