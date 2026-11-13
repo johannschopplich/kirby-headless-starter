@@ -60,7 +60,13 @@ Kirby is not free software – you can try it as long as you need to, but [buy a
 
 ## Deployment
 
-Pushes to `main` deploy through [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml). A copy without the `DEPLOY_HOST` repository variable skips it – adapt it to your hosting environment as needed.
+Pushes to `main` deploy through [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml). The workflow opens an SSH connection to `DEPLOY_HOST` and sends no command, so the server decides what a deploy does. A copy without the `DEPLOY_HOST` repository variable skips the job. To deploy from your copy:
+
+1. On the server, add a deploy key to `authorized_keys` with a forced command (`command="…"`) that updates the site, for example by pulling the repository and running `composer install`
+2. Set the repository secret `DEPLOY_SSH_KEY` to that key's private half
+3. Set the repository variable `DEPLOY_HOST` to the server's host name
+4. Set the repository variable `DEPLOY_KNOWN_HOSTS` to the output of `ssh-keyscan <host>`
+5. Set the repository variable `DEPLOY_USER` to the SSH user on the server
 
 For your deployment, set `KIRBY_CORS_ALLOW_ORIGIN` to your frontend's origin instead of the wildcard.
 
