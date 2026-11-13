@@ -7,7 +7,7 @@ title: Image
 # when this blueprint is used, which allows you to control what users can upload.
 # More about file blueprints: https://getkirby.com/docs/reference/panel/blueprints/file
 
-accept: 
+accept:
   type: image
 
 columns:
