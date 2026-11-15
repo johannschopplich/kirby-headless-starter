@@ -1,4 +1,1 @@
-# The blocks/image template is automatically assigned to all uploaded
-# images in the blocks field. We don't really need a separate blueprint
-# for this and can therefor extend the already existing files/image blueprint
 extends: files/image
