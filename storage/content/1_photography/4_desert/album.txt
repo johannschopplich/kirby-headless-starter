@@ -2,7 +2,7 @@ Title: Desert
 
 ----
 
-Cover: - file://TcCivi92OPvsiwka
+Cover: - 'file://TcCivi92OPvsiwka'
 
 ----
 

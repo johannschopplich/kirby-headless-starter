@@ -2,7 +2,7 @@ Title: Landscape
 
 ----
 
-Cover: - file://oQRCHqkIUNESUPJp
+Cover: - 'file://oQRCHqkIUNESUPJp'
 
 ----
 

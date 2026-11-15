@@ -2,7 +2,7 @@ Title: Animals
 
 ----
 
-Cover: - peter-fox.jpg
+Cover: - 'file://XN55HBnxPhVT6EQV'
 
 ----
 
@@ -10,11 +10,19 @@ Headline: Animals as leaders
 
 ----
 
-Description: What does the fox say?
+Subheadline: 
+
+----
+
+Text: 
 
 ----
 
 Tags: animals
+
+----
+
+Description: What does the fox say?
 
 ----
 

@@ -2,7 +2,7 @@ Title: Sky
 
 ----
 
-Cover: - file://9APZDUNsDTbHMMTZ
+Cover: - 'file://9APZDUNsDTbHMMTZ'
 
 ----
 

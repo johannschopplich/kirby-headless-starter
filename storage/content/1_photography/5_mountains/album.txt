@@ -2,7 +2,7 @@ Title: Mountains
 
 ----
 
-Cover: - file://PHRV0Y0YkDOf7Cdc
+Cover: - 'file://PHRV0Y0YkDOf7Cdc'
 
 ----
 

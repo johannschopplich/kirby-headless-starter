@@ -2,7 +2,7 @@ Title: Plants
 
 ----
 
-Cover: - file://ta7NGtnZzvMSzTEF
+Cover: - 'file://ta7NGtnZzvMSzTEF'
 
 ----
 

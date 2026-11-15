@@ -2,7 +2,7 @@ Title: Ocean
 
 ----
 
-Cover: - file://Kxk9ITpo07vV6u3e
+Cover: - 'file://Kxk9ITpo07vV6u3e'
 
 ----
 

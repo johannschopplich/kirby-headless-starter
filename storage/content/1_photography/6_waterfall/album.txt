@@ -2,7 +2,7 @@ Title: Waterfalls
 
 ----
 
-Cover: - file://KwkXlLQwSJP3JhYI
+Cover: - 'file://KwkXlLQwSJP3JhYI'
 
 ----
 
