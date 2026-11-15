@@ -1,7 +1,7 @@
 type: pages
 label: Notes
 parent: kirby.page("notes")
-info: "{{ page.published }}"
+info: "{{ page.date.toDate('d MMM, y') }}"
 template: note
 empty: No notes yet
 sortBy: date desc
