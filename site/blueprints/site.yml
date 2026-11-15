@@ -8,7 +8,9 @@ columns:
 
   - width: 1/2
     sections:
-      notes: sections/notes
+      notes:
+        extends: sections/notes
+        status: listed
 
       pages:
         type: pages

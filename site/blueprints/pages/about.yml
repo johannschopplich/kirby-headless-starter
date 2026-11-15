@@ -14,7 +14,7 @@ options:
 tabs:
   content:
     icon: text
-    label: content
+    label: Content
     fields:
       layout:
         label: Layout
