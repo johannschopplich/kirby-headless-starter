@@ -7,14 +7,18 @@ $data = [
   'children' => $page
     ->children()
     ->listed()
-    ->map(fn ($album) => [
-      'id' => $album->id(),
-      'title' => $album->title()->value(),
-      'cover' => [
-        'url' => ($album->cover()->toFile()?->crop(400, 500)?->toArray() ?? $page->images()->first()?->crop(400, 500)?->toArray() ?? [])['url'] ?? '',
-        'alt' => $album->cover()->toFile()?->alt()->value()
-      ]
-    ])
+    ->map(function ($album) {
+      $cover = $album->cover()->toFile() ?? $album->images()->first();
+
+      return [
+        'id' => $album->id(),
+        'title' => $album->title()->value(),
+        'cover' => [
+          'url' => $cover?->crop(400, 500)->url() ?? '',
+          'alt' => $cover?->alt()->value()
+        ]
+      ];
+    })
     ->values()
 ];
 

@@ -10,14 +10,18 @@ $data = [
     ->page('photography')
     ->children()
     ->listed()
-    ->map(fn ($album) => [
-      'id' => $album->id(),
-      'title' => $album->title()->value(),
-      'cover' => [
-        'url' => ($album->cover()->toFile()?->resize(1024, 1024)?->toArray() ?? $page->images()->first()?->resize(1024, 1024)?->toArray() ?? [])['url'] ?? '',
-        'alt' => $album->cover()->toFile()?->alt()->value()
-      ]
-    ])
+    ->map(function ($album) {
+      $cover = $album->cover()->toFile() ?? $album->images()->first();
+
+      return [
+        'id' => $album->id(),
+        'title' => $album->title()->value(),
+        'cover' => [
+          'url' => $cover?->resize(1024, 1024)->url() ?? '',
+          'alt' => $cover?->alt()->value()
+        ]
+      ];
+    })
     ->values()
 ];
 
