@@ -14,7 +14,7 @@ $data = [
       'title' => $note->title()->value(),
       'tags' => $note->tags()->split(','),
       'text' => $note->text()->toResolvedBlocks()->excerpt(280),
-      'published' => $note->date()->value(),
+      'published' => $note->date()->isNotEmpty() ? date('c', $note->date()->toTimestamp()) : null,
       'cover' => [
         'url' => ($note->cover()->toFile()?->toArray() ?? $note->images()->first()?->toArray() ?? [])['url'] ?? '',
       ]
