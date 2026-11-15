@@ -2,7 +2,7 @@ Title: Sky
 
 ----
 
-Cover: - file://IyWSSw6FAfgejL4Y
+Cover: - file://9APZDUNsDTbHMMTZ
 
 ----
 
@@ -22,4 +22,4 @@ Tags: stars, universe, up there
 
 ----
 
-Uuid: oT0zd71Mdl4YKve2
+Uuid: EWQEPJBB2Xyrrrj6

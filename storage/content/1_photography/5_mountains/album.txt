@@ -2,7 +2,7 @@ Title: Mountains
 
 ----
 
-Cover: - file://UdKhar4j0FDGkkWY
+Cover: - file://PHRV0Y0YkDOf7Cdc
 
 ----
 
@@ -22,4 +22,4 @@ Tags: mountains, peak nature
 
 ----
 
-Uuid: FYtsnJklnOoBy7r4
+Uuid: XqbutgSsL5ibgjxP

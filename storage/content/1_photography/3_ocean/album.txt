@@ -2,7 +2,7 @@ Title: Ocean
 
 ----
 
-Cover: - file://BytC2G7YbPbmiaoI
+Cover: - file://Kxk9ITpo07vV6u3e
 
 ----
 
@@ -22,4 +22,4 @@ Tags: ocean, water, blue
 
 ----
 
-Uuid: cpNOmt5GaJOHc0Hn
+Uuid: D4DuOwcJk0fL0twA

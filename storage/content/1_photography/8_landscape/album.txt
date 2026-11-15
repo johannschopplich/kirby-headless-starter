@@ -2,7 +2,7 @@ Title: Landscape
 
 ----
 
-Cover: - file://gZ6zcxvdLfbCQ9iT
+Cover: - file://oQRCHqkIUNESUPJp
 
 ----
 
@@ -22,4 +22,4 @@ Tags: landscape, nature
 
 ----
 
-Uuid: 8rxFqLv2YiaMkj8E
+Uuid: PjvoKxwSNH1m9vjC

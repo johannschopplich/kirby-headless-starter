@@ -1,5 +1,25 @@
+Caption: 
+
+----
+
+Alt: A table with a notebook, a coffee mug and a croissant from above. A women is taking notes.
+
+----
+
+Photographer: 
+
+----
+
+License: 
+
+----
+
+Link: 
+
+----
+
 Template: blocks/image
 
 ----
 
-Uuid: 0peCQBzGsVp5oxvI
+Uuid: mHEVVr6xtDc3gIip

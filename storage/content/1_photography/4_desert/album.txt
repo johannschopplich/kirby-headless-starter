@@ -2,7 +2,7 @@ Title: Desert
 
 ----
 
-Cover: - file://YSWOH5uIDS5ECTUY
+Cover: - file://TcCivi92OPvsiwka
 
 ----
 
@@ -22,4 +22,4 @@ Tags: desert, sand, landscape
 
 ----
 
-Uuid: c6railFzgyXI03qT
+Uuid: w8ymxqAzqTvYkHJ4

@@ -1,5 +1,25 @@
+Caption: 
+
+----
+
+Alt: Three women sit at a desk with their laptops. They are chatting and laughing.
+
+----
+
+Photographer: 
+
+----
+
+License: 
+
+----
+
+Link: 
+
+----
+
 Template: blocks/image
 
 ----
 
-Uuid: HOn40ck5grTwxbqZ
+Uuid: 8RxIAFzJekgWfpFn
