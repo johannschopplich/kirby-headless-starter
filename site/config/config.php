@@ -71,6 +71,12 @@ return [
 
         'token' => env('KIRBY_HEADLESS_API_TOKEN'),
 
+        'sitemap' => [
+            'exclude' => [
+                'templates' => ['error', 'sandbox']
+            ]
+        ],
+
         'panel' => [
             // Preview URL for the Panel preview button.
             'frontendUrl' => env('KIRBY_HEADLESS_FRONTEND_URL'),
