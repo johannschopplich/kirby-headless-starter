@@ -319,16 +319,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.19.2",
+            "version": "2.19.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "84e33631273138ac103d045dc02b0fb7e5485582"
+                "reference": "d5480d53f10069dc4620a39f87e38e8945d47322"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/84e33631273138ac103d045dc02b0fb7e5485582",
-                "reference": "84e33631273138ac103d045dc02b0fb7e5485582",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/d5480d53f10069dc4620a39f87e38e8945d47322",
+                "reference": "d5480d53f10069dc4620a39f87e38e8945d47322",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.19.2"
+                "source": "https://github.com/filp/whoops/tree/2.19.3"
             },
             "funding": [
                 {
@@ -386,29 +386,29 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-03T23:38:01+00:00",
-            "published-time": "2026-11-03T23:39:05+00:00"
+            "time": "2026-11-09T23:30:17+00:00",
+            "published-time": "2026-11-09T23:32:45+00:00"
         },
         {
             "name": "getkirby/cms",
-            "version": "5.6.3",
+            "version": "5.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/kirby.git",
-                "reference": "a84896ca48702e68ea5f21f38d2a671e27bfe225"
+                "reference": "40593aeb8c9a5894bad2440403536d0c7a38f487"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/kirby/zipball/a84896ca48702e68ea5f21f38d2a671e27bfe225",
-                "reference": "a84896ca48702e68ea5f21f38d2a671e27bfe225",
+                "url": "https://api.github.com/repos/getkirby/kirby/zipball/40593aeb8c9a5894bad2440403536d0c7a38f487",
+                "reference": "40593aeb8c9a5894bad2440403536d0c7a38f487",
                 "shasum": ""
             },
             "require": {
-                "christian-riesen/base32": "1.6.1",
-                "claviska/simpleimage": "4.4.2",
-                "composer/semver": "3.6.0",
-                "erusev/parsedown": "1.8.0",
-                "erusev/parsedown-extra": "0.9.0",
+                "christian-riesen/base32": "^1.6.1",
+                "claviska/simpleimage": "^4.4.2",
+                "composer/semver": "^3.6.0",
+                "erusev/parsedown": "^1.8.0",
+                "erusev/parsedown-extra": "^0.9.0",
                 "ext-ctype": "*",
                 "ext-curl": "*",
                 "ext-dom": "*",
@@ -420,15 +420,15 @@
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
                 "ext-simplexml": "*",
-                "filp/whoops": "2.19.2",
+                "filp/whoops": "^2.19.3",
                 "getkirby/composer-installer": "^1.2.1",
-                "laminas/laminas-escaper": "2.18.0",
-                "michelf/php-smartypants": "1.8.1",
+                "laminas/laminas-escaper": "~2.18.0",
+                "michelf/php-smartypants": "^1.8.1",
                 "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-                "phpmailer/phpmailer": "7.1.1",
-                "symfony/polyfill-intl-idn": "1.43.0",
-                "symfony/polyfill-mbstring": "1.43.3",
-                "symfony/yaml": "7.4.23"
+                "phpmailer/phpmailer": "^7.2.0",
+                "symfony/polyfill-intl-idn": "^1.43.0",
+                "symfony/polyfill-mbstring": "^1.43.3",
+                "symfony/yaml": "^7.4.23"
             },
             "replace": {
                 "symfony/polyfill-php72": "*"
@@ -489,8 +489,8 @@
                     "type": "custom"
                 }
             ],
-            "time": "2026-11-05T13:50:06+00:00",
-            "published-time": "2026-11-05T14:03:02+00:00"
+            "time": "2026-11-18T09:10:31+00:00",
+            "published-time": "2026-11-18T09:18:44+00:00"
         },
         {
             "name": "getkirby/composer-installer",
@@ -606,7 +606,8 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-07-03T10:26:56+00:00"
+            "time": "2025-07-03T10:26:56+00:00",
+            "published-time": "2025-07-03T10:29:33+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -668,20 +669,21 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:06:52+00:00"
+            "time": "2026-08-24T09:06:52+00:00",
+            "published-time": "2026-08-24T09:07:57+00:00"
         },
         {
             "name": "johannschopplich/kirby-headless",
-            "version": "8.2.0",
+            "version": "8.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannschopplich/kirby-headless.git",
-                "reference": "d4b8d3a64a2382bc5a4f43d6396a1004d505dd2d"
+                "reference": "9b63c9c1659e3b5cb7ad94635118164b4d570ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/d4b8d3a64a2382bc5a4f43d6396a1004d505dd2d",
-                "reference": "d4b8d3a64a2382bc5a4f43d6396a1004d505dd2d",
+                "url": "https://api.github.com/repos/johannschopplich/kirby-headless/zipball/9b63c9c1659e3b5cb7ad94635118164b4d570ad6",
+                "reference": "9b63c9c1659e3b5cb7ad94635118164b4d570ad6",
                 "shasum": ""
             },
             "require": {
@@ -689,14 +691,14 @@
                 "php": ">=8.2"
             },
             "require-dev": {
-                "getkirby/cms": "^5",
+                "getkirby/cms": "^5 || ^6",
                 "getkirby/kql": "^3",
                 "phpunit/phpunit": "^12"
             },
             "type": "kirby-plugin",
             "extra": {
                 "kirby": {
-                    "compatible": "^5.0"
+                    "compatible": "^5.0 || ^6.0"
                 },
                 "kirby-cms-path": false,
                 "kirby-plugin-path": "vendor/kirby-plugins"
@@ -709,18 +711,22 @@
                 {
                     "name": "Johann Schopplich",
                     "email": "hello@johannschopplich.com",
-                    "homepage": "https://johannschopplich.com"
+                    "homepage": "https://johann.schopplich.com"
                 }
             ],
-            "description": "KQL, JSON templates, and API routes for Kirby CMS",
-            "homepage": "https://kirby.tools/docs/headless",
+            "description": "JSON pages and KQL queries, served behind one bearer token",
+            "homepage": "https://kirby.tools/headless",
             "keywords": [
                 "headless",
-                "kirby"
+                "headless-cms",
+                "kirby",
+                "kirby-cms",
+                "kirby-plugin",
+                "kql"
             ],
             "support": {
                 "issues": "https://github.com/johannschopplich/kirby-headless/issues",
-                "source": "https://github.com/johannschopplich/kirby-headless/tree/v8.2.0"
+                "source": "https://github.com/johannschopplich/kirby-headless/tree/v8.3.1"
             },
             "funding": [
                 {
@@ -728,7 +734,8 @@
                     "type": "custom"
                 }
             ],
-            "time": "2026-10-09T06:02:52+00:00"
+            "time": "2026-11-27T12:41:04+00:00",
+            "published-time": "2026-11-27T12:41:16+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -911,16 +918,16 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v7.1.1",
+            "version": "v7.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "1bc1716a507a65e039d4ac9d9adebbbd0d346e15"
+                "reference": "f5eb50148734d03bbbb81825c722c1889636d51a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/1bc1716a507a65e039d4ac9d9adebbbd0d346e15",
-                "reference": "1bc1716a507a65e039d4ac9d9adebbbd0d346e15",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/f5eb50148734d03bbbb81825c722c1889636d51a",
+                "reference": "f5eb50148734d03bbbb81825c722c1889636d51a",
                 "shasum": ""
             },
             "require": {
@@ -935,7 +942,7 @@
                 "php-parallel-lint/php-console-highlighter": "^1.0.0",
                 "php-parallel-lint/php-parallel-lint": "^1.3.2",
                 "phpcompatibility/php-compatibility": "^10.0.0@dev",
-                "squizlabs/php_codesniffer": "^3.13.5",
+                "squizlabs/php_codesniffer": "^3.13.6 || ^4.0.2",
                 "yoast/phpunit-polyfills": "^1.0.4"
             },
             "suggest": {
@@ -981,7 +988,7 @@
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
             "support": {
                 "issues": "https://github.com/PHPMailer/PHPMailer/issues",
-                "source": "https://github.com/PHPMailer/PHPMailer/tree/v7.1.1"
+                "source": "https://github.com/PHPMailer/PHPMailer/tree/v7.2.0"
             },
             "funding": [
                 {
@@ -989,8 +996,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-18T08:06:14+00:00",
-            "published-time": "2026-05-18T08:06:42+00:00"
+            "time": "2026-11-07T15:15:17+00:00",
+            "published-time": "2026-11-07T15:16:54+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -1065,7 +1072,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T00:54:40+00:00"
+            "time": "2026-08-24T00:54:40+00:00",
+            "published-time": "2026-08-24T01:09:05+00:00"
         },
         {
             "name": "psr/log",
@@ -1616,20 +1624,21 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-25T15:50:05+00:00"
+            "time": "2026-09-25T15:50:05+00:00",
+            "published-time": "2026-09-30T10:23:35+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v7.4.23",
+            "version": "v7.4.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "1e601207ffe627a2e621faa9d661f1d32dcf1cec"
+                "reference": "539dd469c25466d7225d6cadac1795201c9cf454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/1e601207ffe627a2e621faa9d661f1d32dcf1cec",
-                "reference": "1e601207ffe627a2e621faa9d661f1d32dcf1cec",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/539dd469c25466d7225d6cadac1795201c9cf454",
+                "reference": "539dd469c25466d7225d6cadac1795201c9cf454",
                 "shasum": ""
             },
             "require": {
@@ -1672,7 +1681,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v7.4.23"
+                "source": "https://github.com/symfony/yaml/tree/v7.4.25"
             },
             "funding": [
                 {
@@ -1692,21 +1701,21 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-04T08:27:22+00:00",
-            "published-time": "2026-11-04T11:28:41+00:00"
+            "time": "2026-11-27T13:07:44+00:00",
+            "published-time": "2026-11-27T14:41:42+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v5.7.0",
+            "version": "v5.8.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "301c07936b16d88628b126b01d082ba153cf4c40"
+                "url": "https://github.com/phpdotenv/phpdotenv.git",
+                "reference": "ba37876e98122ca15151247ce1187d20ee8bf4e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/301c07936b16d88628b126b01d082ba153cf4c40",
-                "reference": "301c07936b16d88628b126b01d082ba153cf4c40",
+                "url": "https://api.github.com/repos/phpdotenv/phpdotenv/zipball/ba37876e98122ca15151247ce1187d20ee8bf4e0",
+                "reference": "ba37876e98122ca15151247ce1187d20ee8bf4e0",
                 "shasum": ""
             },
             "require": {
@@ -1733,7 +1742,7 @@
                     "forward-command": false
                 },
                 "branch-alias": {
-                    "dev-master": "5.6-dev"
+                    "dev-master": "5.8-dev"
                 }
             },
             "autoload": {
@@ -1764,8 +1773,8 @@
                 "environment"
             ],
             "support": {
-                "issues": "https://github.com/vlucas/phpdotenv/issues",
-                "source": "https://github.com/vlucas/phpdotenv/tree/v5.7.0"
+                "issues": "https://github.com/phpdotenv/phpdotenv/issues",
+                "source": "https://github.com/phpdotenv/phpdotenv/tree/v5.8.1"
             },
             "funding": [
                 {
@@ -1777,7 +1786,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T18:07:49+00:00"
+            "time": "2026-11-23T00:53:11+00:00",
+            "published-time": "2026-11-23T00:53:39+00:00"
         }
     ],
     "packages-dev": [],
